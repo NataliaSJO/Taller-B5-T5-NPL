@@ -1,0 +1,45 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Local environment files
+.env
+.env.*
+
+# IDE / editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large generated data / indexes
+*.faiss
+*.index
+*.pkl
+*.joblib
+*.h5
+*.npz
+
+# Logs
+*.log
+
+# Project-specific generated artifacts
+/dataset/indice/*.faiss
+
+# Project-corpus artifacts
+/dataset/corpus/
+/dataset/corpus_miax_2026.zip
