@@ -1,0 +1,174 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,recall_trayectoria,coste_juez_usd,error,traceback,detalle_api
+propio-001,numerica,True,evaluado,0.0034537500000000002,13.79496579989791,1,,True,True,,,,,
+propio-002,numerica,True,evaluado,0.00528075,12.387630200013518,2,,True,True,,,,,
+propio-003,numerica,True,evaluado,0.00576225,13.420926500111818,2,,True,True,,,,,
+propio-004,numerica,True,evaluado,0.00457575,13.21242309990339,2,,True,True,,,,,
+propio-005,numerica,True,evaluado,0.005666249999999999,19.48552740016021,2,,True,True,,,,,
+propio-006,numerica,True,evaluado,0.00456525,12.129650899907574,2,,True,True,,,,,
+propio-007,numerica,True,evaluado,0.0167535,29.329305900027975,4,,True,True,,,,,
+propio-008,extractiva,False,evaluado,0.0258567,32.3784795999527,6,False,,True,0.0,,,,
+propio-009,extractiva,False,evaluado,0.01628025,20.68140790006146,3,False,,True,0.0,,,,
+propio-010,extractiva,False,evaluado,0.00909975,15.561498299939558,2,False,,True,1.0,0.00304725,,,
+propio-011,extractiva,False,evaluado,0.00946875,17.631673000054434,2,False,,True,1.0,0.00255225,,,
+propio-012,extractiva,False,evaluado,0.00753525,11.321707899915054,1,False,,True,1.0,0.0023355,,,
+propio-013,extractiva,False,evaluado,0.00900525,16.096597000025213,2,False,,True,1.0,0.00311625,,,
+propio-014,extractiva,False,evaluado,0.0049394999999999994,9.012839500093833,1,False,,True,1.0,0.0051585,,,
+propio-015,comparativa,False,error,,40.61906779999845,8,,,,,,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 829, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 590, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 113, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id '3e5be4a1-cf64-bbf1-47d4-a4ec7626fd64'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 504, 'message': 'The operation was aborted', 'provider_name': 'Google'}]}, 'retry_after': None}"
+propio-016,comparativa,False,error,,31.130878700176254,4,,,,,,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 829, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 590, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 113, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id 'd359ed80-77f1-9b04-de50-7220679fc329'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 504, 'message': 'The operation was aborted', 'provider_name': 'Google'}]}, 'retry_after': None}"
+propio-017,comparativa,False,evaluado,0.017843249999999998,26.681222799932584,6,False,True,True,1.0,,,,
+propio-018,comparativa,False,error,,57.13103140005842,9,,,,,,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 829, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 590, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 113, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id 'd3a02182-4cc6-f09d-809b-103ea70686f2'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 504, 'message': 'The operation was aborted', 'provider_name': 'Google'}]}, 'retry_after': None}"
+propio-019,comparativa,False,evaluado,0.048888375,66.38120880001225,11,False,True,True,1.0,,,,
+propio-020,comparativa,False,evaluado,0.01666425,22.0132142000366,5,False,True,True,1.0,,,,
