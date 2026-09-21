@@ -1,0 +1,4761 @@
+WEBVTT
+
+1
+00:00:01.860 --> 00:00:03.080
+Laura Pérez: Todo tuyo.
+
+2
+00:00:03.850 --> 00:00:05.710
+Guillermo Fajardo: Vale. Perfecto. Muchas gracias.
+
+3
+00:00:06.250 --> 00:00:16.260
+Guillermo Fajardo: Bueno, buenos días, chicos, buenas tardes. Soy Guillermo Fajardo. Yo Bueno, me presento un poco. También hice. También hice el mías como vosotros.
+
+4
+00:00:16.450 --> 00:00:20.150
+Guillermo Fajardo: y estoy trabajando ahora mismo en en Six, en B, m. E
+
+5
+00:00:20.570 --> 00:00:29.819
+Guillermo Fajardo: y me dedico principalmente a hacer a implementar a gentes de todo tipo, automatizaciones y todo el resto de cosas.
+
+6
+00:00:30.190 --> 00:00:33.919
+Guillermo Fajardo: Tenéis ahora mismo subido en la plataforma
+
+7
+00:00:34.170 --> 00:00:36.880
+Guillermo Fajardo: material que vais a necesitar para la clase de hoy.
+
+8
+00:00:38.030 --> 00:00:42.950
+Guillermo Fajardo: Vais a necesitar. Bueno, espérate. Voy a compartir esto.
+
+9
+00:00:50.680 --> 00:00:52.480
+Guillermo Fajardo: Vale para que se vea.
+
+10
+00:00:52.900 --> 00:01:00.740
+Guillermo Fajardo: y en la clase de hoy vamos a empezar lo que van a ser las prácticas, las prácticas que vais a tener que entregar el 24
+
+11
+00:01:01.100 --> 00:01:01.890
+Guillermo Fajardo: y hacer?
+
+12
+00:01:02.010 --> 00:01:08.959
+Guillermo Fajardo: Bueno, yo quería empezar, bueno, lo primero voy a deciros: ¿cómo setear todo esto?
+
+13
+00:01:09.350 --> 00:01:19.090
+Guillermo Fajardo: Tenéis 2 archivos, Zip que vais a tener que utilizar. U 1 es un cuaderno y tiene otros archivos.
+
+14
+00:01:19.830 --> 00:01:28.960
+Guillermo Fajardo: lo podéis utilizar en local. Si lo tenéis habilitados, un un entorno local suficientemente potente. O podéis hacerlo directamente desde Google Colab.
+
+15
+00:01:29.280 --> 00:01:31.679
+Guillermo Fajardo: Si los si lo hacéis desde Google colad
+
+16
+00:01:31.870 --> 00:01:41.230
+Guillermo Fajardo: vais a necesitar poner los archivos que hay en el archi en el punto Zip aquí directamente.
+
+17
+00:01:41.970 --> 00:01:47.319
+Guillermo Fajardo: Y los que hay dentro del del archivo Zip Dataset
+
+18
+00:01:47.720 --> 00:01:49.800
+Guillermo Fajardo: van a tener que ir aquí dentro.
+
+19
+00:01:51.480 --> 00:01:57.190
+Guillermo Fajardo: porque es esto: Este archivo de atasset es superimportante, porque es el que vais a tener que utilizar también para la práctica.
+
+20
+00:01:57.730 --> 00:02:00.260
+Guillermo Fajardo: Así que simplemente ya para que lo tengáis en cuenta.
+
+21
+00:02:00.850 --> 00:02:14.729
+Guillermo Fajardo: Entonces os comento porque técnicamente, a mí me habían dicho al principio que os hiciera una práctica sobre centrada en el Racc un poco en los agentes e ir por ese camino. Sin embargo.
+
+22
+00:02:15.210 --> 00:02:22.159
+Guillermo Fajardo: tal y como está hoy día la cosa, el Rac es algo que por sí solo se queda igual a veces un poquito corto.
+
+23
+00:02:22.630 --> 00:02:30.059
+Guillermo Fajardo: y por eso he decidido que es mejor que le vamos a dar más caña a los agentes.
+
+24
+00:02:30.310 --> 00:02:42.329
+Guillermo Fajardo: pero desde un punto de vista en el que también se va a tocar el rap. Entonces lo que vamos a hacer aquí es un sistema de agentes bastante simple en el que, como parte de las herramientas de la gente
+
+25
+00:02:42.590 --> 00:02:47.450
+Guillermo Fajardo: vais a tener que vais a tener que implementar un rag y mejorarlo
+
+26
+00:02:47.960 --> 00:02:55.279
+Guillermo Fajardo: de aquí. Cuántos de vosotros habéis hecho ya agentes o algo por el estilo.
+
+27
+00:02:58.040 --> 00:02:58.830
+Guillermo Fajardo: No.
+
+28
+00:02:59.150 --> 00:03:00.450
+Javier Hernandez: Llama los agentes.
+
+29
+00:03:01.450 --> 00:03:15.799
+Guillermo Fajardo: Por ejemplo, un sistema de agentes, pues puede ser bueno. Un agente. Es algo tan sencillo como un bucle. No puede serlo, Pero por ejemplo, me refiero a haber creado un programa que tenga como base una L L, M
+
+30
+00:03:16.440 --> 00:03:25.389
+Guillermo Fajardo: y pueda tomar acciones y tener contexto de las acciones de las respuestas a esas acciones. Por ejemplo.
+
+31
+00:03:25.620 --> 00:03:29.580
+Guillermo Fajardo: cuando vosotros normalmente abrís la página de Chatg, P. T
+
+32
+00:03:29.860 --> 00:03:37.050
+Guillermo Fajardo: y le preguntáis cualquier cosa, se pone a buscar por Internet. Eso, en realidad no es una red del lenguaje. Eso es un agente
+
+33
+00:03:37.470 --> 00:03:44.560
+Guillermo Fajardo: que además tiene capacidad de buscar en Internet y todas estas cosas. Esto lo podemos construir nosotros, que lo que vamos a hacer.
+
+34
+00:03:48.740 --> 00:03:52.869
+Guillermo Fajardo: habéis hecho, algún programita que use una red del lenguaje o algo por el estilo.
+
+35
+00:03:53.290 --> 00:03:55.160
+Hugo Vinuesa: Sí, en cloud cowork.
+
+36
+00:03:56.290 --> 00:03:57.750
+Guillermo Fajardo: Vale, sí, por ejemplo.
+
+37
+00:03:58.140 --> 00:04:02.059
+Guillermo Fajardo: Pero claro, ahí lo habéis hecho ya directamente encima de Claude. No.
+
+38
+00:04:02.740 --> 00:04:11.109
+Hugo Vinuesa: Bueno, luego si puedes ver los agentes a al Github y conectarlos con unos plugins. Y tienes ahí los Skills.
+
+39
+00:04:11.490 --> 00:04:12.460
+Guillermo Fajardo: Sí, Justo.
+
+40
+00:04:12.460 --> 00:04:12.950
+Hugo Vinuesa: Mhm.
+
+41
+00:04:12.950 --> 00:04:18.940
+Guillermo Fajardo: Esos son los agentes más avanzados que hay hoy día, pero de código. En realidad tampoco tienen tanto
+
+42
+00:04:20.230 --> 00:04:29.029
+Guillermo Fajardo: aquí el que vamos a hacer es un agente que se va a hacer 100 por 100 por código y se va a poder ejecutar. Esto normalmente es
+
+43
+00:04:29.380 --> 00:04:32.910
+Guillermo Fajardo: una gente como claude, es muy potente.
+
+44
+00:04:33.590 --> 00:04:48.820
+Guillermo Fajardo: Pero con este tipo de agente nos podemos meter en directamente a explorar datos, a procesar grandes volúmenes de información por poneros, un ejemplo. Nosotros tenemos desplegados un sistema de agentes de extracción de datos en masa
+
+45
+00:04:49.250 --> 00:04:55.000
+Guillermo Fajardo: en la bolsa que recibe al día miles y miles de noticias y de otro tipo de cosas.
+
+46
+00:04:55.140 --> 00:05:08.650
+Guillermo Fajardo: y clasifica y extraer información de manera estructurada. Esto lo puede hacer Claude, pues, por supuesto que lo puede hacer Claude, pero te lo va a hacer de una manera también normalmente bastante más cara, Lo puedes simplificar. Y aquí es por donde vamos a tirar
+
+47
+00:05:09.910 --> 00:05:17.510
+Guillermo Fajardo: un ra. Os suena lo que es, si es un un sistema de Rac.
+
+48
+00:05:18.610 --> 00:05:21.929
+Guillermo Fajardo: Un sistema de Rac es una cosa super simple a ver sí.
+
+49
+00:05:23.640 --> 00:05:37.940
+Rodolfo Villena: No sé, es un es un sistema para, O sea, no es directamente que el que el L L. M. Gire genere el texto, sino que lo extrae de documentos que previamente le hemos le hemos cargado.
+
+50
+00:05:38.160 --> 00:05:46.110
+Guillermo Fajardo: Efectivamente, es decir, el problema esencial que se tenía sobre todo antes, con los agentes y con las L. L. Ms: es.
+
+51
+00:05:46.400 --> 00:06:00.059
+Guillermo Fajardo: ¿Oye, si yo quiero que tú me respon me respondas a una pregunta sobre un corpus que sea muy grande. Vamos a poner, pues, muchísimos documentos o algo así. Meter toda esa información en el contexto no tenía absolutamente ningún sentido
+
+52
+00:06:00.060 --> 00:06:06.490
+Guillermo Fajardo: ahora, con los agentes nuevos como Cloud. Y tal como se puede ir explorando, no ellos tienen la propia capacidad de explorar
+
+53
+00:06:06.700 --> 00:06:13.389
+Guillermo Fajardo: Eso ya ha quedado un poco desfasado. Pero no saturar el contexto es una cosa superimportante.
+
+54
+00:06:13.490 --> 00:06:17.630
+Guillermo Fajardo: Entonces se creaba antes. Lo que se llama un sistema Rac que un sistema rak
+
+55
+00:06:18.150 --> 00:06:22.880
+Guillermo Fajardo: no es más que un programita que es capaz de trocear un texto.
+
+56
+00:06:23.540 --> 00:06:37.839
+Guillermo Fajardo: Ese texto troceado lo va a le va a calcular los embedings, que son vectores de significancia. Y sobre ese grupo de vectores, nosotros podemos hacer operaciones matemáticas que no son complicadas
+
+57
+00:06:38.170 --> 00:06:45.700
+Guillermo Fajardo: para recuperar cuáles son los fragmentos más relevantes para una determinada pregunta. Entonces.
+
+58
+00:06:46.230 --> 00:07:00.699
+Guillermo Fajardo: esperando que la información que buscamos esté dentro de esos fragmentos más relevantes, ya no le tenemos que pasar un libro entero. Le podemos pasar, por ejemplo, los 10 fragmentos más relevantes. Imaginaos, 10 párrafos o algo por el estilo.
+
+59
+00:07:00.850 --> 00:07:06.939
+Guillermo Fajardo: De esa manera nos saltamos el problema de de saturar el contexto.
+
+60
+00:07:07.840 --> 00:07:11.750
+Guillermo Fajardo: Esto aquí os lo explico porque no lo vamos a utilizar.
+
+61
+00:07:12.480 --> 00:07:31.070
+Guillermo Fajardo: Esto. Tenía un tenía un montón de problemas. Intentábamos salvar el problema del contexto, pero nos terminamos encontrando otros problemas. La similitud semántica, que era la búsqueda con los embedlings, daba un montón de problemas cuando tenías datos que estaban, pues, por ejemplo, en tablas, claro, imaginaos en finanzas. Lo relevante que es
+
+62
+00:07:31.220 --> 00:07:33.319
+Guillermo Fajardo: cuando la respuesta era
+
+63
+00:07:33.570 --> 00:07:47.740
+Guillermo Fajardo: la respuesta, requería información que estaba en varios puntos. Entonces, a lo mejor se podía confundir el modelo al sacarte los fragmentos más relevantes u otro montón de cosas. Entonces, aquí podíamos tener muchísimos problemas.
+
+64
+00:07:48.990 --> 00:07:57.339
+Guillermo Fajardo: Hoy día, esto es bastante más sencillo de de abordar con las redes nuevas. Pero no vamos a tener
+
+65
+00:07:57.800 --> 00:08:06.569
+Guillermo Fajardo: la no es tan eficiente, por así decirlo Y sobre todo, no es tan recomendable a un nivel. Si quieres hacer un sistema escalable a un nivel de negocio.
+
+66
+00:08:07.370 --> 00:08:17.370
+Guillermo Fajardo: Entonces aquí os he dejado algunos datos de, bueno, donde donde se originó el Racc y por qué fue tan importante en su princi en el principio.
+
+67
+00:08:20.780 --> 00:08:29.260
+Guillermo Fajardo: Pero hoy día eso queda un poquito desfasada. Entonces, ¿qué es lo que vamos a hacer directamente? Nosotros nos vamos a ir directamente a crear un agente
+
+68
+00:08:29.630 --> 00:08:40.690
+Guillermo Fajardo: para crear ese agente. Un agente va a ser un programa que tenga como cerebro una red de lenguaje y al que nosotros le vamos a dar capacidad de tomar acciones
+
+69
+00:08:40.789 --> 00:08:43.550
+Guillermo Fajardo: y de ver los resultados de esas acciones
+
+70
+00:08:43.640 --> 00:08:55.750
+Guillermo Fajardo: con una cosa que se llama herramientas. Esto es lo mismo que, por ejemplo, con Claude. Estaréis viendo con las Skills y cosas de este estilo. Lo que pasa es que mientras que las Skills normalmente
+
+71
+00:08:55.750 --> 00:09:05.819
+Guillermo Fajardo: están muy basadas en en texto o en Proms, y llevan también algo de código referenciado por debajo aquí lo vamos a codificar todo completamente
+
+72
+00:09:07.440 --> 00:09:13.670
+Guillermo Fajardo: cosas importantes. Vamos a Co: Bueno, vamos a construir unas cuantas herramientas para la gente.
+
+73
+00:09:15.400 --> 00:09:23.789
+Guillermo Fajardo: Y tenéis la práctica que ya también la tenéis subida que se entrega el 24. Vamos a dar clase como tal Hoy, La semana que viene
+
+74
+00:09:24.260 --> 00:09:34.679
+Guillermo Fajardo: y el día 24, vamos a Os voy a dar espacio para que vayáis presentando las soluciones que habéis encontrado, las lo los resultados que habéis hecho
+
+75
+00:09:36.150 --> 00:09:44.809
+Guillermo Fajardo: este notebook para ejecutarlo. Simplemente a lo mejor vais a tener que hacer algún cambio por si estáis usando colab porque hay algunos problemillas de vez en cuando.
+
+76
+00:09:45.040 --> 00:09:48.530
+Guillermo Fajardo: por ejemplo, hay un problemilla aquí,
+
+77
+00:09:49.590 --> 00:09:56.669
+Guillermo Fajardo: si alguno lo está utilizando en este programita adyacente que os he puesto aquí hay un problemilla
+
+78
+00:09:57.980 --> 00:10:01.160
+Guillermo Fajardo: que es que creo este no.
+
+79
+00:10:02.270 --> 00:10:06.960
+Guillermo Fajardo: Que aquí, en estos en candidatos Corpus hay
+
+80
+00:10:07.380 --> 00:10:17.720
+Guillermo Fajardo: varias líneas de código más tenéis que eliminarlas y que solo se queden estas simplemente porque en Google yo lo hice en un entorno local y en Google colab, pues da problemas
+
+81
+00:10:18.210 --> 00:10:20.070
+Guillermo Fajardo: una vez hacéis eso.
+
+82
+00:10:21.270 --> 00:10:36.939
+Guillermo Fajardo: Podéis ejecutar esta línea. Esto es un ejemplo tonto de cómo sería el resultado el típico resultado que daría este programa, oye, pues, ante una pregunta de qué riesgos añadió Microsoft en su diezky y tal.
+
+83
+00:10:38.880 --> 00:10:40.130
+Guillermo Fajardo: tenemos.
+
+84
+00:10:40.420 --> 00:10:48.879
+Guillermo Fajardo: podemos ver qué trayectoria de búsqueda ha ido haciendo la gente, qué decisiones ha tomado a la hora de buscar por dónde ha ido andando por los documentos
+
+85
+00:10:49.020 --> 00:10:51.270
+Guillermo Fajardo: y al final tendremos una respuesta.
+
+86
+00:10:52.510 --> 00:10:57.729
+Guillermo Fajardo: Había pensado en daros un datase de
+
+87
+00:10:58.130 --> 00:11:03.860
+Guillermo Fajardo: dejar en Facebook cómo se llama la otra página de de Caggle.
+
+88
+00:11:04.380 --> 00:11:15.050
+Guillermo Fajardo: Sin embargo, el problema de es que no he encontrado ningún datasel que fuera suficientemente completo o se iban algunos de tamaño demasiado. Así que os he construido yo el el propio dataser
+
+89
+00:11:15.740 --> 00:11:30.320
+Guillermo Fajardo: aquí tenéis el corpus, las fuentes, el índice fais, el índice files ya lo vais a ver. Luego es simplemente ya os he precomputado todas las cosas que había que que serían para hacer la búsqueda semántica.
+
+90
+00:11:30.910 --> 00:11:35.990
+Guillermo Fajardo: y vamos a ir un poco, vamos a ir un poco por delante de las clases que estáis teniendo
+
+91
+00:11:36.340 --> 00:11:40.850
+Guillermo Fajardo: de tal manera que cuando lo veáis en clase. Ya os va a ir sonando un poquito más.
+
+92
+00:11:41.210 --> 00:11:47.420
+Guillermo Fajardo: Entonces para los que estéis aquí conmigo, lo podemos ir ejecutando. Esto es simplemente este ejemplo tonto.
+
+93
+00:11:49.030 --> 00:11:58.079
+Guillermo Fajardo: cosa básica alguno tiene una A, P. I de una L, L. M que utilizar una clave A, P. I. Por ejemplo.
+
+94
+00:11:58.190 --> 00:12:09.850
+Guillermo Fajardo: si tú quieres utilizar Chatg: P, T, en tu programa o si tú quieres utilizar Cloud o o algo así en tu programa. No lo haces desde la aplicación normal de Cloud. Lo haces
+
+95
+00:12:09.990 --> 00:12:15.530
+Guillermo Fajardo: con una A. P, I k metiéndolo en un programa, lo tenéis alguno o lo utilizáis directamente desde
+
+96
+00:12:15.710 --> 00:12:17.550
+Guillermo Fajardo: terminal o desde pantalla.
+
+97
+00:12:19.970 --> 00:12:21.490
+Rodolfo Villena: La de Géminis.
+
+98
+00:12:22.450 --> 00:12:24.600
+Guillermo Fajardo: La de Jeminay, por ejemplo, es
+
+99
+00:12:25.960 --> 00:12:31.000
+Guillermo Fajardo: vale, pues, para empezar a ejecutar el cuaderno. Bueno, aquí simplemente tenéis las librerías
+
+100
+00:12:32.170 --> 00:12:34.090
+Guillermo Fajardo: que la vamos a ir ejecutando.
+
+101
+00:12:36.130 --> 00:12:39.820
+Guillermo Fajardo: Yo aquí os he puesto como recomendación, podéis utilizar la que queráis.
+
+102
+00:12:40.160 --> 00:12:43.120
+Guillermo Fajardo: Pero como recomendación, os he puesto aquí
+
+103
+00:12:43.240 --> 00:12:54.480
+Guillermo Fajardo: que yo voy a utilizar Open Router como proveedor de de apics Open Router es una empresa que se dedica a tener un montón de de diferentes modelos
+
+104
+00:12:54.920 --> 00:12:58.600
+Guillermo Fajardo: y a ver si podemos ver, por ejemplo, este modelo.
+
+105
+00:12:59.470 --> 00:13:01.659
+Guillermo Fajardo: Vamos a ver, por ejemplo, modelo de texto.
+
+106
+00:13:02.350 --> 00:13:11.179
+Guillermo Fajardo: Aquí podéis desde llamar a Jeminay hasta llamar a Chatg P, T, hasta llamar a cualquiera qué pasa. Las A, P. Is: Siempre te van cobrando por el uso.
+
+107
+00:13:11.570 --> 00:13:26.519
+Guillermo Fajardo: la cantidad de toques que van de toque en que vas utilizando. Sin embargo, aquí, por ejemplo, para el cuaderno os he puesto que vamos a utilizar un modelo, un modelo bastante sencillo. Vamos a utilizar el este que tengo que poner aquí. Mi clave.
+
+108
+00:13:38.400 --> 00:13:40.599
+Guillermo Fajardo: Vale, Ya lo había puesto antes.
+
+109
+00:13:40.980 --> 00:13:47.529
+Guillermo Fajardo: Okay, Simplemente cuando ejecutéis esta celda, os va a pedir la clave de openrouter esto lo podéis
+
+110
+00:13:48.150 --> 00:13:59.519
+Guillermo Fajardo: cambiar bastante sencillo a otro, a otro tipo de Api Key, si queréis vosotros, pero lo más importante aquí a lo mejor es que podéis ver es que vais a tener la clave, y luego
+
+111
+00:13:59.780 --> 00:14:03.159
+Guillermo Fajardo: la librería. Vamos a ejecutar esta.
+
+112
+00:14:05.430 --> 00:14:11.250
+Guillermo Fajardo: Esto es simplemente la carga de los datos que tenemos es como una celda inicial de carga.
+
+113
+00:14:12.350 --> 00:14:16.020
+Guillermo Fajardo: y aquí vamos a empezar a utilizar los proveedores.
+
+114
+00:14:16.640 --> 00:14:23.320
+Guillermo Fajardo: Habéis utilizado alguna vez la librería lanchain no vale.
+
+115
+00:14:23.680 --> 00:14:32.019
+Guillermo Fajardo: Hay varias librerías. No hay varios, como hay varios Frameworks con los que se puede afrontar el uso de el L. M:
+
+116
+00:14:32.070 --> 00:14:44.029
+Guillermo Fajardo: Si queréis desarrollar cualquier programa inteligente que use L. L. M: Lo más normal es que vayáis a terminar utilizando una librería de este tipo para cualquier cosa que no que no sea relativamente básica
+
+117
+00:14:45.120 --> 00:14:50.670
+Guillermo Fajardo: con Lanchain, un órgano a ver. Vamos a buscar aquí. Por ejemplo.
+
+118
+00:15:05.270 --> 00:15:13.339
+Guillermo Fajardo: Ves, aquí tenemos la documentación de la librería de Lanchen, donde podemos. Tenemos, por ejemplo, la librería más básica que es linchen, Y aquí podemos hacer
+
+119
+00:15:13.700 --> 00:15:22.210
+Guillermo Fajardo: agentes. Ves que es una gente, pues un agente no es más que un modelo de lenguaje que es capaz de tomar acciones a través de Tools.
+
+120
+00:15:22.550 --> 00:15:23.800
+Guillermo Fajardo: percibir
+
+121
+00:15:24.440 --> 00:15:31.369
+Guillermo Fajardo: resultado o consecuencia de las acciones que está tomando Y a raíz de eso, hacer un resultado. En el fondo, esto no es más que un bucle.
+
+122
+00:15:33.660 --> 00:15:40.660
+Guillermo Fajardo: Entonces, aquí lanchain normalmente. Antes lo que pasaba era que cada vez que tú querías utilizar la A P I
+
+123
+00:15:40.710 --> 00:15:59.089
+Guillermo Fajardo: de una empresa diferente. Tenías que hacer una configuración diferente. Oye, pues estoy utilizando jemina, hay que configurarlo de una manera si estoy utilizando open ayes de otras y estoy utilizando Anthropic es de otra, etcétera, etcétera. Sin embargo, Lighting ya ha abstraído todo eso.
+
+124
+00:15:59.330 --> 00:16:02.399
+Guillermo Fajardo: Y lo único que tenemos que hacer es cambiar el modelo.
+
+125
+00:16:02.980 --> 00:16:19.619
+Guillermo Fajardo: Por ejemplo, aquí yo estoy utilizando el proveedor open Router, y le voy a deducir que vamos a utilizar el modelo de Geminie, 3, 8. Sin embargo, aquí simplemente cambiando esto, ya podéis utilizar muchísimos otros proveedores.
+
+126
+00:16:19.770 --> 00:16:24.100
+Guillermo Fajardo: entonces, obviamente, cada proveedor, pues va a necesitar su clave.
+
+127
+00:16:24.510 --> 00:16:27.360
+Guillermo Fajardo: pero está abstraído y no hay ningún problema.
+
+128
+00:16:28.990 --> 00:16:31.520
+Guillermo Fajardo: pues aquí ya tenemos configurada la L. L. M.
+
+129
+00:16:32.280 --> 00:16:33.089
+Guillermo Fajardo: Y la.
+
+130
+00:16:33.090 --> 00:16:33.600
+Javier Hernandez: Ah.
+
+131
+00:16:34.400 --> 00:16:37.150
+Guillermo Fajardo: Sí. Bueno, en el.
+
+132
+00:16:37.150 --> 00:16:47.560
+Javier Hernandez: Que te iba a preguntar Guillermo: ¿Nos recomiendas algún modelo en concreto de los gratuitos para testear este tipo de cosas que podamos utilizar
+
+133
+00:16:48.210 --> 00:16:56.359
+Javier Hernandez: y que tengamos ciertos límite un poco más alto de de tokens.
+
+134
+00:16:58.170 --> 00:17:10.790
+Guillermo Fajardo: Pues mira, sí, De hecho, el hecho preciso del de que no haya utilizado el el tier gratuito de Jemina es que suele acabarse bastante pronto, o al menos antes era así.
+
+135
+00:17:11.089 --> 00:17:20.489
+Guillermo Fajardo: Open Router tiene varios set de de modelos gratuitos. Luego luego los pasaré, aunque también os digo
+
+136
+00:17:20.859 --> 00:17:26.719
+Guillermo Fajardo: que los modelos no gratuitos, como el jemina, y 3 8 flash
+
+137
+00:17:26.839 --> 00:17:31.950
+Guillermo Fajardo: son bastante bastante baratos de operar, ¿ Que estamos estamos hablando de céntimos.
+
+138
+00:17:33.030 --> 00:17:39.199
+Guillermo Fajardo: Entonces, si podéis utilizar, si podéis poner algo, una, un
+
+139
+00:17:39.530 --> 00:17:45.499
+Guillermo Fajardo: un presupuesto básico para eso, yo lo recomendaría. Sin embargo, en open router, tienen, vamos a buscarlo.
+
+140
+00:17:46.280 --> 00:17:57.619
+Javier Hernandez: Hay alguna manera de de crear, digamos, un bucle decir, oye utiliza este modelo hasta que me quede sin tokens cuando te quedes sin sin tokens, pasa este y pasa este y pasa este y vamos a dejarlo configurado de esa manera.
+
+141
+00:17:57.620 --> 00:18:00.709
+Guillermo Fajardo: Pue perdona. Puedes repetirlo, que es que los cascos me han fallado.
+
+142
+00:18:01.000 --> 00:18:10.880
+Javier Hernandez: Perdona. ¿hay alguna manera de configurarlo de manera que oye utiliza este modelo hasta que me quede sin tokens cuando te quedes sin Dogems pasa a este otro modelo hasta que te quedes y digamos así hasta.
+
+143
+00:18:11.390 --> 00:18:15.550
+Guillermo Fajardo: Sí, eso? Bueno, de hecho, eso lo podrías configurar tú de manera bastante sencilla
+
+144
+00:18:15.820 --> 00:18:21.860
+Guillermo Fajardo: en el sentido de Imagínate que tú tienes aquí seteado 2 modelos diferentes.
+
+145
+00:18:22.920 --> 00:18:35.009
+Guillermo Fajardo: tienes seteado 2 modelos diferentes. Y claro, cuando te quedes sin tokens, vas a recibir un error que es un error concreto y muy específico. Entonces te podrías poner que tu modelo
+
+146
+00:18:35.270 --> 00:18:40.109
+Guillermo Fajardo: cuando se llama cuando se fuese a llamar el modelo se utilizase siempre por defecto, el gratuito.
+
+147
+00:18:40.300 --> 00:18:45.389
+Guillermo Fajardo: Y una vez se ha gastado el gratuito que lo vas a identificar, porque vas a obtener ese tipo de error
+
+148
+00:18:45.760 --> 00:18:48.459
+Guillermo Fajardo: se pase al siguiente modelo.
+
+149
+00:18:48.580 --> 00:18:52.850
+Guillermo Fajardo: Eso es una cosa que, de hecho, creo que Open Router tiene una cosa por el estilo.
+
+150
+00:18:53.010 --> 00:19:04.280
+Guillermo Fajardo: Open Router sacó una cosa chulísima, que es que tenía como una especie de modelo mixto que ellos, internamente, dependiendo de la complejidad de la pregunta. Te lo derivaban a un modelo u otro.
+
+151
+00:19:04.610 --> 00:19:09.360
+Guillermo Fajardo: Pero vamos a ver por dónde está aquí. Esto.
+
+152
+00:19:10.940 --> 00:19:14.880
+Guillermo Fajardo: Frood Prizesing: Sí, gratis.
+
+153
+00:19:17.610 --> 00:19:23.340
+Guillermo Fajardo: ¿ves? Aquí tienes todos estos modelos que son. Hay modelos de imagen de vídeo.
+
+154
+00:19:24.130 --> 00:19:35.290
+Guillermo Fajardo: Todos estos son gra todos son gratuitos. Y te viene aquí el límite que tienes. Oye, pues con mi mi M. A X, H. Tres, puedes generar hasta 16 h de vídeo gratis. Esto creo que es al mes
+
+155
+00:19:36.190 --> 00:19:38.860
+Guillermo Fajardo: y de texto, pues tienes todos estos.
+
+156
+00:19:39.060 --> 00:19:43.629
+Guillermo Fajardo: Fíjate. Es la barbaridad de tokens que te dan gratis aquí son es gigantesca.
+
+157
+00:19:43.900 --> 00:19:50.429
+Guillermo Fajardo: pues mira el Neumotrok Es 1 1 de los de envidia que está bien. Os recomiendo mucho que juguéis con esto
+
+158
+00:19:50.540 --> 00:19:57.160
+Guillermo Fajardo: y pensar que cambiar el modelo dentro del código es tan sencillo como
+
+159
+00:19:58.820 --> 00:20:01.900
+Guillermo Fajardo: oye. ¿cuál es el nombre del modelo?
+
+160
+00:20:03.180 --> 00:20:03.990
+Guillermo Fajardo: Este
+
+161
+00:20:07.400 --> 00:20:12.330
+Guillermo Fajardo: a ver dónde ir aquí un momento. Si esto, pues, copio. Esto lo pongo en el
+
+162
+00:20:12.500 --> 00:20:15.640
+Guillermo Fajardo: lo pongo literalmente aquí
+
+163
+00:20:18.940 --> 00:20:21.450
+Guillermo Fajardo: cambio esto a ver un momento que lo he copiado mal.
+
+164
+00:20:23.130 --> 00:20:30.610
+Guillermo Fajardo: Este copio, lo cambio aquí y ya he cambiado el uso del modelo.
+
+165
+00:20:30.930 --> 00:20:33.520
+Guillermo Fajardo: Entonces para hacer lo que tú dices. ¿qué podrías hacer
+
+166
+00:20:34.170 --> 00:20:43.880
+Guillermo Fajardo: setear 2 modelos diferentes. Por ejemplo, aquí ya hemos creado el modelo como una variable, pues podrías ponerle a este modelo gratuito y tras seteas el otro modelo de pago.
+
+167
+00:20:44.280 --> 00:20:51.910
+Guillermo Fajardo: Y te haces como una especie de metamodelo en el que sea una funcioncita pequeña que te diga.
+
+168
+00:20:53.870 --> 00:20:57.450
+Guillermo Fajardo: Y bueno, imagínate que a veces
+
+169
+00:21:02.310 --> 00:21:15.890
+Guillermo Fajardo: deaf metamodelo mod Modelo, 1, modelo 2 llamada.
+
+170
+00:21:16.720 --> 00:21:22.230
+Guillermo Fajardo: Y haces así. Y te pones, trae
+
+171
+00:21:23.380 --> 00:21:37.290
+Guillermo Fajardo: esto. Lo estoy haciendo como a en código compadre trae modelo 1 punto inbou llamada
+
+172
+00:21:40.370 --> 00:21:41.460
+Guillermo Fajardo: exacto.
+
+173
+00:21:43.580 --> 00:21:50.330
+Guillermo Fajardo: Excep Y aquí pones excepción. El el tipo de error que te dé cuando te quedes excep
+
+174
+00:22:01.960 --> 00:22:03.819
+Guillermo Fajardo: Esto sería aquí un ratón perdón.
+
+175
+00:22:13.250 --> 00:22:15.230
+Guillermo Fajardo: Y aquí
+
+176
+00:22:20.840 --> 00:22:39.039
+Guillermo Fajardo: sería tan tonto como esto. Quería. Esta funcioncita oye a ver esta función. Está mal hecha. Es simplemente el pseudocódigo. Para que lo entenda entendáis, hemos puesto el modelo gratuito aquí. Luego, aquí el otro modelo y la llamada oye, Pues súper simple, te llega, te llega una llamada, una pregunta, me la mandas al modelo gratis.
+
+177
+00:22:39.300 --> 00:22:48.850
+Guillermo Fajardo: Si, por lo que sea, cuando lo hago, me llega el autobtokens. Te lo mando al modelo gratu, el mo al modelo de pago a ver. Esto está mal hecho.
+
+178
+00:22:49.030 --> 00:22:52.579
+Guillermo Fajardo: ¿por qué? Porque si te quedas sin tokens.
+
+179
+00:22:53.500 --> 00:23:02.800
+Guillermo Fajardo: cada vez que vayas a hacer una llamada. Vas a intentarlo. Primero, con esto no haz una variable que cambie y que vaya haciendo lo otro, pero se entiende el concepto no.
+
+180
+00:23:03.850 --> 00:23:04.950
+Javier Hernandez: Sí. Muchas gracias.
+
+181
+00:23:05.230 --> 00:23:05.850
+Guillermo Fajardo: No.
+
+182
+00:23:09.260 --> 00:23:15.379
+Guillermo Fajardo: Y hay muchísimos modelos gratuitos, ¿ Y de hecho, hay bastantes cosas guays, sobre todo para
+
+183
+00:23:15.470 --> 00:23:33.159
+Guillermo Fajardo: lidiar con los modelos. Los últimos modelos que han salido entonces. Open Router está bastante bien por eso y de precio no se están cobrando una prima especial, ni nada. ¿ Por en si tú utilizas Jenny aquí, versus el jemina normal, el coste de los tokens Creo que es exactamente el mismo.
+
+184
+00:23:33.490 --> 00:23:36.450
+Guillermo Fajardo: o sea que no hay, no hay un gran problema con eso.
+
+185
+00:23:39.050 --> 00:23:44.729
+Diego Muñoz Alonso: Entonces. Desde la práctica nos recomiendas no darnos de alta en Openroutter y tener una clave App.
+
+186
+00:23:44.730 --> 00:23:52.800
+Guillermo Fajardo: Sí, porque a ver otras veces que he dado clases. Sí que es verdad que Jeminay tiene un tier gratuito de uso.
+
+187
+00:23:53.260 --> 00:23:54.180
+Guillermo Fajardo: pero no
+
+188
+00:23:54.660 --> 00:24:08.889
+Guillermo Fajardo: muchísimas veces. Para empezar, la documentación de Google la tienen por 50 sitios diferentes. La van cambiando de sitio y me parecen, como poco usurfriendly muchas veces. Y para seguir el tier gratuito que decían que tenían
+
+189
+00:24:10.080 --> 00:24:29.190
+Guillermo Fajardo: es mucho más corto en Tokens de lo que de lo que realmente anunciaban entonces con open router, sobre todo porque os va a permitir jugar con muchísimos otros modelos y tal, tener una cuenta. Tener una cuenta es completamente gratuito. Y cuando te hacen la cuenta, pues si le tienes que poner un método de pago.
+
+190
+00:24:29.260 --> 00:24:34.480
+Guillermo Fajardo: pero puedes hacerlo típico de Oye, le meto 10 € y que no lo recargue.
+
+191
+00:24:34.850 --> 00:24:37.429
+Guillermo Fajardo: Pero ya os digo yo que el uso es
+
+192
+00:24:37.620 --> 00:24:44.479
+Guillermo Fajardo: ridículamente. Luego, cuando terminemos la clase, voy a poner el el coste que ha tenido y ya veréis que es ridículo.
+
+193
+00:24:45.860 --> 00:24:49.439
+Guillermo Fajardo: Entonces, Bueno, con este se tatum se tapa un poco
+
+194
+00:24:50.240 --> 00:24:54.009
+Guillermo Fajardo: bueno, ya que he visto que no lo habéis hecho.
+
+195
+00:24:54.290 --> 00:25:04.039
+Guillermo Fajardo: os recomiendo mucho que juguéis con la librería lanchain que la investiguéis hoy día hoy día. Tenéis como este doble este doble doble
+
+196
+00:25:05.050 --> 00:25:10.960
+Guillermo Fajardo: doble problema, ¿no? O esta ventaja, y Y este reto de tener la inteligencia artificial.
+
+197
+00:25:11.070 --> 00:25:16.900
+Guillermo Fajardo: porque, obviamente, la inteligencia artificial, especialmente los últimos modelos, es ridículamente potente.
+
+198
+00:25:17.250 --> 00:25:22.680
+Guillermo Fajardo: pero os recomiendo muchísimo que la utilicéis como una palanca con la que aprender mejor
+
+199
+00:25:22.840 --> 00:25:29.040
+Guillermo Fajardo: antes que como algo que os haga simplemente las cosas, porque sí que es verdad que
+
+200
+00:25:29.710 --> 00:25:37.339
+Guillermo Fajardo: cuando estáis programando, va a haber muchísimas veces la el gran problema de la programación es que hay un montón de información implícita
+
+201
+00:25:37.860 --> 00:25:53.290
+Guillermo Fajardo: que no está en la comunicación ni la ni en la comunicación que te está dando tu jefe, por ponerte un ejemplo, ni en la comunicación que le estás dando tú a la I. A hay como una especie de teléfono escacharrado que se nota un montonazo y la I a cuando
+
+202
+00:25:53.760 --> 00:26:02.379
+Guillermo Fajardo: no le da suficiente contexto, se va de madre últimamente. No se va de madre en el sentido de que te haga mal las cosas, sino de que hace cosas que a lo mejor tú no querrías hacer
+
+203
+00:26:02.500 --> 00:26:14.509
+Guillermo Fajardo: o de o gasta muchísimo esfuerzo en hacer tonterías o protocolos de seguridad, o algo o cosas por el estilo que a lo mejor tú estás haciendo una prueba de concepto y no son necesarios.
+
+204
+00:26:16.040 --> 00:26:22.529
+Guillermo Fajardo: Entonces os recomiendo mucho que investiguéis para haceros vuestros vuestros propios agentes. Y bueno, en esto vamos a estar
+
+205
+00:26:22.930 --> 00:26:30.480
+Guillermo Fajardo: los documentos del corpus que os he que os he construido. Básicamente me he hecho un Scrapper.
+
+206
+00:26:30.930 --> 00:26:40.969
+Guillermo Fajardo: Me he ido a la S E. C, que es la el Centro de de cuentas anuales y de información financiera oficial del Gobierno de los Estados Unidos.
+
+207
+00:26:41.270 --> 00:26:46.149
+Guillermo Fajardo: y le he ido cogiendo información de unas cuantas empresas durante 2 años.
+
+208
+00:26:46.260 --> 00:26:53.360
+Guillermo Fajardo: En vez de coger todo lo que serían las cuentas anuales, he cogido alguno de los de los ítems
+
+209
+00:26:53.660 --> 00:26:57.260
+Guillermo Fajardo: y os he construido el datase techo entero.
+
+210
+00:26:57.600 --> 00:27:05.490
+Guillermo Fajardo: Esto aquí. Luego, esto ahora se extrae automáticamente cuando pongáis esto aquí en el Dataset y ejecutáis esto
+
+211
+00:27:06.120 --> 00:27:11.719
+Guillermo Fajardo: se o la siguiente celda se va a extraer simplemente para que lo que lo vayáis viendo.
+
+212
+00:27:12.490 --> 00:27:22.289
+Guillermo Fajardo: Aquí tenemos todo el tamaño total que tiene el corpus que tenéis. Por ejemplo, tenemos todas estas empresas de los años 24 y 25
+
+213
+00:27:22.510 --> 00:27:26.870
+Guillermo Fajardo: 650 000 tokens en total en 48 secciones.
+
+214
+00:27:28.280 --> 00:27:29.510
+Guillermo Fajardo: Si.
+
+215
+00:27:30.410 --> 00:27:43.500
+Guillermo Fajardo: bueno, creo que ahora aquí yo lo calculaba. Esto, en realidad son bastantes tokens. Pero quiero que penséis, por ejemplo, que el último, los últimos modelos, el opus, el el opus dean tropic
+
+216
+00:27:43.620 --> 00:27:49.509
+Guillermo Fajardo: el opus 5 tiene ya solo de ventana de contexto un 1 000 000 de tokens.
+
+217
+00:27:49.810 --> 00:27:54.919
+Guillermo Fajardo: Entonces esto se lo podríamos meter a Japón directamente al Claudepus, pero
+
+218
+00:27:55.110 --> 00:27:58.580
+Guillermo Fajardo: tampoco es eficiente y por no decir que no es barato Tampoco
+
+219
+00:27:58.740 --> 00:28:06.900
+Guillermo Fajardo: aquí os he puesto unos ejemplos de precios, simplemente un cálculo supersencillo Fijaos, Tenemos estos costes.
+
+220
+00:28:07.160 --> 00:28:12.130
+Guillermo Fajardo: No sé si lo sabéis, pero en las en las A, P. Is os cobran diferente.
+
+221
+00:28:12.900 --> 00:28:18.289
+Guillermo Fajardo: te cobran diferente, mucho más barato, lo que es el leer, por así decirlo, que lo que es el responderte.
+
+222
+00:28:18.540 --> 00:28:26.949
+Guillermo Fajardo: Pero aquí tenéis podéis haceros una ligera idea de las diferencias de precio, por ejemplo el Gemini, 3 u 8 flash, que es el que estamos utilizando aquí,
+
+223
+00:28:27.090 --> 00:28:31.210
+Guillermo Fajardo: te cobran 0, 75 por cada 1 000 000 de tokens
+
+224
+00:28:31.950 --> 00:28:37.190
+Guillermo Fajardo: por cada 1 000 000 de tokens que tenemos Aquí 650 000. Es decir, leerse todo esto
+
+225
+00:28:37.380 --> 00:28:45.440
+Guillermo Fajardo: serían todo entero. Serían menos de 75 céntimos para para germinai
+
+226
+00:28:45.550 --> 00:28:49.909
+Guillermo Fajardo: y luego escribirlo entero serían, pues, menos de 3 75.
+
+227
+00:28:50.180 --> 00:28:54.090
+Guillermo Fajardo: Sin embargo, con Claude y con Claude, la cosa ya cambia un poquito.
+
+228
+00:28:54.930 --> 00:28:58.400
+Guillermo Fajardo: La diferencia de inteligencia también es bastante notable. Las cosas como son.
+
+229
+00:29:00.500 --> 00:29:08.989
+Guillermo Fajardo: Entonces fijaos. Si tenemos en cuenta que utilizáramos este tipo de este tipo de modelos, un informe entero
+
+230
+00:29:09.120 --> 00:29:12.700
+Guillermo Fajardo: te puede costar 3 céntimos.
+
+231
+00:29:12.920 --> 00:29:15.450
+Guillermo Fajardo: Dos céntimos Tened en cuenta que con
+
+232
+00:29:15.830 --> 00:29:20.509
+Guillermo Fajardo: tener en cuenta que con los sistemas que vamos a hacer, la idea es
+
+233
+00:29:20.660 --> 00:29:36.929
+Guillermo Fajardo: minimizar dentro de lo posible, la cantidad de texto que va a tener que leer la red del lenguaje, por lo que cada vez que hagamos una pregunta, o cuando hagamos una sensi, una sesión entera de pregunta, podemos estar hablando de 10, 20 céntimos? Entonces las cantidades tampoco son
+
+234
+00:29:37.230 --> 00:29:41.920
+Guillermo Fajardo: tampoco son tan tan relevantes. Claro, ¿Qué pasa
+
+235
+00:29:42.160 --> 00:29:44.479
+Guillermo Fajardo: en la práctica que ahora después la veremos
+
+236
+00:29:44.750 --> 00:29:47.780
+Guillermo Fajardo: vais a ver que vais a tener que
+
+237
+00:29:48.340 --> 00:29:51.430
+Guillermo Fajardo: generar un dataset de 20 preguntas
+
+238
+00:29:51.700 --> 00:29:57.750
+Guillermo Fajardo: en el que podamos ver y podamos contrastar que la inteligencia artificial la está respondiendo de manera correcta.
+
+239
+00:29:58.980 --> 00:30:12.559
+Guillermo Fajardo: Entonces, pues, bueno, simplemente para que veáis esto, los modelos gratuitos también pueden funcionar. También sería, por ejemplo, interesa un experi un experimento bastante interesante para vosotros, sería, oye. Voy a ir comparando entre diferentes modelos gratuitos.
+
+240
+00:30:12.770 --> 00:30:19.129
+Guillermo Fajardo: o voy a ir comparando entre diferentes modelos gratuitos. Y luego lo voy a comparar con 1 de pago medianamente.
+
+241
+00:30:19.470 --> 00:30:22.849
+Guillermo Fajardo: El Jemini. Tres, 8 Flash es un modelo bastante barato.
+
+242
+00:30:22.980 --> 00:30:25.609
+Guillermo Fajardo: y ya es bastante bastante bueno.
+
+243
+00:30:26.870 --> 00:30:30.049
+Guillermo Fajardo: Entonces el problema que tenemos aquí
+
+244
+00:30:31.070 --> 00:30:34.879
+Guillermo Fajardo: es lo que os había comentado antes. Los modelos actuales pueden
+
+245
+00:30:35.220 --> 00:30:40.640
+Guillermo Fajardo: tanto por contexto como por coste asumir grandísimas cantidades de información.
+
+246
+00:30:40.900 --> 00:30:48.219
+Guillermo Fajardo: Sin embargo, en tema de precios, en tema de otra cosa bastante importante que no se suele mencionar casi nada. Es
+
+247
+00:30:49.110 --> 00:30:51.479
+Guillermo Fajardo: el tiempo de respuesta.
+
+248
+00:30:52.320 --> 00:30:55.340
+Guillermo Fajardo: Cuando yo le lanzo una pregunta a un modelo.
+
+249
+00:30:55.580 --> 00:31:02.360
+Guillermo Fajardo: cambia drásticamente. Si yo ya tengo 200 000 tokens metidos en el contexto. Así no tengo ninguno.
+
+250
+00:31:02.950 --> 00:31:18.609
+Guillermo Fajardo: Eso es muy diferente y a lo mejor. Ahora mismo no lo estáis pensando, pero, Por ejemplo, nosotros que desarrollamos agentes y este tipo de herramientas, hay muchas veces que la experiencia de usuario, dependiendo de lo que tarde en responderte. El modelo cambia muchísimo.
+
+251
+00:31:18.900 --> 00:31:23.610
+Guillermo Fajardo: Entonces, en este sentido, es importante pararse a tenerlo en cuenta.
+
+252
+00:31:25.210 --> 00:31:30.710
+Guillermo Fajardo: Ya os he dicho más o menos lo que es un agente, Pero ahora vamos a ir a lo que son las herramientas como tal.
+
+253
+00:31:31.080 --> 00:31:36.180
+Guillermo Fajardo: Las herramientas son simplemente funciones de Paisan.
+
+254
+00:31:36.620 --> 00:31:41.700
+Guillermo Fajardo: a las que le hemos puesto una capa por encima, que no es más que explicar
+
+255
+00:31:41.810 --> 00:31:45.090
+Guillermo Fajardo: que hace la herramienta qué devuelve
+
+256
+00:31:45.290 --> 00:31:49.859
+Guillermo Fajardo: y una explicación también de cómo son los parámetros. Es decir, le estamos dando a la
+
+257
+00:31:49.970 --> 00:31:52.589
+Guillermo Fajardo: le estamos dando a la red del lenguaje
+
+258
+00:31:53.020 --> 00:32:10.130
+Guillermo Fajardo: el conocimiento, el contexto para poder llamar ella misma a esa función y, lógicamente, como lo que nos devuelve la función, es algo que queremos que la red del lenguaje Lea, pues normalmente lo vamos a tener que devolver el return de la función. Va a tener que ser
+
+259
+00:32:10.260 --> 00:32:17.019
+Guillermo Fajardo: texto, texto o algo asimilable como texto. A lo mejor le podemos dar por un Json no o algo por el estilo.
+
+260
+00:32:19.870 --> 00:32:23.200
+Guillermo Fajardo: Aquí, por ejemplo, Os he puesto ya una función hecha.
+
+261
+00:32:24.830 --> 00:32:27.420
+Guillermo Fajardo: esto es, fijar la tontería, que es, ¿
+
+262
+00:32:29.500 --> 00:32:32.049
+Guillermo Fajardo: Esto es una función normal de Python
+
+263
+00:32:32.830 --> 00:32:38.600
+Guillermo Fajardo: en la que conseguimos información de unas tablas de datos que tenemos dentro
+
+264
+00:32:39.550 --> 00:32:44.989
+Guillermo Fajardo: Vale, Simplemente, lo único que necesitamos para llamar a esa función es el ticket
+
+265
+00:32:46.110 --> 00:32:50.549
+Guillermo Fajardo: y el año de cuyos datos estamos buscando. Y bueno, y el concepto.
+
+266
+00:32:51.730 --> 00:32:57.450
+Guillermo Fajardo: claro, ¿cuál es el problema? ¿cuál ¿Qué problema se os ocurriría aquí, que puede tener una.
+
+267
+00:32:57.450 --> 00:32:58.200
+Javier Hernandez: Sí.
+
+268
+00:32:59.730 --> 00:33:02.090
+Guillermo Fajardo: Una l l M. Al usar esta función.
+
+269
+00:33:07.530 --> 00:33:10.119
+Guillermo Fajardo: imaginaos que la red del lenguaje
+
+270
+00:33:10.480 --> 00:33:15.279
+Guillermo Fajardo: conoce la función, sabe cómo no va a ver el código de la función en ningún momento. Pero
+
+271
+00:33:15.600 --> 00:33:20.760
+Guillermo Fajardo: tiene esto aquí. ¿qué problema podría tener una red de lenguaje a la hora de querer utilizar esta función.
+
+272
+00:33:23.490 --> 00:33:28.899
+Cristian: A mí se me ocurre que le pase los valores correctos. Es decir, tiene que interpretar del texto los valores que van allí no.
+
+273
+00:33:28.900 --> 00:33:29.790
+Guillermo Fajardo: Exacto.
+
+274
+00:33:29.970 --> 00:33:35.440
+Guillermo Fajardo: Exacto. Es decir, vale, va a haber cosas como el ticket, como envidia.
+
+275
+00:33:37.140 --> 00:33:50.799
+Guillermo Fajardo: que si es un ticket raro, igual no lo hace. No lo hace bien el Fiscal Gear, pues, mira, no tiene ningún problema. Esto ya sabe que tiene que ser un número entero y y es cae por su propio peso. Ahora bien, el concepto
+
+276
+00:33:51.860 --> 00:33:55.390
+Guillermo Fajardo: concepto en taxonomía de los Estados Unidos
+
+277
+00:33:56.180 --> 00:34:04.359
+Guillermo Fajardo: revenues netting con lost assets Vale, Estos son bastantes sencillos, pero ya cuando te pones un poquito más tiquismiquis como este.
+
+278
+00:34:04.550 --> 00:34:11.179
+Guillermo Fajardo: la cosa puede cambiar. O, Por ejemplo, hay empresas que y
+
+279
+00:34:11.630 --> 00:34:20.569
+Guillermo Fajardo: puede haber diferentes nombres para el mismo concepto, porque pueden ir en diferentes sitios. Entonces ahí ya podemos tener problemas, pero fijaos que esto no es más que una función
+
+280
+00:34:22.050 --> 00:34:28.060
+Guillermo Fajardo: que va por una tabla porque E. X, L, B, R, Es un tipo de tablas de datos financieros.
+
+281
+00:34:28.679 --> 00:34:29.580
+Guillermo Fajardo: sí.
+
+282
+00:34:30.260 --> 00:34:38.280
+Guillermo Fajardo: Un análisis sencillísimo te decides si no hay datos disponibles. Si no hay datos, devuelve un texto
+
+283
+00:34:38.550 --> 00:34:41.960
+Guillermo Fajardo: que esto es lo que va a leer. La La red de lenguaje
+
+284
+00:34:44.350 --> 00:34:50.269
+Guillermo Fajardo: te dice varias casuísticas en las que puede no haber el texto o si no coge y te da el dato.
+
+285
+00:34:50.800 --> 00:34:53.400
+Guillermo Fajardo: Vale súper sencillo. El raturn.
+
+286
+00:34:53.800 --> 00:35:02.409
+Guillermo Fajardo: Lo único que hemos hecho para convertir esto de una función a una Tul ha sido poner aquí. Esto
+
+287
+00:35:04.670 --> 00:35:06.689
+Guillermo Fajardo: no es sólo poner aquí esto.
+
+288
+00:35:07.470 --> 00:35:08.420
+Guillermo Fajardo: ¿por qué?
+
+289
+00:35:09.610 --> 00:35:11.669
+Guillermo Fajardo: Porque al poner aquí esto.
+
+290
+00:35:11.970 --> 00:35:18.999
+Guillermo Fajardo: el el programa por detrás, por ejemplo, lo que estamos utilizando aquí, Land Change. Estamos importando este modificador que se llama Tool.
+
+291
+00:35:19.860 --> 00:35:25.220
+Guillermo Fajardo: Lo que estamos diciendo al poner esto es, oye esta función. Para empezar.
+
+292
+00:35:25.320 --> 00:35:29.360
+Guillermo Fajardo: me voy a guardar todo esto como definición y se lo voy a pasar a la L. L. M:
+
+293
+00:35:31.540 --> 00:35:32.650
+Guillermo Fajardo: Además.
+
+294
+00:35:32.800 --> 00:35:42.610
+Guillermo Fajardo: cuan le voy a poner explícitamente que el ticket tiene que ser una string que el fiscal. Dyal tiene que ser un íntegrar y que el concepto tiene que ser también otra string y que me va a devolver una string.
+
+295
+00:35:43.120 --> 00:35:49.420
+Guillermo Fajardo: Pero con esas pocas cosas ya tenemos definida una función. Entonces. Desde aquí,
+
+296
+00:35:49.720 --> 00:35:52.120
+Guillermo Fajardo: toda la complicación que te quieran marcar tú
+
+297
+00:35:52.380 --> 00:35:59.350
+Guillermo Fajardo: a la hora de de crear funciones es, pues, simplemente lo que tú quieras
+
+298
+00:36:03.670 --> 00:36:05.160
+Guillermo Fajardo: sí decías algo. Javier.
+
+299
+00:36:07.320 --> 00:36:08.060
+Javier Hernandez: No.
+
+300
+00:36:08.380 --> 00:36:13.680
+Guillermo Fajardo: Vale, Simplemente aquí hemos hecho 2 ejemplos de llamada. Oye.
+
+301
+00:36:14.310 --> 00:36:19.259
+Guillermo Fajardo: Vamos a llamarla con el ticket Nvidia con el año fiscal. Dos 1 024. El concepto revenues
+
+302
+00:36:27.330 --> 00:36:31.179
+Guillermo Fajardo: ¿Qué pasa si yo hubiera querido hacer esta función bastante más sencilla?
+
+303
+00:36:31.410 --> 00:36:36.569
+Guillermo Fajardo: Podría haber hecho una: el que la función se quedara básicamente aquí
+
+304
+00:36:38.720 --> 00:36:41.649
+Guillermo Fajardo: y luego intentara sacar de aquí.
+
+305
+00:36:42.720 --> 00:36:45.620
+Guillermo Fajardo: Se quedará aquí y cogiera esto
+
+306
+00:36:48.570 --> 00:36:58.089
+Guillermo Fajardo: y te diera simplemente la solución o petara. Claro, si peta, pues te va a petar el programa completamente. No tiene No tiene ningún sentido, pero con esto, ya es que vayáis jugando un poco
+
+307
+00:37:01.210 --> 00:37:09.020
+Guillermo Fajardo: aquí. Ah, aquí los que estáis siguiendo la clase encollab tan vais a tener que añadir aquí esto
+
+308
+00:37:09.250 --> 00:37:12.529
+Guillermo Fajardo: porque si no peta por el tema del Google colab
+
+309
+00:37:14.400 --> 00:37:18.920
+Guillermo Fajardo: Sin embargo, ahora podemos hacer otra función que sea un pelín más complicada
+
+310
+00:37:20.190 --> 00:37:28.099
+Guillermo Fajardo: en esta función. Lo que vamos a hacer es que esta función ya es el Racc que estábamos utilizando Antes oye
+
+311
+00:37:28.350 --> 00:37:34.329
+Guillermo Fajardo: Quiero que me busques los fragmentos relevantes que van en el corpus del texto que queremos utilizar. Por ejemplo.
+
+312
+00:37:35.060 --> 00:37:39.969
+Guillermo Fajardo: ¿qué es lo que queremos buscar? Esta sería la pregunta que está haciendo el usuario o el concepto
+
+313
+00:37:40.940 --> 00:37:44.580
+Guillermo Fajardo: filtra por compañía filtra por el año.
+
+314
+00:37:44.700 --> 00:37:46.739
+Guillermo Fajardo: Y filtra por la sección.
+
+315
+00:37:47.240 --> 00:37:56.760
+Guillermo Fajardo: claro qué pasa aquí. Ya depende un poco de vosotros que la gente tenga un pelín de contexto para llamar a esta función de manera de manera adecuada.
+
+316
+00:37:57.280 --> 00:37:58.839
+Guillermo Fajardo: Aquí os he puesto
+
+317
+00:37:59.960 --> 00:38:09.129
+Guillermo Fajardo: en el archivo este del Myax u s. Uno. Os he puesto ya todas las funciones como para que podáis explorarlas y podáis utilizarlas e implementarlas con facilidad.
+
+318
+00:38:11.510 --> 00:38:19.210
+Guillermo Fajardo: Y podáis utilizarla. Entonces aquí simplemente hemos hecho un una.
+
+319
+00:38:19.690 --> 00:38:22.279
+Guillermo Fajardo: Aquí hemos hecho una llamada de ejemplo
+
+320
+00:38:22.940 --> 00:38:25.350
+Guillermo Fajardo: en el que le hemos puesto oye
+
+321
+00:38:25.680 --> 00:38:29.999
+Guillermo Fajardo: cuáles son los riesgos del uso de la inteligencia artificial por terceras partes.
+
+322
+00:38:30.240 --> 00:38:41.980
+Guillermo Fajardo: Lo me lo vas a buscar en Microsoft en el año 2 025, y lo vas a poner en el año en elite en 1 a y en el ejercicio, o sea, en el en el ejemplo número 3:
+
+323
+00:38:44.110 --> 00:38:53.649
+Guillermo Fajardo: Claro, qué pasa necesitáis, ya que la gente sepa un poquito de esto para poder hacerlo en esta primera clase, o voy a darle a la gente hecho completamente.
+
+324
+00:38:53.840 --> 00:38:56.520
+Guillermo Fajardo: Y en la siguiente clase es donde vamos a entrar
+
+325
+00:38:57.130 --> 00:39:03.709
+Guillermo Fajardo: a degüello un poquito más a ver cómo funciona esto por dentro, para que lo podáis configurar todos completamente. Pero la idea va a ser
+
+326
+00:39:03.890 --> 00:39:10.720
+Guillermo Fajardo: poder hacerlo aquí y que podáis y que podáis luego ir jugando con ello
+
+327
+00:39:11.600 --> 00:39:22.340
+Guillermo Fajardo: Hasta aquí alguna pregunta o alguna duda, porque, claro, como todavía no habéis visto este tipo de agentes, ni el Rac, puede que haya muchas cosas que os estén pasando por encima.
+
+328
+00:39:31.970 --> 00:39:39.859
+Guillermo Fajardo: No pues sigo simplemente. Aquí podéis ver que ha encontrado un score de similitud.
+
+329
+00:39:39.970 --> 00:39:44.529
+Guillermo Fajardo: Les coree y similitud habéis, visto alguna vez habéis utilizado en Beddings, por ejemplo.
+
+330
+00:39:50.480 --> 00:39:52.530
+Guillermo Fajardo: no a ver si lo encuentro
+
+331
+00:39:59.890 --> 00:40:07.070
+Guillermo Fajardo: a a a ver dónde está en este sí vale
+
+332
+00:40:08.370 --> 00:40:16.969
+Guillermo Fajardo: en el origen de las redes del lenguaje. El primer pin. Lo primero con lo que empezó, esto fue con la vectorización de las palabras y de los conceptos.
+
+333
+00:40:17.650 --> 00:40:29.879
+Guillermo Fajardo: la ve, esta virtualización, todas las redes del lenguaje por debajo, cuando vosotros le ponéis cualquier palabra, la están convirtiendo a un espacio dimensional dimensional que tiene, pues
+
+334
+00:40:30.300 --> 00:40:32.670
+Guillermo Fajardo: muchas veces miles de dimensiones diferentes
+
+335
+00:40:33.190 --> 00:40:41.930
+Guillermo Fajardo: y en esa en ese espacio dimensional. Cada palabra tiene una combinación diferente. Es un vector. Por ejemplo, vamos a buscar por aquí
+
+336
+00:40:42.920 --> 00:40:43.850
+Guillermo Fajardo: que en
+
+337
+00:40:49.570 --> 00:40:56.990
+Guillermo Fajardo: y el elemento inicial que dio pie a que funcionase. Todo lo que tiene que ver con
+
+338
+00:40:57.470 --> 00:40:59.879
+Guillermo Fajardo: con la red del lenguaje es
+
+339
+00:41:00.180 --> 00:41:11.330
+Guillermo Fajardo: poder hacer que estas estas estas representaciones vectoriales de los de las palabras y de los sentidos tuvieran una dimensión semántica. Es decir.
+
+340
+00:41:12.610 --> 00:41:21.540
+Guillermo Fajardo: cada palabra aquí va a ser un vector de ponte tú en Chan. G, P, T, Ya creo que son 2 000 y pico. Dos 1 000 y pico dimensiones.
+
+341
+00:41:22.210 --> 00:41:32.789
+Guillermo Fajardo: Está físicamente más cercana a las palabras que son parecidas, es decir, en el la posicionamiento vectorial. Por ejemplo, si nosotros ponemos
+
+342
+00:41:33.480 --> 00:41:44.769
+Guillermo Fajardo: vamos hacia esto aquí, aquí, si nosotros ponemos aquí King y buscamos. Luego queen, vemos que está
+
+343
+00:41:45.530 --> 00:41:49.320
+Guillermo Fajardo: cerca completamente, o si ponemos Prince.
+
+344
+00:41:49.670 --> 00:41:58.620
+Guillermo Fajardo: vemos que también está cerca. Sin embargo, si ponemos, pues, por ejemplo, Karl o otra palabra, mejor
+
+345
+00:41:58.880 --> 00:42:01.269
+Guillermo Fajardo: vamos a poner Track.
+
+346
+00:42:01.880 --> 00:42:04.440
+Guillermo Fajardo: Vemos que está en otro lado, es decir.
+
+347
+00:42:05.130 --> 00:42:10.390
+Guillermo Fajardo: esto es superimportante, porque nos abre la puerta a hacer operaciones matemáticas
+
+348
+00:42:10.510 --> 00:42:20.979
+Guillermo Fajardo: con toda la dimensión semántica de las palabras y de las frases y de lo mismo que igual que lo estamos haciendo para palabras individuales. Lo podemos hacer para párrafos y para todas estas cosas.
+
+349
+00:42:21.420 --> 00:42:28.100
+Guillermo Fajardo: Entonces la magia del rap que estábamos hablando antes es
+
+350
+00:42:29.410 --> 00:42:36.799
+Guillermo Fajardo: que ahora no tenemos por qué leernos todo el documento, sino que podemos fragmentarlo calcularlos en Beddings de cada trozo.
+
+351
+00:42:37.420 --> 00:42:49.450
+Guillermo Fajardo: Y para cada pregunta en concreto, recoger solo los embering solo los trozos que son más relevantes para para el caso que tenemos a mano de tal manera que, por ejemplo, cuando aquí vemos
+
+352
+00:42:49.700 --> 00:42:52.609
+Guillermo Fajardo: que tenemos una similitud de 0 84,
+
+353
+00:42:52.880 --> 00:42:58.759
+Guillermo Fajardo: pues nos está diciendo, oye el primer caso que nos hemos encontrado ya tiene una similitud de 0 84 sobre 1.
+
+354
+00:42:59.570 --> 00:43:06.499
+Guillermo Fajardo: Pues aquí, por ejemplo, hemos preguntado riesgo del del mal uso de la inteligencia artificial por terceras partes y
+
+355
+00:43:07.880 --> 00:43:12.840
+Guillermo Fajardo: vamos a poner a lo mejor este imprimido. Esto un poquito feo. Pero bueno,
+
+356
+00:43:13.280 --> 00:43:16.250
+Guillermo Fajardo: Y sus entrenadores lo que está está vale.
+
+357
+00:43:25.850 --> 00:43:29.239
+Guillermo Fajardo: como podéis ver el texto que has traído. Es bastante relevante.
+
+358
+00:43:31.240 --> 00:43:34.410
+Guillermo Fajardo: pero quiero ver en concreto si ha encontrado alguno de los riesgos.
+
+359
+00:43:46.310 --> 00:43:51.439
+Guillermo Fajardo: Vale, bueno, aquí simplemente he estado hablando de
+
+360
+00:43:51.850 --> 00:44:00.579
+Guillermo Fajardo: del problema que te puedes encontrar. No. El típico disclaimer de inteligencia artificial de oye, te puede estar contando. Te puede estar contando un bulo tal. Es un párrafo completamente relevante.
+
+361
+00:44:00.910 --> 00:44:03.210
+Guillermo Fajardo: Entonces, esta función que hemos hecho aquí.
+
+362
+00:44:04.880 --> 00:44:10.099
+Guillermo Fajardo: Le estamos dando una cuery que es literalmente la pregunta que podría hacer un usuario
+
+363
+00:44:10.840 --> 00:44:14.220
+Guillermo Fajardo: sobre qué empresa la está haciendo para qué año
+
+364
+00:44:14.700 --> 00:44:21.510
+Guillermo Fajardo: el ítem. Esto es una manera que ha tenido ya, la porque está seleccionando el Ítem 1 a porque si nos vamos aquí arriba.
+
+365
+00:44:28.330 --> 00:44:35.780
+Guillermo Fajardo: aquí están los factores de riesgo. Estamos preguntando por riesgo. Lo más normal es que la I A se vaya la I A, se vaya a buscarlo en ese punto.
+
+366
+00:44:41.550 --> 00:44:48.949
+Guillermo Fajardo: Y este simplemente es el número de fragmentos que le estamos diciendo que queremos que recupere. Simplemente, aquí poniendo esto.
+
+367
+00:44:49.140 --> 00:44:58.600
+Guillermo Fajardo: le vamos a decir, ¿Oye, Coge los 3 fragmentos que te parezcan más importantes. Simplemente imaginaos que esto ha troceado en en miles de trozos. Tenemos aquí el número de
+
+368
+00:44:58.820 --> 00:45:01.020
+Guillermo Fajardo: de trozos que eran a ver.
+
+369
+00:45:07.250 --> 00:45:09.180
+Guillermo Fajardo: no lo llegué a imprimir a ver.
+
+370
+00:45:09.560 --> 00:45:10.909
+Guillermo Fajardo: No lo he llegado a imprimir
+
+371
+00:45:15.520 --> 00:45:32.990
+Guillermo Fajardo: simplemente el el imaginaos. Todas las cuentas anuales de todas estas empresas. Durante todos estos años las hemos ido. Las hemos ido fragmentando y de en vez de coger y meterle esos 650 000 tokens de golpe, pues hemos ido filtrando lo máximo que hemos podido
+
+372
+00:45:35.240 --> 00:45:36.610
+Guillermo Fajardo: aquí. Tenéis
+
+373
+00:45:36.750 --> 00:45:46.559
+Guillermo Fajardo: otra herramienta para la gente. Esta herramienta es bastante más a saco. Esta herramienta es mucho más sencilla. Oye, no consigo encontrar
+
+374
+00:45:47.820 --> 00:45:50.100
+Guillermo Fajardo: la información que estoy buscando.
+
+375
+00:45:51.310 --> 00:45:54.990
+Guillermo Fajardo: Dame la sección entera. Me la voy a leer y voy a sacar información al respecto.
+
+376
+00:45:55.520 --> 00:45:59.600
+Guillermo Fajardo: ¿qué es lo que está pasando aquí? Que nuestro agente va a ser capaz.
+
+377
+00:46:00.240 --> 00:46:02.680
+Guillermo Fajardo: nuestra gente, No le vamos a hacer una pregunta.
+
+378
+00:46:03.100 --> 00:46:22.170
+Guillermo Fajardo: ¿va a intentar buscar la respuesta una vez va a fallar y va a decir, ah, no lo sé, sino que nuestro agente, Y esta es la diferencia con el Rac normal. Va a tener la capacidad de ir reflexionando sobre su respuesta e investigando y yendo a diferentes secciones a diferentes puntos hasta que encuentre la información.
+
+379
+00:46:22.280 --> 00:46:27.149
+Guillermo Fajardo: Claro, qué pasa puede ser. Se puede dar el caso que no encuentre la información que estaba buscando.
+
+380
+00:46:28.010 --> 00:46:39.599
+Guillermo Fajardo: No está a lo mejor, no está recuperando la herramienta, los trozos adecuados o o cualquier otra cosa. Y con esto le estamos dando una capacidad de Oye, dame una sección entera. Voy a leerla
+
+381
+00:46:40.370 --> 00:46:42.400
+Guillermo Fajardo: y voy a ejecutarla.
+
+382
+00:46:47.060 --> 00:46:52.539
+Guillermo Fajardo: L estáis entendiendo un poquito el concepto de las tools y cómo y por qué son importantes para la gente.
+
+383
+00:46:55.770 --> 00:46:57.909
+Cristian: ¿puede un atún usar otra azul.
+
+384
+00:46:59.030 --> 00:47:04.570
+Guillermo Fajardo: Esa es buena, sí y no
+
+385
+00:47:06.720 --> 00:47:12.890
+Guillermo Fajardo: técnicamen. O sea, desde luego, el desde el momento que una tul es una función
+
+386
+00:47:13.450 --> 00:47:15.160
+Guillermo Fajardo: aquí, te puedes volver loco.
+
+387
+00:47:15.730 --> 00:47:25.990
+Guillermo Fajardo: Te puedes volver loco de tal de toda. No solamente una tul puede Uti utilizar otra Tul, sino que otra tul podría ser otro agente entero.
+
+388
+00:47:26.460 --> 00:47:32.939
+Guillermo Fajardo: Por ejemplo, un caso que estamos haciendo nosotros Ahora, nosotros estamos creando un agente, un
+
+389
+00:47:33.940 --> 00:47:37.069
+Guillermo Fajardo: conocéis el terminal de Bloomberg os suena
+
+390
+00:47:44.410 --> 00:47:57.840
+Guillermo Fajardo: el terminal de Bloomberg. Lo habréis visto todos en algún momento. Es lo típico que sale en las películas que están utilizando los brokers y todas estas cosas, Pues, bueno, la empresa para la que yo trabajo Six tiene otro terminal que se llama el el terminal de Six
+
+391
+00:47:58.060 --> 00:48:06.989
+Guillermo Fajardo: y Bloomberg es mucho más caro y tiene un volumen de datos también muy grande.
+
+392
+00:48:07.110 --> 00:48:17.440
+Guillermo Fajardo: El terminal de Six es. Estamos en en otro tier completamente, pero también tenemos una cantidad loquísima de información y, sobre todo, lo que yo diría que es más importante.
+
+393
+00:48:17.510 --> 00:48:28.739
+Guillermo Fajardo: que no es un diagrama de Ben donde el Terminal de Bloomberg sea más grande que nosotros en todos los aspectos, sino que hay mucha información, sobre todo información
+
+394
+00:48:29.260 --> 00:48:33.500
+Guillermo Fajardo: de bonos de deuda, información
+
+395
+00:48:33.660 --> 00:48:41.390
+Guillermo Fajardo: legal y de otros tipos que nosotros tenemos y no tienen otros competidores de fondos de inversión, ese tipo de cosas. Entonces
+
+396
+00:48:41.800 --> 00:48:56.699
+Guillermo Fajardo: nosotros hicimos un agente en su tien en su día, que tú le podías. Era un chat bot que tú le podías preguntar cualquier cosa, y era capaz de navegar por todas nuestras bases de datos, todas nuestras Apis, todo este tipo de cosas. Y te daba la información.
+
+397
+00:48:56.920 --> 00:49:01.660
+Guillermo Fajardo: Pero aunque era útil, el problema grande que tenía
+
+398
+00:49:02.240 --> 00:49:09.900
+Guillermo Fajardo: era que el usuario tenía más o menos que creerse lo que le estaba diciendo el chatbot, porque lo estaba viendo ahí directamente en el chat.
+
+399
+00:49:10.050 --> 00:49:17.760
+Guillermo Fajardo: Sin embargo, ahora lo que hemos hecho es que estamos creando una gente que está directamente en el programa, como si fuera una barrita de chat.
+
+400
+00:49:18.010 --> 00:49:20.650
+Guillermo Fajardo: Tú le puedes preguntar cosas directamente.
+
+401
+00:49:21.470 --> 00:49:24.100
+Guillermo Fajardo: y el agente es capaz de
+
+402
+00:49:24.220 --> 00:49:31.429
+Guillermo Fajardo: no solo de coger la información, sino de moverte en la pantalla hacia donde está la información, manejar el programa completamente.
+
+403
+00:49:32.390 --> 00:49:40.609
+Guillermo Fajardo: Claro, ¿cuál es el problema ahí. El problema ahí es que si eso se lo diésemos a un solo agente petaría completamente.
+
+404
+00:49:40.780 --> 00:49:44.910
+Guillermo Fajardo: Entonces hay muchas veces que cuando lo que te pide el usuario es algo tipo
+
+405
+00:49:45.450 --> 00:50:01.500
+Guillermo Fajardo: oye. Vale, pues vale, me gusta esta empresa que has estado mirando y tal añádamela a la watch leas que tengo en no sé dónde, en vez de hacerlo, eso es la gente. El agente mediante un atúl es capaz de llamar a otros agentes que son especialistas en ese campo, y hacerlo
+
+406
+00:50:01.620 --> 00:50:07.630
+Guillermo Fajardo: entonces sí, completamente. Puedes hacer con las funciones. Te puedes volver loco haciendo las cosas.
+
+407
+00:50:08.670 --> 00:50:10.680
+Guillermo Fajardo: y siempre y cuando tengas cuidado
+
+408
+00:50:11.230 --> 00:50:15.270
+Guillermo Fajardo: de que lo que te vaya a devolver el asunto funcione.
+
+409
+00:50:15.520 --> 00:50:25.359
+Guillermo Fajardo: Pues, por ejemplo, con un Atúl podrías llamar a otro Atúl, pero tienes que tener en cuenta
+
+410
+00:50:28.440 --> 00:50:29.980
+Guillermo Fajardo: que si ese fuese
+
+411
+00:50:30.250 --> 00:50:47.290
+Guillermo Fajardo: lo normal, no sería que eso fuese como el único objetivo del atún, porque si no, ¿para qué? ¿para qué está utilizando esta, si no podrías utilizar otra, pero, por ejemplo, un ejemplo muy típico para utilizar un atún dentro de otra. Tul podría ser. Oye, esta Tul intenta hacer esto.
+
+412
+00:50:47.670 --> 00:50:52.760
+Guillermo Fajardo: Y si ve que no es capaz de hacerlo, al menos te devuelve lo que te daría hasta otra tul.
+
+413
+00:50:53.950 --> 00:50:57.920
+Guillermo Fajardo: Entonces, en en ese tipo de casos se puede se puede hacer.
+
+414
+00:51:00.310 --> 00:51:05.000
+Guillermo Fajardo: Podemos ver aquí, por ejemplo, fijaos.
+
+415
+00:51:12.810 --> 00:51:15.780
+Guillermo Fajardo: podemos tener toda esta información.
+
+416
+00:51:16.130 --> 00:51:21.460
+Guillermo Fajardo: sin embargo, fijaos que, por ejemplo, en la sección de Apple era un poquito corta. La verdad. No sé por qué,
+
+417
+00:51:23.390 --> 00:51:29.779
+Guillermo Fajardo: pero, por ejemplo, en meta en la sección, 1 a que es de las más importantes. Tenemos 195 0 caracteres.
+
+418
+00:51:31.320 --> 00:51:36.060
+Guillermo Fajardo: Claro, ¿qué pasa? Bueno, el carácter le dan un poquito mal. Tenemos 34 000 tokens.
+
+419
+00:51:36.360 --> 00:51:37.360
+Guillermo Fajardo: ¿qué pasa
+
+420
+00:51:37.480 --> 00:51:46.569
+Guillermo Fajardo: cada vez que yo haga una pregunta o voy a querer recuperar, voy a querer recuperar 34 000 tokens para dar la respuesta no tiene. No tiene demasiado sentido.
+
+421
+00:51:46.760 --> 00:51:50.450
+Guillermo Fajardo: Es solo en el caso de que no hayamos conseguido dar esa salida.
+
+422
+00:51:50.710 --> 00:51:55.200
+Guillermo Fajardo: que que lo más normal es que busquemos coger un contexto más amplio.
+
+423
+00:51:56.820 --> 00:52:08.870
+Guillermo Fajardo: Sé que esto es un poquito abstracto y tal, pero y que, además lo estáis escuchando. Pero claro, como no estáis tocando el código tampoco tiene mucho sentido y tal. Así que
+
+424
+00:52:09.610 --> 00:52:11.820
+Guillermo Fajardo: quiero que ahora intentéis hacer esto.
+
+425
+00:52:14.130 --> 00:52:16.970
+Guillermo Fajardo: al menos no me hace falta que lo hagáis tampoco.
+
+426
+00:52:18.590 --> 00:52:26.839
+Guillermo Fajardo: No me hace falta que lo hagáis en código como súper currado, con que lo hagáis, como he hecho yo antes, la explicación de los modelos alternativos en pseudocódigo, me vale.
+
+427
+00:52:27.460 --> 00:52:32.300
+Guillermo Fajardo: entonces os voy a dejar unos minutillos
+
+428
+00:52:33.260 --> 00:52:38.529
+Guillermo Fajardo: para que intentéis hacerlo. Y así ya le metéis un poquito de mano a las funciones y a todas estas cosas.
+
+429
+00:52:39.150 --> 00:52:42.699
+Guillermo Fajardo: Y así puedo ver si si os estáis quedando un poquito con el tema.
+
+430
+00:52:43.420 --> 00:52:47.740
+Guillermo Fajardo: os voy a dejar los 10 minutillos. Y luego
+
+431
+00:52:48.490 --> 00:53:01.520
+Guillermo Fajardo: luego vuelvo y lo vamos comentando como íbamos viendo cómo cómo lo haríais, qué días teníais lo dicho. No me hace falta que me hagáis el código exacto, porque si haces el código exacto, mejor, obviamente. Y a partir de ahí lo comentamos, ¿vale?
+
+432
+00:53:02.880 --> 00:53:13.680
+Guillermo Fajardo: Así que intentadlo, porque es que este tipo de cosas literalmente. Este tipo de funciones son las que vais a tener que modificar, recrear o ampliar en la práctica.
+
+433
+00:53:16.870 --> 00:53:21.430
+Guillermo Fajardo: Así que nada os dejo aquí, Diez minutillos. Voy a poner un poco de agua y y ahora os veo.
+
+434
+00:53:22.900 --> 00:53:27.049
+Diego Muñoz Alonso: Guille, de dónde estaba el que no no consigo ejecutarlo. Me da error.
+
+435
+00:53:27.500 --> 00:53:31.470
+Guillermo Fajardo: Vale, ¿me puedes decir dónde te está dando el error?
+
+436
+00:53:31.990 --> 00:53:34.820
+Diego Muñoz Alonso: Sí a ver.
+
+437
+00:53:34.820 --> 00:53:37.579
+Guillermo Fajardo: Está dando error a lo mejor en la primera celda en esta perdona.
+
+438
+00:53:38.230 --> 00:53:44.989
+Diego Muñoz Alonso: Pues sí, debajo de donde se configura el lápiz de Open Router justo debajo.
+
+439
+00:53:49.990 --> 00:53:53.620
+Guillermo Fajardo: A ver aquí, te sale raro o.
+
+440
+00:53:54.910 --> 00:54:01.819
+Diego Muñoz Alonso: A ver un segundo tío ant encima de anatomía de un 10 k 2 celdas por encima o 3.
+
+441
+00:54:03.060 --> 00:54:03.510
+Guillermo Fajardo: En esta.
+
+442
+00:54:03.510 --> 00:54:05.030
+Diego Muñoz Alonso: Esta de aquí. Sí.
+
+443
+00:54:05.970 --> 00:54:14.780
+Guillermo Fajardo: Vale, Vale, añade aquí esto y e inténtalo. Y me lo dices.
+
+444
+00:54:16.640 --> 00:54:17.250
+Diego Muñoz Alonso: Vale.
+
+445
+00:54:24.900 --> 00:54:25.590
+Guillermo Fajardo: Te tira.
+
+446
+00:54:26.480 --> 00:54:28.579
+Diego Muñoz Alonso: Un segundo, me estoy metiendo,
+
+447
+00:54:28.580 --> 00:54:40.519
+Cristian: Una pregunta. El Dataset es que me he descargado los los datasetsky en la aula virtual, pero ninguno me al descomprimirlo. Tiene el corpus Miax, 20. 26 No sé si es que este otros, si no sé dónde descargarlo, Básicamente.
+
+448
+00:54:40.520 --> 00:54:41.530
+Guillermo Fajardo: Este.
+
+449
+00:54:41.530 --> 00:54:41.880
+Cristian: Sí.
+
+450
+00:54:41.880 --> 00:54:42.410
+Guillermo Fajardo: Sí.
+
+451
+00:54:44.010 --> 00:54:45.340
+Cristian: Es el de la práctica.
+
+452
+00:54:46.010 --> 00:54:46.690
+Guillermo Fajardo: Sí.
+
+453
+00:54:50.090 --> 00:54:51.830
+Cristian: Yo creo que sea, pero.
+
+454
+00:54:53.390 --> 00:55:06.639
+Diego Muñoz Alonso: Nada. Lo he cambiado. Guilleo se ha incorporado, o sea, yo lo que tenía. Al menos me he descargado el notebook. Lo he subido a colap. Y lo último que había en Notebook, que ha subido es lo que tienes seleccionado, no justo lo que está encima en Content Drive.
+
+455
+00:55:06.640 --> 00:55:07.789
+Guillermo Fajardo: Tenías Hasta aquí No.
+
+456
+00:55:07.790 --> 00:55:09.310
+Diego Muñoz Alonso: Sí, justo justo y.
+
+457
+00:55:09.310 --> 00:55:10.830
+Guillermo Fajardo: Añadiendo esto, te ha tirado.
+
+458
+00:55:11.000 --> 00:55:18.069
+Diego Muñoz Alonso: No he vuelto a ejecutar con eso incorporado y y aún así me me la salida de la celda. Me dice que no, que no ha podido preparar el clus.
+
+459
+00:55:18.980 --> 00:55:22.000
+Guillermo Fajardo: Y has metido aquí esto en la carpeta de Atasset.
+
+460
+00:55:22.330 --> 00:55:23.590
+Diego Muñoz Alonso: A ver.
+
+461
+00:55:24.130 --> 00:55:33.520
+Diego Muñoz Alonso: Sí. O sea, he metido, Bueno, todo lo abajo, sí lo de demotracia y demás. Y dentro de Atasset. No, Pero es que claro eso dónde está, O sea, lo que está dentro de Atasset.
+
+462
+00:55:33.730 --> 00:55:34.509
+Guillermo Fajardo: Lo que está dentro de.
+
+463
+00:55:34.510 --> 00:55:39.349
+Rodolfo Villena: No hay nada de eso.
+
+464
+00:55:39.350 --> 00:55:39.809
+Guillermo Fajardo: Pero hay que.
+
+465
+00:55:39.810 --> 00:55:40.170
+Rodolfo Villena: En la.
+
+466
+00:55:40.170 --> 00:55:41.699
+Guillermo Fajardo: Los archivos. Zip No.
+
+467
+00:55:44.260 --> 00:55:45.670
+Cristian: Vale, Sí, Sí, lo tengo.
+
+468
+00:55:45.670 --> 00:55:48.859
+Guillermo Fajardo: Hay un archivo. Así que es clase 1 y otro que es Datasset. No.
+
+469
+00:55:48.860 --> 00:55:52.140
+Diego Muñoz Alonso: Vale, Vale, Sí, subimos descomprimimos y subimos esa carpeta. No, sí.
+
+470
+00:55:52.140 --> 00:55:55.830
+Guillermo Fajardo: Claro. Es decir, lo que viene en clase. Uno tenéis que ponerlo aquí fuera.
+
+471
+00:55:56.470 --> 00:55:56.820
+Diego Muñoz Alonso: Sí.
+
+472
+00:55:56.820 --> 00:56:00.139
+Guillermo Fajardo: Y lo que viene en Data sed dentro del dataset.
+
+473
+00:56:00.610 --> 00:56:03.740
+Guillermo Fajardo: tenéis que o lo voy a poner en el chat también un momentito
+
+474
+00:56:12.430 --> 00:56:25.119
+Guillermo Fajardo: donde pone candidatos, tenéis que cambiarlo por esto. Y al principio del todo. Ah, bueno, y tienes que hacer otro cambio que os lo he dicho es que lo siento porque antes he tenido un problema porque yo suelo trabajar siempre en local
+
+475
+00:56:25.480 --> 00:56:27.660
+Guillermo Fajardo: y me ha jugado una mala pasada. El
+
+476
+00:56:30.110 --> 00:56:34.629
+Guillermo Fajardo: Eso tenéis que añadirlo aquí al principio, en la primera celda y
+
+477
+00:56:35.850 --> 00:56:38.969
+Guillermo Fajardo: en dentro del archivo M I a X. S. Uno
+
+478
+00:56:40.560 --> 00:56:43.900
+Guillermo Fajardo: que este es fallo mío. Repito aquí, no
+
+479
+00:56:44.200 --> 00:56:50.729
+Guillermo Fajardo: donde fijaos que lo misma corrección que os he puesto ahí, la de candidatos y tal
+
+480
+00:56:56.610 --> 00:57:01.360
+Guillermo Fajardo: estos. Puede que os falle claro porque el corpus
+
+481
+00:57:01.740 --> 00:57:02.969
+Guillermo Fajardo: bueno, pero la primera es el.
+
+482
+00:57:02.970 --> 00:57:03.410
+Rodolfo Villena: De la.
+
+483
+00:57:03.410 --> 00:57:03.920
+Guillermo Fajardo: La en.
+
+484
+00:57:03.920 --> 00:57:07.370
+Rodolfo Villena: Dicho que el dataser está en lo de clase. Uno lo he vuelto a.
+
+485
+00:57:07.370 --> 00:57:12.969
+Guillermo Fajardo: No, no, no debería haber subidos 2 archivos. Punto Zip.
+
+486
+00:57:14.570 --> 00:57:18.400
+Guillermo Fajardo: 1 que se llama clase 1 y otro que se llama Dataset.
+
+487
+00:57:18.590 --> 00:57:34.250
+Diego Muñoz Alonso: Es que está está separado, rodolfo, o sea, está dentro del propio taller, tienes Lataset junto con el enunciado de la práctica. Y luego tienes separado en otro apartado, lo que es el la clase, 1, o sea, está como separado en 2 apartados, en el módulo 5.
+
+488
+00:57:42.940 --> 00:57:44.550
+Rodolfo Villena: Vale. Ahora, ahora lo he visto.
+
+489
+00:57:45.500 --> 00:57:46.150
+Guillermo Fajardo: Vale.
+
+490
+00:57:46.980 --> 00:57:53.810
+Guillermo Fajardo: Esta. Puede que simplemente cuando carguéis esto aquí en el
+
+491
+00:57:53.960 --> 00:57:56.789
+Guillermo Fajardo: podéis hacer doble click sobre el s. Uno. Pay.
+
+492
+00:57:57.130 --> 00:58:02.720
+Guillermo Fajardo: Y aquí vais a ver en candidatos corpus que va a haber más más paz.
+
+493
+00:58:02.910 --> 00:58:05.939
+Guillermo Fajardo: pero tenéis que hacer que queden solamente estos, porque
+
+494
+00:58:06.170 --> 00:58:10.160
+Guillermo Fajardo: se pone bastante tonto el colapse y le intentas poner otra cosa.
+
+495
+00:58:14.790 --> 00:58:18.050
+Guillermo Fajardo: Entonces voy a ponerlo por escrito.
+
+496
+00:58:55.260 --> 00:58:57.390
+Diego Muñoz Alonso: Vale. Ya ya funciona hoy con.
+
+497
+00:58:57.390 --> 00:58:58.040
+Guillermo Fajardo: Vale.
+
+498
+00:58:58.040 --> 00:58:58.660
+Diego Muñoz Alonso: Pues vas.
+
+499
+00:59:12.500 --> 00:59:14.780
+Guillermo Fajardo: Hasta aquí. Y
+
+500
+00:59:26.440 --> 00:59:27.580
+Guillermo Fajardo: mhm
+
+501
+00:59:54.690 --> 00:59:57.670
+Guillermo Fajardo: asegurados que está bien, bien, puesto
+
+502
+00:59:58.470 --> 01:00:04.830
+Guillermo Fajardo: Lo siento porque es que normalmente no me da problemas en el colab, pero se me ha puesto tonto con los pabs.
+
+503
+01:00:11.180 --> 01:00:21.619
+Guillermo Fajardo: Si no tenéis la a P I para ejecutarlo ahora, da igual, porque en esta clase bueno, no da igual del todo, pero en esta clase lo más importante es que os hagáis un poco con el código.
+
+504
+01:00:22.600 --> 01:00:31.659
+Guillermo Fajardo: Si esto por lo que sea aquí, os os peta también, siempre que haya el Miax S Uno y el impor y el importarlo. Pete
+
+505
+01:00:31.910 --> 01:00:36.210
+Guillermo Fajardo: puede ser porque os falta esto o
+
+506
+01:00:36.820 --> 01:00:39.749
+Guillermo Fajardo: porque no se ha cambiado. Esto aquí
+
+507
+01:00:40.460 --> 01:00:46.680
+Guillermo Fajardo: nos ha cambiado la variable candidatos corpus, y eso le le cabrea al al Google colab
+
+508
+01:00:53.410 --> 01:00:57.690
+Guillermo Fajardo: a ver un pasado de que
+
+509
+01:00:58.520 --> 01:01:02.979
+Guillermo Fajardo: vale, pues os dejo unos 10 minutillos, y lo vemos
+
+510
+01:09:17.200 --> 01:09:20.030
+Guillermo Fajardo: buenas chicos otra vez que cómo vais?
+
+511
+01:09:40.740 --> 01:09:42.780
+Guillermo Fajardo: Alguien le ha metido mano a la Tul.
+
+512
+01:10:06.270 --> 01:10:12.989
+Guillermo Fajardo: Os. Recuerdo que la Car, que las clases prácticas. Si no le metéis mano a esto, luego la cosa va va a ser bastante diferente.
+
+513
+01:10:13.950 --> 01:10:17.220
+Guillermo Fajardo: fijaos que lo que os digo aquí es a
+
+514
+01:10:18.260 --> 01:10:22.280
+Guillermo Fajardo: que primero necesitamos anunciarle a la gente
+
+515
+01:10:22.730 --> 01:10:28.940
+Guillermo Fajardo: qué compañías y qué a qué tipo de información básica tienes acceso. Es decir.
+
+516
+01:10:29.090 --> 01:10:33.039
+Guillermo Fajardo: oye, Pues si en mi corpus yo tengo 6 empresas y tengo 2 años.
+
+517
+01:10:34.320 --> 01:10:37.970
+Guillermo Fajardo: no me preguntes por información del banco Santander en el 2 005,
+
+518
+01:10:39.110 --> 01:10:44.619
+Guillermo Fajardo: porque no tiene sentido que yo inicie un rag y me ponga a buscar cuáles son imaginaos, que yo cojo
+
+519
+01:10:46.580 --> 01:10:51.760
+Guillermo Fajardo: y pregunto: oye cuál era el beneficio del banco Santander en el 2 005
+
+520
+01:10:52.050 --> 01:11:01.449
+Guillermo Fajardo: y Coge utiliza una herramienta de Rag. Y entre todos los fragmentos que hay empieza a intentar buscar
+
+521
+01:11:01.550 --> 01:11:06.749
+Guillermo Fajardo: fragmentos que tengan que ver con el beneficio
+
+522
+01:11:07.590 --> 01:11:20.420
+Guillermo Fajardo: beneficio Banco Santander, 2 000. Cinco. Bueno, como hemos hecho bien, las Tools y las Tool tienen ya el filtro de me tienes que decir el ticket de la empresa, me tienes que decir el año y tal ahí ya iban a fallar.
+
+523
+01:11:22.200 --> 01:11:28.190
+Guillermo Fajardo: Pero iban a fallar desde el punto de vista de la inteligencia artificial. Lo iba a intentar.
+
+524
+01:11:28.360 --> 01:11:31.239
+Guillermo Fajardo: cuando lo lógico sería que ni llegara a intentarlo.
+
+525
+01:11:31.720 --> 01:11:35.149
+Guillermo Fajardo: que ni llegar a intentarlo. Y que te dijera, oye si es que yo no tengo esa.
+
+526
+01:11:35.250 --> 01:11:36.529
+Guillermo Fajardo: No tengo esa empresa.
+
+527
+01:11:36.800 --> 01:11:44.199
+Guillermo Fajardo: Entonces lo primero que tenemos que hacer es mirar, por ejemplo.
+
+528
+01:11:51.230 --> 01:11:55.250
+Guillermo Fajardo: por qué está tardando? Se ha apagado o no, sí,
+
+529
+01:12:02.000 --> 01:12:08.179
+Guillermo Fajardo: cuando hemos cargado el corpus que eso miraos bien. Luego las funciones, porque lo vais a necesitar utilizar
+
+530
+01:12:08.590 --> 01:12:13.620
+Guillermo Fajardo: cuando hemos cargado el corpus. Esta es Estos son los segmentos de información que tenemos.
+
+531
+01:12:14.300 --> 01:12:18.830
+Guillermo Fajardo: Oye, pues tenemos tenemos para envidia
+
+532
+01:12:19.140 --> 01:12:22.459
+Guillermo Fajardo: los factores de riesgo. Tenemos este texto
+
+533
+01:12:22.570 --> 01:12:27.709
+Guillermo Fajardo: número de tokens. Y, bueno, la U. R. L. Que no hace. No es necesario. En este caso
+
+534
+01:12:27.890 --> 01:12:36.090
+Guillermo Fajardo: tenemos todas estas cosas, pues simplemente necesitamos ahora. En vez de darle todo esto aquí a Cholón.
+
+535
+01:12:36.610 --> 01:12:40.850
+Guillermo Fajardo: Lo que necesa necesitamos es una función que nos devuelva.
+
+536
+01:12:41.470 --> 01:12:49.510
+Guillermo Fajardo: Hemos que nos devuelva todas las compañías que tenemos.
+
+537
+01:12:51.590 --> 01:12:54.880
+Guillermo Fajardo: Entonces lo primero que necesitaríamos hacer es.
+
+538
+01:12:55.200 --> 01:12:58.180
+Guillermo Fajardo: partiendo de que tenemos el texto de secciones.
+
+539
+01:12:59.120 --> 01:13:00.479
+Guillermo Fajardo: ¿qué podemos hacer?
+
+540
+01:13:00.660 --> 01:13:04.900
+Guillermo Fajardo: Pues lo primero oye.
+
+541
+01:13:05.010 --> 01:13:10.270
+Guillermo Fajardo: ¿qué empresas tengo? No, Pues vamos a hacer, y el
+
+542
+01:13:16.520 --> 01:13:18.639
+Guillermo Fajardo: le vamos a poner ticket, por ejemplo
+
+543
+01:13:20.020 --> 01:13:22.469
+Guillermo Fajardo: práctica no pararse. Lo pongo así.
+
+544
+01:13:26.330 --> 01:13:27.959
+Guillermo Fajardo: Bueno, claro, ahora me lo pone así.
+
+545
+01:13:38.490 --> 01:13:44.240
+Guillermo Fajardo: Club bayticker. Aunque ahora tenemos el el grupo, este, ¿cómo se ve
+
+546
+01:13:47.140 --> 01:13:48.819
+Guillermo Fajardo: si pudiera hacer esto o no?
+
+547
+01:13:50.590 --> 01:13:51.810
+Guillermo Fajardo: No, No me dejo.
+
+548
+01:13:57.740 --> 01:14:00.319
+Guillermo Fajardo: Le puedo llamar no como era esto.
+
+549
+01:14:04.310 --> 01:14:09.670
+Guillermo Fajardo: Bueno, habéis utilizado los grougvites o le habéis dado caña a pandas y todas estas cosas o no lo habéis hecho.
+
+550
+01:14:11.920 --> 01:14:20.450
+Guillermo Fajardo: Entiendo que si no, uy, pues hoy se me salta esto de aquí Vale.
+
+551
+01:14:22.510 --> 01:14:31.330
+Guillermo Fajardo: pues vamos a hacer. Bueno, a ver, vamos a hacer for al grupo. Y
+
+552
+01:14:41.180 --> 01:14:44.109
+Guillermo Fajardo: aquí simplemente para que me enseñe el primero, ¿no?
+
+553
+01:14:45.850 --> 01:14:47.830
+Guillermo Fajardo: ¿por qué tarda tanto en hacer esto
+
+554
+01:14:54.760 --> 01:14:56.779
+Guillermo Fajardo: fijaos aquí. Le he dicho, oye.
+
+555
+01:14:57.710 --> 01:15:09.739
+Guillermo Fajardo: he cogido todo esto y le he dicho, no, no. En vez de hacerme todo esto, me vas a hacer la agrupación y me vas, me lo vas a agripar por empresa, pues la primera que tenemos aquí, a no ser que le hayas Or las haya ordenado. Por
+
+556
+01:15:10.290 --> 01:15:12.330
+Guillermo Fajardo: Por esto va a ser envidia.
+
+557
+01:15:14.690 --> 01:15:18.289
+Guillermo Fajardo: Pues no. La: Bueno, me las ha ordenado alfabéticamente.
+
+558
+01:15:18.440 --> 01:15:23.769
+Guillermo Fajardo: pues venga. La primera que tienes es Apple. Entonces tienes este grupo donde tienes todas estas cosas.
+
+559
+01:15:24.200 --> 01:15:25.140
+Guillermo Fajardo: Okay.
+
+560
+01:15:25.810 --> 01:15:28.860
+Guillermo Fajardo: Y si me voy
+
+561
+01:15:32.300 --> 01:15:39.390
+Guillermo Fajardo: en grupo, y ahora hago el 2, por ejemplo. Bueno, el 2 va a ser el Amazon.
+
+562
+01:15:48.070 --> 01:15:52.230
+Guillermo Fajardo: Entonces, si ahora vamos a quedarnos con el primer grupo.
+
+563
+01:15:55.310 --> 01:15:57.869
+Guillermo Fajardo: Bueno, aquí ya tenemos seleccionado el primer grupo.
+
+564
+01:15:59.780 --> 01:16:01.630
+Guillermo Fajardo: Entonces yo ahora que hago Grupo.
+
+565
+01:16:02.560 --> 01:16:04.549
+Guillermo Fajardo: sino, por ejemplo, ya el grupo de Apple.
+
+566
+01:16:04.770 --> 01:16:07.160
+Guillermo Fajardo: Entonces venga, vamos a quedarnos primero con esto.
+
+567
+01:16:07.300 --> 01:16:12.160
+Guillermo Fajardo: Okay. Tenemos el grupo de Apple Y
+
+568
+01:16:13.690 --> 01:16:16.649
+Guillermo Fajardo: ahora que tendríamos que se os ocurre, ¿qué tendríamos que hacer?
+
+569
+01:16:18.530 --> 01:16:19.710
+Guillermo Fajardo: Esto Ya es.
+
+570
+01:16:20.940 --> 01:16:26.010
+Guillermo Fajardo: Por ejemplo, aquí te puedo hacer un 0 Apple.
+
+571
+01:16:26.850 --> 01:16:28.249
+Guillermo Fajardo: Si te hago un 1,
+
+572
+01:16:32.510 --> 01:16:33.620
+Guillermo Fajardo: ¿Qué es esto?
+
+573
+01:16:34.050 --> 01:16:37.450
+Guillermo Fajardo: Es decir, yo aquí tengo un grupo.
+
+574
+01:16:39.460 --> 01:16:44.760
+Guillermo Fajardo: Vale, este grupo tiene este objeto, este objeto? ¿qué tipo de objeto es.
+
+575
+01:16:48.650 --> 01:16:50.699
+Cristian: Parece un una lista.
+
+576
+01:16:54.030 --> 01:16:54.780
+Guillermo Fajardo: Pero.
+
+577
+01:16:55.850 --> 01:16:58.130
+Diego Muñoz Alonso: Un conjunto no parece, me parece.
+
+578
+01:16:58.380 --> 01:17:00.320
+Guillermo Fajardo: Es una, eso sí, una dupla.
+
+579
+01:17:00.720 --> 01:17:01.140
+Diego Muñoz Alonso: Sí.
+
+580
+01:17:01.140 --> 01:17:02.280
+Guillermo Fajardo: En este caso.
+
+581
+01:17:02.530 --> 01:17:06.620
+Guillermo Fajardo: Entonces, en esto Grupo vamos a poner.
+
+582
+01:17:11.410 --> 01:17:19.610
+Guillermo Fajardo: Es una. Es una tupla o un set, también Sí, podría ser y tiene longitud Dos.
+
+583
+01:17:21.570 --> 01:17:26.900
+Guillermo Fajardo: en el elemento 0 tenemos Apple. ¿por qué tenemos Apple? Aquí
+
+584
+01:17:30.500 --> 01:17:33.229
+Guillermo Fajardo: tenemos a Apple aquí? Porque, claro, justo aquí.
+
+585
+01:17:34.070 --> 01:17:38.370
+Guillermo Fajardo: Lo que hemos hecho es, oye cógeme toda esta tabla
+
+586
+01:17:38.830 --> 01:17:42.780
+Guillermo Fajardo: y hazme un groud by por los tickets. Entonces.
+
+587
+01:17:42.900 --> 01:17:48.909
+Guillermo Fajardo: claro, cuando yo hago un grougy por los tickets. Lo que me va a hacer es un número de grupos igual
+
+588
+01:17:49.140 --> 01:18:01.739
+Guillermo Fajardo: al número de empre de tickets individuales que haya, porque todo esto de meta, por ejemplo, me lo ha comprimido en un solo grupo y todo lo que había de Apple me lo ha comprimido en un solo grupo.
+
+589
+01:18:01.890 --> 01:18:08.640
+Guillermo Fajardo: Entonces, pues lo que me dice es, oye, pues mira, te voy a devolver tantos objetos
+
+590
+01:18:09.570 --> 01:18:13.789
+Guillermo Fajardo: como tantos objetos como tickets. Tengas.
+
+591
+01:18:13.900 --> 01:18:21.320
+Guillermo Fajardo: ¿cómo podemos comprobar esto? Pues podemos podemos poner aquí?
+
+592
+01:18:22.360 --> 01:18:31.510
+Guillermo Fajardo: Creo que no se le puede hacer el leng a los grupos. Pero bueno, Mira Pues sí,
+
+593
+01:18:33.320 --> 01:18:39.700
+Guillermo Fajardo: tenemos ya 6 secciones. Una por cada empresa. Entonces tenemos aquí, Ok, pues para esta empresa
+
+594
+01:18:40.020 --> 01:18:43.149
+Guillermo Fajardo: lo devuelto que te devuelvo es la tabla.
+
+595
+01:18:43.870 --> 01:18:46.149
+Guillermo Fajardo: la parte de la tabla que te corresponde.
+
+596
+01:18:49.630 --> 01:18:50.720
+Guillermo Fajardo: Entendéis.
+
+597
+01:18:52.150 --> 01:18:54.929
+Guillermo Fajardo: Y si yo me pongo aquí
+
+598
+01:18:56.000 --> 01:18:59.270
+Guillermo Fajardo: en el Grupo Uno, y pongo, por ejemplo.
+
+599
+01:19:01.700 --> 01:19:06.229
+Guillermo Fajardo: a Ilog 0 coger la primera posición, pues me va a devolver la primera fila.
+
+600
+01:19:07.600 --> 01:19:18.720
+Guillermo Fajardo: Sí, pues supongo, por ejemplo, punto de empresa, pues tengo Apple, Inc Okay y
+
+601
+01:19:19.180 --> 01:19:23.190
+Guillermo Fajardo: recordad yo lo que quiero yo, lo que quiero estar haciendo. Voy a poner
+
+602
+01:19:26.460 --> 01:19:30.440
+Guillermo Fajardo: yo. Lo que quiero hacer es poder decirle a la gente
+
+603
+01:19:31.710 --> 01:19:35.890
+Guillermo Fajardo: a qué información tiene acceso, Y se lo quiero decir de la manera más concisa
+
+604
+01:19:36.140 --> 01:19:47.130
+Guillermo Fajardo: y más corta posible. Entonces, pues le voy a le voy a intentar sacar qué información de aquí es relevante. ¿qué información va a ser relevante? Oye, pues, obviamente, el nombre de la empresa.
+
+605
+01:19:48.000 --> 01:19:50.589
+Guillermo Fajardo: los años a los que tiene acceso
+
+606
+01:19:50.710 --> 01:19:53.140
+Guillermo Fajardo: los ítems a los que tiene acceso
+
+607
+01:19:53.590 --> 01:20:06.159
+Guillermo Fajardo: el título no es necesario, pues, bueno, el título puede ser mejor que el ítem. El texto, desde luego no va a ser necesario. No lo voy a tener que poner todo este todo este caso. El número de tokens es irrelevante.
+
+608
+01:20:06.260 --> 01:20:10.320
+Guillermo Fajardo: La U. R L, también. Porque simplemente simplemente para contexto.
+
+609
+01:20:10.660 --> 01:20:15.039
+Guillermo Fajardo: Y este tipo de a de de aspectos tampoco nos importan demasiado.
+
+610
+01:20:15.190 --> 01:20:22.440
+Guillermo Fajardo: Entonces, de todo esto, yo puedo decir, Ok, que voy a necesitar nombres de empresas.
+
+611
+01:20:23.040 --> 01:20:33.180
+Guillermo Fajardo: Voy a necesitar también ejercicios, no de la fiscalía. Sí, ejercicios.
+
+612
+01:20:34.490 --> 01:20:36.140
+Guillermo Fajardo: Y qué ítems tengo.
+
+613
+01:20:36.530 --> 01:20:37.740
+Guillermo Fajardo: Mhm!
+
+614
+01:20:38.430 --> 01:20:43.179
+Guillermo Fajardo: No era el toques tal y lo demás, Pues creo que no.
+
+615
+01:20:43.570 --> 01:20:47.760
+Guillermo Fajardo: No es muy necesario, Entonces, Okay, ya sé
+
+616
+01:20:48.010 --> 01:20:51.300
+Guillermo Fajardo: que yo lo que tengo que construir como es un atún.
+
+617
+01:20:51.470 --> 01:20:54.299
+Guillermo Fajardo: Lo que me va a tener que devolver la tul siempre qué es.
+
+618
+01:20:56.300 --> 01:20:57.080
+Guillermo Fajardo: Es un texto.
+
+619
+01:20:57.080 --> 01:20:57.680
+Cristian: En este.
+
+620
+01:20:58.200 --> 01:21:03.169
+Guillermo Fajardo: Claro, efectivamente, una string pues lo que sabemos es que esta función tiene que construir una string
+
+621
+01:21:04.360 --> 01:21:06.840
+Guillermo Fajardo: Entonces vamos a poner aquí. Por ejemplo, venga
+
+622
+01:21:07.470 --> 01:21:13.670
+Guillermo Fajardo: como la vamos a vamos a tener que iterar e ir haciendo varias cosas. Yo lo que quiero al final que aquí salga
+
+623
+01:21:14.480 --> 01:21:18.510
+Guillermo Fajardo: es el ohh.
+
+624
+01:21:22.470 --> 01:21:25.430
+Guillermo Fajardo: Vamos a ver cómo me pongo.
+
+625
+01:21:28.280 --> 01:21:30.250
+Guillermo Fajardo: Vamos a poner.
+
+626
+01:21:39.080 --> 01:21:40.330
+Guillermo Fajardo: Eso es lo que quiero.
+
+627
+01:21:40.900 --> 01:21:43.299
+Guillermo Fajardo: Y ahora lo que tengo que hacer es construir este texto.
+
+628
+01:21:44.110 --> 01:21:47.399
+Guillermo Fajardo: Pues ¿cómo voy a empezar este texto? Pues venga.
+
+629
+01:21:48.070 --> 01:21:50.560
+Guillermo Fajardo: vamos a hacerlo por líneas. Por ejemplo.
+
+630
+01:21:51.680 --> 01:21:55.890
+Guillermo Fajardo: vamos a poner aquí. Vamos a hacer una lista de líneas y las vamos a ir juntando.
+
+631
+01:22:02.070 --> 01:22:07.159
+Cristian: Bueno, pero tú, aquí partes de la base que sabes que la información que le envías a la tu eres estructurada.
+
+632
+01:22:08.900 --> 01:22:09.600
+Guillermo Fajardo: Claro.
+
+633
+01:22:10.730 --> 01:22:15.440
+Guillermo Fajardo: Es decir, un Atúl es una función.
+
+634
+01:22:15.990 --> 01:22:21.390
+Guillermo Fajardo: Y como función, tú tienes que saber ya exactamente qué va a recibir
+
+635
+01:22:21.620 --> 01:22:24.720
+Guillermo Fajardo: ahora mismo es que tenemos las acciones aquí fuera. Pero
+
+636
+01:22:25.980 --> 01:22:28.399
+Guillermo Fajardo: es decir, yo tengo que construir aquí un Atúl
+
+637
+01:22:28.500 --> 01:22:31.259
+Guillermo Fajardo: que le dé información a la gente
+
+638
+01:22:31.850 --> 01:22:36.170
+Guillermo Fajardo: de qué es lo que contiene el Corpus, el corpus
+
+639
+01:22:36.670 --> 01:22:43.349
+Guillermo Fajardo: de la extracción de del Corpus. Ya sabemos que tenemos las secciones. Tenemos esta tabla, que es una documentación estructurada.
+
+640
+01:22:44.130 --> 01:22:46.730
+Guillermo Fajardo: ¿qué pasa dentro de esta documentación estructurada?
+
+641
+01:22:49.630 --> 01:22:55.190
+Guillermo Fajardo: Esto el texto, esto es larguísimo.
+
+642
+01:22:55.320 --> 01:22:57.949
+Guillermo Fajardo: Aquí hay decenas de miles de tokens.
+
+643
+01:22:59.080 --> 01:23:04.169
+Guillermo Fajardo: Simplemente lo he puesto en una versión estructurada para luego poder ir ir lidiando con ella.
+
+644
+01:23:04.630 --> 01:23:18.149
+Diego Muñoz Alonso: Y dime: sí que o sea, realmente está llam, o sea, ya la gente llamará a esta Tul cuando considere, o sea, cuando considere que necesita ver cuál es el universo de tickets y ya está. O es una cosa tal.
+
+645
+01:23:18.530 --> 01:23:21.150
+Guillermo Fajardo: Sí pueden pasar varias. Pueden pasar varias cosas.
+
+646
+01:23:22.090 --> 01:23:28.859
+Guillermo Fajardo: Depende de cómo si tú te centras exactamente, Es decir, imagínate que tú
+
+647
+01:23:29.170 --> 01:23:34.960
+Guillermo Fajardo: eres un alumno. Aquí tienes el Dataset. Tú ya te conoces el Dataset.
+
+648
+01:23:35.220 --> 01:23:40.300
+Guillermo Fajardo: Y entonces cuando estás construyendo la gente le pones como en su prompt inicial.
+
+649
+01:23:40.460 --> 01:23:45.909
+Guillermo Fajardo: Oye, pues, que sepas que tienes acceso a estas empresas y a estos años. Entonces esta función ya no tiene sentido.
+
+650
+01:23:47.340 --> 01:24:03.629
+Guillermo Fajardo: ¿qué pasa si tú estás construyendo una gente que sea un poco más que esté más abstraído en el que el Corpus pueda ser algo dinámico o algo variable, o que tú tengas un agente plug and play en el que ya le puedes ir metiendo esta información o cambiándosela o tal
+
+651
+01:24:04.070 --> 01:24:05.879
+Guillermo Fajardo: Esto ya sí se vuelve relevante.
+
+652
+01:24:07.100 --> 01:24:12.290
+Diego Muñoz Alonso: Ya. Y y y si tú. Si la estructura de tu edad se cambia, entonces esta tur se queda obsoleta, no de algún modo.
+
+653
+01:24:13.230 --> 01:24:23.130
+Guillermo Fajardo: Depende, sí, pero por ejemplo, es que el el Dataset aquí pueden pasar 2 cosas.
+
+654
+01:24:23.330 --> 01:24:26.609
+Guillermo Fajardo: o que tú tengas un proveedor de datos de algún tipo.
+
+655
+01:24:26.960 --> 01:24:37.860
+Guillermo Fajardo: en cuyo caso va a estar estandarizado o que no tengas un proveedor de datos, en cuyo caso lo que va a haber pasado, que es lo que he hecho yo, es que te vas a haber escrapeado las cosas.
+
+656
+01:24:39.120 --> 01:24:40.680
+Guillermo Fajardo: En ambos casos
+
+657
+01:24:42.640 --> 01:24:51.939
+Guillermo Fajardo: debería mantener una coherencia de estructura. Todo el segmento, imagínate que, bueno, en programación y en todos lados.
+
+658
+01:24:52.330 --> 01:24:59.090
+Guillermo Fajardo: cada unidad tiene que ser completamente independiente, funcional y de impotente
+
+659
+01:24:59.210 --> 01:25:02.689
+Guillermo Fajardo: en el sentir. ¿qué quiero decir con esto? Lo que quiero decir es que
+
+660
+01:25:03.530 --> 01:25:09.499
+Guillermo Fajardo: si yo evaluase por separado el Datasset o el programa que Scrapea.
+
+661
+01:25:10.410 --> 01:25:19.830
+Guillermo Fajardo: Y resultase que, dependiendo del sector o dependiendo de algún otro parámetro, la estructura que me devuelve el Dataset
+
+662
+01:25:20.060 --> 01:25:26.620
+Guillermo Fajardo: fuera completamente diferente, pues lo que pasaría es que habría hecho un un escarpeador que no es muy bueno
+
+663
+01:25:27.100 --> 01:25:38.849
+Guillermo Fajardo: porque me tocaría, o sería el trabajo de la siguiente sección. Sería el trabajo, por ejemplo, de la gente, Y eso no debería ser trabajo de la gente lidiar con que la información te viene de su padre y de su madre.
+
+664
+01:25:41.520 --> 01:25:43.309
+Diego Muñoz Alonso: entendido. Ok.
+
+665
+01:25:43.780 --> 01:25:51.300
+Guillermo Fajardo: Entonces tenemos aquí las líneas que esto se puede hacer de 1 000 maneras, porque es construir un string. Pero bueno, y vamos a ir añadiendo cosas. Por ejemplo.
+
+666
+01:25:52.140 --> 01:25:59.020
+Guillermo Fajardo: líneas junto a ver, voy a poner,
+
+667
+01:26:12.110 --> 01:26:14.079
+Guillermo Fajardo: simplemente esto, que es una tontería.
+
+668
+01:26:14.250 --> 01:26:17.219
+Guillermo Fajardo: De hecho, lo lógico sería que lo hubiera puesto ahí dentro de líneas.
+
+669
+01:26:18.490 --> 01:26:28.170
+Guillermo Fajardo: Y ahora ya sabemos que aquí lo que vamos a tener que conseguir es meterle información que hemos decidido nosotros, que es interesante, pues hemos dicho la empresa No.
+
+670
+01:26:30.130 --> 01:26:30.890
+Guillermo Fajardo: sí
+
+671
+01:26:39.510 --> 01:26:46.400
+Guillermo Fajardo: y secciones no vale, Pues
+
+672
+01:26:46.540 --> 01:26:53.340
+Guillermo Fajardo: claro, lo primero que hemos visto aquí es que de toda esta información lo mejor puede ser agruparlo primero
+
+673
+01:26:53.800 --> 01:26:57.030
+Guillermo Fajardo: Okay. Y vamos a partir a partir de estos grupos.
+
+674
+01:26:58.050 --> 01:27:04.810
+Guillermo Fajardo: Me estoy liando con tanto subir o bajar a ver, pues
+
+675
+01:27:06.270 --> 01:27:11.069
+Guillermo Fajardo: esto es ahora hacer un bucle F, o r venga. ¿cómo empezaríais hacer bucle? F, O, R,
+
+676
+01:27:11.320 --> 01:27:13.280
+Guillermo Fajardo: Se puede hacer de varias maneras? ¿no? Pero bueno.
+
+677
+01:27:15.330 --> 01:27:22.869
+Guillermo Fajardo: sí, sí es que lo hace solo si es que fijaos. No sé si esto es una cosa del que yo tengo en la cuenta de Google, pro
+
+678
+01:27:24.010 --> 01:27:27.249
+Guillermo Fajardo: pero fijaos es que el día te lo va haciendo. Solo
+
+679
+01:27:34.830 --> 01:27:41.260
+Guillermo Fajardo: agrupamos por tickets Cuando agrupamos por ticket, vamos a tener esto.
+
+680
+01:27:46.000 --> 01:27:51.110
+Guillermo Fajardo: esa tabla, y de aquí a ahora queremos obtener el nombre de la empresa.
+
+681
+01:27:51.540 --> 01:27:56.609
+Guillermo Fajardo: El nombre de la empresa no va a variar, lógicamente, todos los años que hay
+
+682
+01:27:56.860 --> 01:28:04.099
+Guillermo Fajardo: y todos los títulos. O ítems que hay, Pues esto es bastante sencillo. Realmente
+
+683
+01:28:07.850 --> 01:28:10.580
+Guillermo Fajardo: venga, ¿Cómo vamos a ponerlo aquí?
+
+684
+01:28:14.390 --> 01:28:15.919
+Guillermo Fajardo: ¿cómo sacaríais la empresa.
+
+685
+01:28:21.840 --> 01:28:23.090
+Cristian: Y les traería el
+
+686
+01:28:23.200 --> 01:28:30.349
+Cristian: Intentaré hacer los valores únicos de la columna que corresponde con el nombre de la empresa no me acuerdo cuál era, pero.
+
+687
+01:28:30.350 --> 01:28:35.930
+Guillermo Fajardo: Sí, Bueno, puedes hacer eso. Y de hecho, eso lo que vamos a hacer un poco más adelante. Pero
+
+688
+01:28:36.400 --> 01:28:41.869
+Guillermo Fajardo: en el caso específico del nombre de la empresa pasa una cosa que es que solo hay 1.
+
+689
+01:28:42.160 --> 01:28:52.819
+Guillermo Fajardo: Entonces, a ver que esto da igual, porque computacionalmente, es gratis entre comillas, pero tú lo que dices es hacer algo así no empresa
+
+690
+01:28:53.440 --> 01:28:58.300
+Guillermo Fajardo: es igual grupo. ¿no?
+
+691
+01:29:01.360 --> 01:29:03.380
+Guillermo Fajardo: ¿cómo sería ahora el grupo.
+
+692
+01:29:03.680 --> 01:29:06.980
+Guillermo Fajardo: No, claro Grupo N: Ahora, el nombre de la
+
+693
+01:29:07.850 --> 01:29:11.449
+Guillermo Fajardo: de la columna, como se llamaba. Era grupo punto
+
+694
+01:29:15.780 --> 01:29:20.210
+Guillermo Fajardo: ticket no empresa algo así. No.
+
+695
+01:29:20.700 --> 01:29:22.790
+Diego Muñoz Alonso: Empresas y empresas. Todo en minúsculas.
+
+696
+01:29:23.900 --> 01:29:25.719
+Guillermo Fajardo: Es que hoy.
+
+697
+01:29:44.250 --> 01:29:45.480
+Guillermo Fajardo: ¿Qué dice aquí?
+
+698
+01:29:59.010 --> 01:30:01.080
+Guillermo Fajardo: ¿por qué me estás haciendo esto aquí ahora?
+
+699
+01:30:08.380 --> 01:30:11.319
+Guillermo Fajardo: Bueno, vamos a intentarlo aquí en este grupo, ya que lo tenemos. Claro.
+
+700
+01:30:23.240 --> 01:30:28.299
+Guillermo Fajardo: no, no se ponía.
+
+701
+01:30:34.150 --> 01:30:37.820
+Guillermo Fajardo: claro cuál es el problema.
+
+702
+01:30:41.290 --> 01:30:48.499
+Guillermo Fajardo: ¿Qué grupo acordaos que tiene? Yo estaba queriendo llamar al data frame. Pero lo primero que teníamos era una dupla.
+
+703
+01:30:48.740 --> 01:30:50.740
+Guillermo Fajardo: Entonces tengo que apuntar al data frame.
+
+704
+01:30:53.280 --> 01:30:59.990
+Guillermo Fajardo: ¿no? Y aquí lo que pasa es que aquí hay que poner el sí, sería muy rico.
+
+705
+01:31:09.710 --> 01:31:12.970
+Guillermo Fajardo: Os acordáis de cómo era este cambio es que Joder tampoco.
+
+706
+01:31:12.970 --> 01:31:21.389
+Diego Muñoz Alonso: Y a lo mejor te lo puedes coger con con corchetes, no y poner empresas de corchetes para cogerte esta columna y ponerte a punto de Uniclub. Y así te.
+
+707
+01:31:25.710 --> 01:31:27.680
+Guillermo Fajardo: Pero el Lock debería funcionar.
+
+708
+01:31:28.420 --> 01:31:34.890
+Guillermo Fajardo: Lo habré escrito mar en al en alguna parte. Tenemos todas estas cosas, y tú puedes hacer luego aquí. El
+
+709
+01:31:36.480 --> 01:31:37.490
+Guillermo Fajardo: era así. ¿no?
+
+710
+01:31:38.160 --> 01:31:41.150
+Diego Muñoz Alonso: Creo que es de unix, solo y ya está.
+
+711
+01:31:45.900 --> 01:31:53.480
+Guillermo Fajardo: Y ahora aquí, pues esto debemos ponerlo aquí en 0? No esto, y así podríamos sacarlo
+
+712
+01:31:53.880 --> 01:31:58.750
+Guillermo Fajardo: claro. ¿qué pasa con esto Sí,
+
+713
+01:32:00.820 --> 01:32:09.730
+Guillermo Fajardo: no va a haber ningún problema, pero en caso de que tengas un dataset supergrande y tal a ver que nunca va a ser un problema, porque esta es una computación súper sencilla.
+
+714
+01:32:10.460 --> 01:32:17.040
+Guillermo Fajardo: Pero partiendo del grupo, y esto
+
+715
+01:32:17.850 --> 01:32:21.140
+Guillermo Fajardo: oye, como sé que el nombre siempre va a ser lo mismo.
+
+716
+01:32:22.470 --> 01:32:24.290
+Guillermo Fajardo: Puedo poner.
+
+717
+01:32:26.380 --> 01:32:28.110
+Guillermo Fajardo: Puede ser en
+
+718
+01:32:31.400 --> 01:32:37.179
+Guillermo Fajardo: cojo la primera fila algo así, y ya lo tengo
+
+719
+01:32:39.720 --> 01:32:50.760
+Guillermo Fajardo: en cantidad de cosas, a escribir. Es lo mismo, pero computacionalmente, aunque nunca vaya a ser un problema del cómputo. De esto. Esto es 1 000 veces más eficiente que esto.
+
+720
+01:32:54.110 --> 01:33:02.809
+Guillermo Fajardo: sin embargo, vale. Sí. Sin embargo, lo que has dicho es
+
+721
+01:33:02.950 --> 01:33:06.889
+Guillermo Fajardo: exactamente lo que hay que utilizar para la para las siguientes partes.
+
+722
+01:33:13.950 --> 01:33:16.689
+Guillermo Fajardo: Mira justo, Pues si es que ya te lo saca todo.
+
+723
+01:33:19.080 --> 01:33:23.349
+Guillermo Fajardo: Si en vez de aquí ponemos ejercicio.
+
+724
+01:33:27.370 --> 01:33:30.000
+Guillermo Fajardo: no hay ejercicio, no es ejercicios o algo así.
+
+725
+01:33:32.620 --> 01:33:33.710
+Guillermo Fajardo: Fiscalía.
+
+726
+01:33:41.520 --> 01:33:42.830
+Guillermo Fajardo: Eso no.
+
+727
+01:33:53.970 --> 01:33:57.259
+Guillermo Fajardo: Entonces aquí ya tenemos los años. Y bueno, a lo mejor los que vemos.
+
+728
+01:34:04.620 --> 01:34:08.230
+Guillermo Fajardo: vale, pues ya tenemos la empresa? Bueno, voy a cambiarlo aquí
+
+729
+01:34:16.690 --> 01:34:18.669
+Guillermo Fajardo: y el final todo
+
+730
+01:34:22.300 --> 01:34:28.070
+Guillermo Fajardo: tenemos. Lo tenemos los ejercicios, y tenemos aquí que esto funcionará igual. Vamos a probarlo.
+
+731
+01:34:35.400 --> 01:34:42.060
+Guillermo Fajardo: Y te he pasado de Corchetes Okay.
+
+732
+01:34:42.600 --> 01:34:43.390
+Guillermo Fajardo: Claro.
+
+733
+01:34:46.320 --> 01:34:51.989
+Guillermo Fajardo: ¿Qué problema a ver que tampoco. Bueno, sí sí te lo viene aquí, que también hay que meter las acciones.
+
+734
+01:34:59.250 --> 01:35:01.080
+Guillermo Fajardo: Vamos a poner a 0.
+
+735
+01:35:22.140 --> 01:35:26.220
+Guillermo Fajardo: No sé cómo se llaman secciones o títulos. Así es que ya
+
+736
+01:35:33.990 --> 01:35:35.229
+Guillermo Fajardo: le he puesto
+
+737
+01:35:38.780 --> 01:35:40.649
+Guillermo Fajardo: es que siempre
+
+738
+01:35:44.580 --> 01:35:45.410
+Guillermo Fajardo: vale.
+
+739
+01:35:45.640 --> 01:35:50.370
+Guillermo Fajardo: Vamos a juntar esto un poquito? Bueno, está bien, Vale, Ya tenemos
+
+740
+01:35:53.220 --> 01:35:56.599
+Guillermo Fajardo: para cada grupo estas cosas. Entonces solo nos falta
+
+741
+01:35:56.850 --> 01:36:03.379
+Guillermo Fajardo: construir, Es decir, ahora añadimos esto las líneas, pues el final del bucle F, o R es
+
+742
+01:36:07.400 --> 01:36:10.170
+Guillermo Fajardo: Apppend. Y podemos poner.
+
+743
+01:36:10.400 --> 01:36:11.760
+Guillermo Fajardo: Vamos a hacerlo así.
+
+744
+01:36:18.000 --> 01:36:20.160
+Guillermo Fajardo: Lo típico no se puede hacer un efestream
+
+745
+01:36:29.340 --> 01:36:32.530
+Guillermo Fajardo: empresa. Vamos a poner empresa empresa
+
+746
+01:36:38.530 --> 01:36:40.989
+Guillermo Fajardo: con Ticket Joder.
+
+747
+01:36:46.300 --> 01:36:49.350
+Guillermo Fajardo: Tampoco es que haga falta un joinmap para esto. Pero, bueno.
+
+748
+01:36:56.400 --> 01:37:05.690
+Guillermo Fajardo: ejercicios, vale, sí, mira que hacerte un join más para eso. La verdad, o sea, flipa un poco
+
+749
+01:37:11.920 --> 01:37:12.800
+Guillermo Fajardo: ya
+
+750
+01:37:24.190 --> 01:37:34.089
+Guillermo Fajardo: aquí. Al final lo vamos a unir. Todos vamos a poner el típico, el espaciador, ¿no?
+
+751
+01:37:45.330 --> 01:37:46.150
+Guillermo Fajardo: Venga.
+
+752
+01:37:59.670 --> 01:38:01.900
+Guillermo Fajardo: Bueno, o sea que no lo he puesto. Aquí,
+
+753
+01:38:30.680 --> 01:38:37.030
+Guillermo Fajardo: teníamos ya aquí las secciones, no, sí, no, sí, secciones
+
+754
+01:38:47.660 --> 01:38:51.169
+Guillermo Fajardo: no va a funcionar porque no tiene esto porque le falta
+
+755
+01:39:06.060 --> 01:39:10.460
+Guillermo Fajardo: como no hemos puesto, la definición data
+
+756
+01:39:16.070 --> 01:39:17.290
+Guillermo Fajardo: a ver.
+
+757
+01:39:31.750 --> 01:39:32.460
+Guillermo Fajardo: ¿no?
+
+758
+01:40:00.630 --> 01:40:02.430
+Guillermo Fajardo: Y qué más da que sea un Jashow.
+
+759
+01:40:03.990 --> 01:40:06.169
+Guillermo Fajardo: Teniendo en cuenta que esto me ha funcionado en
+
+760
+01:40:08.070 --> 01:40:16.580
+Guillermo Fajardo: el local perfectamente. Bueno, el local de aquí secciones secciones.
+
+761
+01:40:33.410 --> 01:40:36.200
+Guillermo Fajardo: pero no entiendo bien qué está fallando aquí ahora mismo, la verdad.
+
+762
+01:40:37.500 --> 01:40:40.340
+Guillermo Fajardo: Si le quito esto y comento, esto
+
+763
+01:40:52.440 --> 01:40:54.390
+Guillermo Fajardo: ¿vale? Eso es normal.
+
+764
+01:41:00.970 --> 01:41:05.859
+Guillermo Fajardo: Sí que la tenemos aquí, pero se está negando a utilizarla porque no está dentro de la función, lo cual es
+
+765
+01:41:06.050 --> 01:41:07.010
+Guillermo Fajardo: correcto
+
+766
+01:41:12.220 --> 01:41:15.139
+Guillermo Fajardo: Si lo llamo como función si debería funcionar
+
+767
+01:41:29.000 --> 01:41:29.900
+Guillermo Fajardo: a ver
+
+768
+01:41:41.390 --> 01:41:42.730
+Guillermo Fajardo: Perdonad, que es que
+
+769
+01:41:42.840 --> 01:41:49.480
+Guillermo Fajardo: 1 de los problemas, bueno, una de las grandes ventajas de Lanchang es que te abstrae
+
+770
+01:41:49.610 --> 01:41:58.330
+Guillermo Fajardo: muchísimo trabajo normalmente pasar históricamente no pasar de un at tul, o sea, de una función a un Atúl.
+
+771
+01:41:58.400 --> 01:42:13.099
+Guillermo Fajardo: No os podéis imaginar el trabajo y los problemas que daba antes lo típico, esto que ha salido ahora, de que no era haschable. Y este tipo de cosas ahora es tan sencillo como ponerlo aquí en Tour. Pero a veces os vais a encontrar con problemas
+
+772
+01:42:13.390 --> 01:42:17.070
+Guillermo Fajardo: que os va a tocar, ir a la documentación y mirarlo, este lo miraré yo.
+
+773
+01:42:17.570 --> 01:42:20.459
+Guillermo Fajardo: Pero de momento, simplemente para asegurarnos.
+
+774
+01:42:22.980 --> 01:42:25.469
+Guillermo Fajardo: para asegurarnos de simplemente que funciona.
+
+775
+01:42:27.350 --> 01:42:28.629
+Guillermo Fajardo: Esto no me va a dejar.
+
+776
+01:42:29.050 --> 01:42:29.930
+Guillermo Fajardo: Bueno, pues lo quito
+
+777
+01:42:39.200 --> 01:42:41.339
+Guillermo Fajardo: es simplemente un problema de formato. ¿
+
+778
+01:42:43.380 --> 01:42:46.059
+Guillermo Fajardo: Qué raro que no me deje utilizar lo de secciones, ¿
+
+779
+01:42:58.210 --> 01:43:02.390
+Guillermo Fajardo: Perdón, por el perdón por el perder el tiempo con eso, pero
+
+780
+01:43:03.160 --> 01:43:07.790
+Guillermo Fajardo: ya lo veréis. Luego con las Tools, muchas veces vais a encontrar errores raros, y tal
+
+781
+01:43:08.190 --> 01:43:13.590
+Guillermo Fajardo: cuando pasan estas cosas, ir a la documentación.
+
+782
+01:43:14.380 --> 01:43:20.200
+Guillermo Fajardo: O, bueno, si vais a estar programando con inteligencia artificial asegurados de no sé si conocéis Perplex City.
+
+783
+01:43:20.760 --> 01:43:25.310
+Guillermo Fajardo: la inteligencia artificial perplexitie, que no es una inteligencia artificial, pero bueno.
+
+784
+01:43:27.270 --> 01:43:37.050
+Guillermo Fajardo: es una especie de motor de búsqueda avanzado específico hecho para que no alucine. Y tal entonces, pues una manera superfácil de consultar documentación y cosas por el estilo
+
+785
+01:43:37.190 --> 01:43:42.519
+Guillermo Fajardo: es acudir a perplex Ah, Y ahora que digo esto, otra cosa superimportante.
+
+786
+01:43:43.690 --> 01:43:47.479
+Guillermo Fajardo: Cuando estéis utiliz vais a utilizar la inteligencia artificial para programar.
+
+787
+01:43:47.950 --> 01:43:55.640
+Guillermo Fajardo: Y aquí pasa una cosa supergraciosa, que es que las librerías
+
+788
+01:43:56.080 --> 01:43:59.080
+Guillermo Fajardo: que más están avanzando todo el rato
+
+789
+01:43:59.530 --> 01:44:06.010
+Guillermo Fajardo: son precisamente las que se dedican a lidiar con inteligencia artificial como lanche mismamente.
+
+790
+01:44:06.160 --> 01:44:10.310
+Guillermo Fajardo: Entonces, ¿qué pasa que vais a utilizar la inteligencia artificial?
+
+791
+01:44:10.740 --> 01:44:15.090
+Guillermo Fajardo: Esa inteligencia artificial va a tener en su entrenamiento.
+
+792
+01:44:15.490 --> 01:44:19.949
+Guillermo Fajardo: documentación implícita, por así decirlo, hasta cierto punto.
+
+793
+01:44:20.060 --> 01:44:23.959
+Guillermo Fajardo: hasta cierto momento, que se ha quedado ya desfasado de lo que es la librería ahora
+
+794
+01:44:24.400 --> 01:44:28.279
+Guillermo Fajardo: y muchas veces os va a recomendar cosas que están desfasadas
+
+795
+01:44:28.710 --> 01:44:32.739
+Guillermo Fajardo: e incluso muchas veces le vais a dar a lo mejor
+
+796
+01:44:32.950 --> 01:44:40.499
+Guillermo Fajardo: le vais a dar el si estáis tratando con un agente no o con clod o alguno de estos
+
+797
+01:44:41.050 --> 01:44:43.909
+Guillermo Fajardo: le vais a dar el enlace a la documentación
+
+798
+01:44:44.450 --> 01:44:54.059
+Guillermo Fajardo: va a ver. La documentación. Va a ver lo que es correcto y aún así alguna vez se va a seguir confundiendo porque tiene demasiado peso en memoria en el entrenamiento. La documentación antigua
+
+799
+01:44:55.580 --> 01:45:00.030
+Guillermo Fajardo: para cuando os pase que lo tengáis en cuenta, no os desquiciéis. Son simplemente este tipo de cosas.
+
+800
+01:45:00.410 --> 01:45:05.969
+Guillermo Fajardo: Pues, bueno, aquí ya podéis ver cómo hemos hecho una funcioncita sencilla, Sí.
+
+801
+01:45:06.590 --> 01:45:25.149
+Higinio Paterna Ortiz: O sea, a raíz de esto, que comentabas de la documentación obsoleta y ciertas librerías se pudiera solucionar. Por ejemplo, si yo uso Cloud code degradando una una tool para que me consulte, digamos a lo mejor la la última documentación de Lanchain o si uso o no sobre.
+
+802
+01:45:25.630 --> 01:45:36.869
+Guillermo Fajardo: Justo. De hecho. De hecho, no tienes que crearte una tul. Ya hay una skill que va justamente de eso, y te la recomiendo. La recomiendo muchísimo. Hay como ciertas Skills y tal que siempre recomiendo que se usen.
+
+803
+01:45:37.330 --> 01:45:47.259
+Guillermo Fajardo: que que yo entiendo que los agentes. Estos que estamos haciendo aquí comparados con Claude y tal parecen una una nimiedad.
+
+804
+01:45:47.450 --> 01:45:57.459
+Guillermo Fajardo: Pero para implementar en un montonazo de cosas del curro, sobre todo cuando los tokens, cuando te evalúan en función de cuánto dinero le estás costando a la empresa.
+
+805
+01:45:58.450 --> 01:46:05.649
+Guillermo Fajardo: Es bastante importante hacer esto a gente. Entonces sí, cuando estés para ayudaros a programar, sí que os recomiendo muchísimo.
+
+806
+01:46:05.790 --> 01:46:08.789
+Guillermo Fajardo: que no programéis que no, por ejemplo, con Claude
+
+807
+01:46:09.300 --> 01:46:24.109
+Guillermo Fajardo: que no partáis desde el Claude base, sino que oye que le hagáis. Un Hay buenos proms iniciales que está Internet lleno de ellos, sobre todo para que no se despiste para que siga cier ciertos
+
+808
+01:46:24.260 --> 01:46:28.899
+Guillermo Fajardo: guiones y luego un buen set de Skills, sobre todo para programar.
+
+809
+01:46:29.050 --> 01:46:36.140
+Guillermo Fajardo: Hay ciertas que son basiquísimas, como consultar la documentación y
+
+810
+01:46:37.160 --> 01:46:42.390
+Guillermo Fajardo: dependiendo del tipo de programación para que se hagan los tests y todas estas cosas. Eso lo recomiendo muchísimo.
+
+811
+01:46:45.720 --> 01:46:47.879
+Guillermo Fajardo: Y bueno, ya veis que
+
+812
+01:46:48.250 --> 01:46:58.090
+Guillermo Fajardo: fija en código. Es una tontería, y esto es no es más que analizar un data frame y y convertirlo en una string si es que no tiene más misterio.
+
+813
+01:47:00.370 --> 01:47:01.080
+Guillermo Fajardo: Ohh.
+
+814
+01:47:04.450 --> 01:47:06.260
+Guillermo Fajardo: ¡ay, para este.
+
+815
+01:47:11.430 --> 01:47:15.740
+Guillermo Fajardo: tengo que poner el Tul otra vez para que funcione de más.
+
+816
+01:47:26.510 --> 01:47:35.890
+Cristian: Guillermo una duda, Entonces, en base a las descripciones que tengan las tus, Lo que vas a hacer es decidir cuál usar para resolver el problema que le.
+
+817
+01:47:36.030 --> 01:47:36.740
+Guillermo Fajardo: Claro. Hombre.
+
+818
+01:47:36.740 --> 01:47:37.170
+Cristian: Eso.
+
+819
+01:47:37.170 --> 01:47:40.930
+Guillermo Fajardo: Un agente, un agente.
+
+820
+01:47:41.160 --> 01:47:45.650
+Guillermo Fajardo: Cuando tú le hagas una pregunta: ¿va a tener el prompt
+
+821
+01:47:46.340 --> 01:47:55.949
+Guillermo Fajardo: inicial del system prompt que tú le hayas, querido poner, Oye, pues eres un agente que es un tío muy majo que está ayudando a gente a investigar información financiera.
+
+822
+01:47:58.690 --> 01:48:07.909
+Guillermo Fajardo: Todas las Tools que tú hayas creado. Se le van a añadir a la gente de tal manera que cuando tú hagas una pregunta. Él va a ver. Venga, tengo acceso a esto que hace
+
+823
+01:48:08.320 --> 01:48:09.110
+Guillermo Fajardo: Es la
+
+824
+01:48:13.270 --> 01:48:17.669
+Guillermo Fajardo: entonces lo que hace al poner el Tul aquí es que
+
+825
+01:48:17.950 --> 01:48:21.660
+Guillermo Fajardo: el programa, cuando creemos en la gente, ya sepa que lo va a coger de ahí.
+
+826
+01:48:22.650 --> 01:48:27.489
+Guillermo Fajardo: Y de hecho, esto está hecho. Esa es la manera más simple de hacerlo.
+
+827
+01:48:28.000 --> 01:48:37.150
+Guillermo Fajardo: Pero de hecho, ni siquiera es. No es la mejor, porque, por ejemplo, tenéis que tener en cuenta que si ponemos muchas variables, pues habría que poner también definiciones de las variables y ese tipo de cosas.
+
+828
+01:48:37.260 --> 01:48:42.839
+Guillermo Fajardo: Pero sí, esta es la de esto es lo que esto es, literalmente, lo que va a leer la I A
+
+829
+01:48:42.950 --> 01:48:50.409
+Guillermo Fajardo: y lo que va a utilizar para decidirlo. Por eso, si te fijas aquí, le hemos puesto úsala siempre antes de responder que un dato no existe
+
+830
+01:48:50.960 --> 01:48:55.860
+Guillermo Fajardo: o ya, segun por ejemplo, no solo al principio, sino cuando creas que no lo tienes. Asegúrate
+
+831
+01:48:57.820 --> 01:49:00.050
+Guillermo Fajardo: esto a ver si funciona ahora.
+
+832
+01:49:03.050 --> 01:49:04.969
+Guillermo Fajardo: Sí ha estado funcionando.
+
+833
+01:49:04.970 --> 01:49:08.449
+Javier Hernandez: Guillermo, habías dicho una Skill que no recomendabas mucho.
+
+834
+01:49:08.750 --> 01:49:09.130
+Guillermo Fajardo: Sí.
+
+835
+01:49:09.130 --> 01:49:10.460
+Javier Hernandez: Para para esto.
+
+836
+01:49:11.870 --> 01:49:14.260
+Guillermo Fajardo: Sí a ver cómo era
+
+837
+01:49:18.100 --> 01:49:19.950
+Guillermo Fajardo: tú.
+
+838
+01:49:24.330 --> 01:49:26.500
+Guillermo Fajardo: De hecho, tiene que haber varias. Pero bueno.
+
+839
+01:49:36.670 --> 01:49:37.890
+Guillermo Fajardo: era esto.
+
+840
+01:49:39.480 --> 01:49:41.209
+Guillermo Fajardo: No, eso no es ni es puña?
+
+841
+01:49:52.130 --> 01:49:52.840
+Guillermo Fajardo: No.
+
+842
+01:50:15.860 --> 01:50:16.690
+Guillermo Fajardo: no.
+
+843
+01:50:23.420 --> 01:50:27.700
+Guillermo Fajardo: pues que tiene que si es que me suena un montonazo
+
+844
+01:50:30.260 --> 01:50:32.829
+Guillermo Fajardo: a ver si la tengo por aquí metida en algún lado.
+
+845
+01:50:56.850 --> 01:50:59.390
+Javier Hernandez: Hay una que se llama Lane Change Skills. Puede ser esa.
+
+846
+01:51:01.190 --> 01:51:14.109
+Guillermo Fajardo: No, no la conozco, pero tengo que mirarla porque, claro, Lanch in Skills, son habilidades específicas. Supongo que para utilizar Lancheng como tal. Pero aquí lo que queremos es que claude
+
+847
+01:51:14.470 --> 01:51:21.549
+Guillermo Fajardo: de, independientemente de la librería con la que estemos lidiando pueda acceder a la documentación.
+
+848
+01:51:27.340 --> 01:51:29.340
+Guillermo Fajardo: No lo encuentro ahí mira que la uso.
+
+849
+01:51:33.450 --> 01:51:37.590
+Javier Hernandez: Si no, no te preocupes, si te viene a la cabeza algún día esto nos mandas un.
+
+850
+01:51:37.590 --> 01:51:38.530
+Guillermo Fajardo: Sí, sí, un.
+
+851
+01:51:38.530 --> 01:51:39.200
+Javier Hernandez: Creo, una de.
+
+852
+01:51:39.200 --> 01:51:40.589
+Guillermo Fajardo: Era algo de contexto.
+
+853
+01:51:42.450 --> 01:51:44.100
+Guillermo Fajardo: Toma ya es esta
+
+854
+01:51:48.010 --> 01:51:49.810
+Guillermo Fajardo: esta context sevent.
+
+855
+01:51:49.810 --> 01:51:50.620
+Javier Hernandez: Se en.
+
+856
+01:51:50.790 --> 01:51:52.739
+Guillermo Fajardo: Esa se la metéis a Claude en Skills
+
+857
+01:51:53.880 --> 01:52:01.420
+Guillermo Fajardo: y en el Cloud, punto. M. D. Os aseguráis de decirle ojito, Por favor, me utilizas la documentación actualizada.
+
+858
+01:52:01.540 --> 01:52:02.380
+Guillermo Fajardo: Bueno.
+
+859
+01:52:02.940 --> 01:52:14.320
+Guillermo Fajardo: la documentación actualizada con esto puede consultar cualquier parte de la documentación. Luego imaginaos que estáis lidiando que os pasa. El caso contrario, estáis lidiando con un programa que es antiguo.
+
+860
+01:52:14.710 --> 01:52:27.180
+Guillermo Fajardo: Están Python funciona perfectamente, pero es antiguo y utiliza y tiene versiones fijadas de librerías antiguas. Por lo de la misma manera, le puedes decir, oye, asegúrate de leerte
+
+861
+01:52:27.310 --> 01:52:34.779
+Guillermo Fajardo: el los recuaremens de esta librería y coger documentación. Solo de esta versión se lo podéis hacer también
+
+862
+01:52:40.510 --> 01:52:49.819
+Guillermo Fajardo: entonces aquí, simplemente para hacer la comparativa. Le hemos hecho 2 preguntas aquí, Ya sí. Si no tenéis configurada la Api Key, pues no lo va a poder hacer.
+
+863
+01:52:50.640 --> 01:52:52.690
+Guillermo Fajardo: Por eso tiene el hoy, modelo, pues
+
+864
+01:52:53.670 --> 01:53:01.710
+Guillermo Fajardo: oye aquí. Le hemos dado fijaos para añadirle un Atúl a un modelo a una L. L. M Es tan tonto como hacer esto.
+
+865
+01:53:03.980 --> 01:53:06.160
+Guillermo Fajardo: Le pones aquí. La lista de las Tools
+
+866
+01:53:06.630 --> 01:53:09.709
+Guillermo Fajardo: y ya has terminado, ya está, y es que ya has terminado.
+
+867
+01:53:09.860 --> 01:53:14.269
+Guillermo Fajardo: pues lo único que hemos hecho es: le vamos a hacer la misma pregunta a los 2 modelos
+
+868
+01:53:20.490 --> 01:53:25.720
+Guillermo Fajardo: ya, pero no me ha puesto las respuestas, no con lista.
+
+869
+01:53:27.180 --> 01:53:28.330
+Javier Hernandez: No me.
+
+870
+01:53:36.030 --> 01:53:38.909
+Guillermo Fajardo: A ver. Entonces, tenemos aquí. R,
+
+871
+01:54:12.240 --> 01:54:13.920
+Guillermo Fajardo: Pues esto lo había puesto yo no antes.
+
+872
+01:54:22.860 --> 01:54:25.929
+Guillermo Fajardo: A lo mejor He puesto un modelo más tonto y no lo está pillando
+
+873
+01:54:27.780 --> 01:54:30.280
+Guillermo Fajardo: esto dependiendo de los modelos que utilicéis.
+
+874
+01:54:30.490 --> 01:54:38.960
+Guillermo Fajardo: Lo que puede pasar es que os las alucinaciones realmente ya son bastante más rarillas de ver.
+
+875
+01:54:39.320 --> 01:54:45.000
+Guillermo Fajardo: pero con utilizando las fijaos que con esto lo que ha hecho ha sido que ha intentado coger
+
+876
+01:54:45.330 --> 01:54:47.289
+Guillermo Fajardo: y ha conse Ha conseguido el dato
+
+877
+01:54:50.240 --> 01:54:55.080
+Guillermo Fajardo: espérate. Vamos a poner Ahora vamos a poner el 1 017
+
+878
+01:55:04.220 --> 01:55:05.770
+Guillermo Fajardo: pero no me estás respondiendo
+
+879
+01:55:18.240 --> 01:55:19.800
+Guillermo Fajardo: claro, pero cabrón
+
+880
+01:55:45.050 --> 01:55:48.880
+Guillermo Fajardo: a ver es que si esto antes me lo estaba haciendo bien un momento.
+
+881
+01:56:12.470 --> 01:56:16.419
+Guillermo Fajardo: pero no entiendo por qué están fallando. Ahora, esta tarde estaba funcionando bien.
+
+882
+01:56:16.890 --> 01:56:20.190
+Guillermo Fajardo: Bueno, lo miro luego y os lo pongo porque si no.
+
+883
+01:56:20.880 --> 01:56:24.189
+Guillermo Fajardo: bueno, ahora que hemos visto esto más o menos
+
+884
+01:56:26.280 --> 01:56:33.129
+Guillermo Fajardo: y que ya hemos ido construyendo la otra. Ahora vamos a intentar hacer un cambio que sea un un poquito diferente.
+
+885
+01:56:42.400 --> 01:56:46.030
+Guillermo Fajardo: ¿qué os he dicho antes? De como se construye la función, las funciones, last Tools.
+
+886
+01:56:48.370 --> 01:56:49.969
+Guillermo Fajardo: ¿vamos a hacer que
+
+887
+01:56:50.280 --> 01:56:58.109
+Guillermo Fajardo: vamos a hacer que el atún no tenga ninguna rela ninguna relevancia en el sentido de la gente. No va a saber qué es lo que está haciendo
+
+888
+01:57:00.670 --> 01:57:01.420
+Guillermo Fajardo: y
+
+889
+01:57:01.730 --> 01:57:10.979
+Guillermo Fajardo: creando 2 agentes diferentes con esas 2 Tools con esas mismas tool. Pero con la definición diferente vamos a ver cómo cambia el comportamiento a la hora de
+
+890
+01:57:11.520 --> 01:57:15.269
+Guillermo Fajardo: a la hora de hacerlo a la hora de ejecutar la llamada.
+
+891
+01:57:19.350 --> 01:57:24.700
+Guillermo Fajardo: Así que os dejo un ratillo. Esta es. Esta es bastante sencilla. Os Dejo 5 minutillos.
+
+892
+01:57:24.950 --> 01:57:26.200
+Guillermo Fajardo: y ahora lo vemos
+
+893
+01:58:19.680 --> 01:58:27.710
+Guillermo Fajardo: y hostia, No que estoy viendo que voy bastante justillo de tiempo, porque esto es hasta las 9. No.
+
+894
+01:58:30.210 --> 01:58:31.640
+Cristian: Estar a las 9.
+
+895
+01:58:32.090 --> 01:58:36.259
+Guillermo Fajardo: Vale, vale, pues yo que creía que me iba a quedar corto.
+
+896
+01:58:43.440 --> 01:58:50.259
+Guillermo Fajardo: Vale, pues mira este mini ejercicio. Os voy a dar la solución justo antes de la siguiente clase.
+
+897
+01:58:50.990 --> 01:58:55.670
+Guillermo Fajardo: Y vamos a seguir viendo porque la última parte es la parte relevante. Realmente
+
+898
+01:58:59.740 --> 01:59:04.350
+Guillermo Fajardo: Bueno, claro es que me he quedado corto completamente
+
+899
+01:59:04.580 --> 01:59:12.640
+Guillermo Fajardo: simplemente de este ejercicio anterior. Lo que se desprende es que la descripción que ponemos del atún, justo, como habíais dicho antes, es bastante importante.
+
+900
+01:59:13.130 --> 01:59:21.749
+Guillermo Fajardo: porque no solamente le va a decir a la gente lo que tiene que hacer, sino que cuando construyáis agentes complejos que tengan muchas tools
+
+901
+01:59:21.940 --> 01:59:26.660
+Guillermo Fajardo: o vais a dar cuenta que va a haber un montón de casos raros, no en el que.
+
+902
+01:59:27.190 --> 01:59:43.660
+Guillermo Fajardo: por un matiz en la descripción hay cierta situación muy específica en la que debería estar utilizando esta Tul y no debería estar utilizando esta. Y lo que os va a pedir el cuerpo, a lo mejor en el momento va a ser Des va a ser como
+
+903
+01:59:43.740 --> 01:59:53.850
+Guillermo Fajardo: ir añadiendo más palabritas a la definición e ir añadiendo más cosas e ir haciendo la definición más larga cuando lo que tenéis que intentar realmente es.
+
+904
+01:59:54.380 --> 02:00:01.509
+Guillermo Fajardo: a un nivel más literario hacer una mejor redacción de las tours. Aún así, esto va a pasar siempre.
+
+905
+02:00:03.800 --> 02:00:11.409
+Guillermo Fajardo: Bueno, aquí también. Para explicaros lo que era el Vine Tools, el vine Tools. Es justo lo que os he dicho que se utilizaba para unir las
+
+906
+02:00:11.840 --> 02:00:20.890
+Guillermo Fajardo: unirlas tools a un modo a un modelo. Es decir, y esto es una L l M, Esto
+
+907
+02:00:21.340 --> 02:00:22.459
+Guillermo Fajardo: ya es un agente.
+
+908
+02:00:24.850 --> 02:00:26.279
+Guillermo Fajardo: Una mentira no es una gente
+
+909
+02:00:26.660 --> 02:00:32.430
+Guillermo Fajardo: porque no, todavía no tiene todavía el bucle, pero esto ya es un modelo que tiene capacidad de acción.
+
+910
+02:00:32.930 --> 02:00:37.370
+Guillermo Fajardo: es decir, es una Lm: Ella puede
+
+911
+02:00:39.070 --> 02:00:46.020
+Guillermo Fajardo: buscar en Internet o que ya puede ejecutar código en tu computadora.
+
+912
+02:00:46.350 --> 02:00:48.950
+Guillermo Fajardo: lo que no puede ahora mismo es
+
+913
+02:00:49.850 --> 02:00:57.130
+Guillermo Fajardo: recibir el recibir el feedback ¿De qué es lo que ha pasado cuando ha hecho lo que ha hecho y continuar con ello.
+
+914
+02:01:01.310 --> 02:01:02.530
+Guillermo Fajardo: Entonces
+
+915
+02:01:10.420 --> 02:01:19.960
+Guillermo Fajardo: fijaos, cuando una, cuando un agente, un mo o un modelo está llamando a un atúl
+
+916
+02:01:20.410 --> 02:01:30.519
+Guillermo Fajardo: lo único que está haciendo es que oye le hemos dado los argumentos, Le hemos dado los los las variables, cómo tiene que llamarlas y la definición. Entonces, Okay.
+
+917
+02:01:30.710 --> 02:01:38.590
+Guillermo Fajardo: simplemente una mensaje tipo Tool Call va a contener siempre oye qué tú? Le estoy llamando
+
+918
+02:01:38.860 --> 02:01:43.580
+Guillermo Fajardo: cuáles son cada 1 de los de las variables que quiero rellenar.
+
+919
+02:01:43.700 --> 02:01:50.940
+Guillermo Fajardo: Y este, que es un cólide que se utiliza para bueno para cosas bastante más algo más avanzadas que ahora mismo no son muy relevantes.
+
+920
+02:01:52.710 --> 02:02:00.499
+Guillermo Fajardo: Claro Ahora, qué es lo importante, ¿Qué es lo que falta, justo lo que os he dicho antes, esto es una modelo que es capaz de tomar una acción.
+
+921
+02:02:00.770 --> 02:02:08.600
+Guillermo Fajardo: y desde esa acción es capaz, pues, de generar un cambio. Pero ahora mismo está ciego en el sentido de que tú lo ejecutas
+
+922
+02:02:09.500 --> 02:02:14.800
+Guillermo Fajardo: hace la llamada que tenga que hacer la tool. Se ejecuta
+
+923
+02:02:14.980 --> 02:02:19.210
+Guillermo Fajardo: e independientemente de lo que pase con la Tul ya terminado.
+
+924
+02:02:19.490 --> 02:02:21.240
+Guillermo Fajardo: ya no va a pasar nada más.
+
+925
+02:02:22.340 --> 02:02:29.709
+Guillermo Fajardo: ¿por qué? Porque no hay ningún tipo de bucle. ¿cómo se ¿Cómo se pasa el paso de un agente o qué hay? Pues súper sencillo?
+
+926
+02:02:30.770 --> 02:02:39.169
+Guillermo Fajardo: Voy a poner esto. Voy a voy a ponerle el L. M. Voy a hacer que pueda ejecutar una tool y voy a hacer que haya una manera de que esa tool
+
+927
+02:02:40.020 --> 02:02:43.870
+Guillermo Fajardo: le vuelva el mensaje a la L, L, M: Y así podamos continuar.
+
+928
+02:02:44.020 --> 02:02:51.410
+Guillermo Fajardo: Pues simplemente para hacer eso, lo Tip: lo bueno, lo típico oye, eres un tío supermajo que está ayudando. Y tal.
+
+929
+02:02:51.700 --> 02:02:57.480
+Guillermo Fajardo: Pero con esto fijaos. punto.
+
+930
+02:03:01.940 --> 02:03:02.730
+Guillermo Fajardo: vale.
+
+931
+02:03:04.040 --> 02:03:12.350
+Guillermo Fajardo: esto ya es lo que hace un agente y todo lo que veáis vosotros por ahí de agentes. Y tal no es más Bueno, la gente, de hecho, es esto.
+
+932
+02:03:18.570 --> 02:03:21.659
+Guillermo Fajardo: Es un bucle, un agente. Es un bucle, Ford
+
+933
+02:03:21.760 --> 02:03:26.690
+Guillermo Fajardo: o más normalmente un bul, un bucle guay, tienes un objetivo.
+
+934
+02:03:27.470 --> 02:03:32.020
+Guillermo Fajardo: tienes unas herramientas y tienes capacidad de reflexionar
+
+935
+02:03:32.630 --> 02:03:41.829
+Guillermo Fajardo: sobre la respuesta o el resultado de lo que están haciendo las herramientas conforme consideres que el objetivo se ha cumplido Wild para.
+
+936
+02:03:42.970 --> 02:03:48.330
+Guillermo Fajardo: en este sentido, ¿cómo podemos? ¿cómo podemos? Porque estamos haciendo aquí un foro en vez de un Wild.
+
+937
+02:03:49.360 --> 02:03:53.349
+Guillermo Fajardo: el agente siempre va a poder. La L M siempre va a tener 2 opciones.
+
+938
+02:03:53.490 --> 02:03:57.960
+Guillermo Fajardo: o devolverte un mensaje de texto, dándote la respuesta
+
+939
+02:03:58.180 --> 02:04:00.749
+Guillermo Fajardo: o devolverte una llamada a una herramienta.
+
+940
+02:04:01.180 --> 02:04:05.750
+Guillermo Fajardo: Entonces simplemente oye algún bucle F, o R,
+
+941
+02:04:07.130 --> 02:04:12.880
+Guillermo Fajardo: en el bucle, F, o R. Llamo a la L. L, M: Con las con las Tools. Y le meto los mensajes.
+
+942
+02:04:13.240 --> 02:04:18.620
+Guillermo Fajardo: me va a dar una respuesta. Meto la respuesta en los mensajes.
+
+943
+02:04:18.820 --> 02:04:24.900
+Guillermo Fajardo: Y lo que me va a pasar es que la respuesta, o va a ser una llamada a una tul, o va a ser un texto.
+
+944
+02:04:25.560 --> 02:04:30.420
+Guillermo Fajardo: Pues entonces, si si no hay dulk Colls.
+
+945
+02:04:30.700 --> 02:04:37.040
+Guillermo Fajardo: pues tiene que ser el texto y lo y lo imprimimos, esto simplemente un agente
+
+946
+02:04:37.200 --> 02:04:40.810
+Guillermo Fajardo: es la manera manual de hacer un agente. Es súper sencillo.
+
+947
+02:04:41.810 --> 02:04:43.970
+Guillermo Fajardo: Lo complicado siempre viene con las tools.
+
+948
+02:04:44.400 --> 02:04:47.879
+Guillermo Fajardo: pero bueno, lo he puesto aquí simplemente para que veáis un poquito. ¿cómo es
+
+949
+02:04:52.650 --> 02:04:54.139
+Guillermo Fajardo: a ver si funciona Ahora.
+
+950
+02:05:00.170 --> 02:05:01.310
+Guillermo Fajardo: provider
+
+951
+02:05:16.610 --> 02:05:17.780
+Guillermo Fajardo: a ver
+
+952
+02:05:21.720 --> 02:05:23.190
+Guillermo Fajardo: 401.
+
+953
+02:05:32.500 --> 02:05:35.130
+Guillermo Fajardo: Esto es, que no que las credenciales están mal
+
+954
+02:05:37.110 --> 02:05:40.340
+Guillermo Fajardo: modelo con Tools. Este modelo con Tool Lo hemos hecho.
+
+955
+02:06:04.140 --> 02:06:08.030
+Guillermo Fajardo: Si no está bien a ver
+
+956
+02:06:14.010 --> 02:06:15.130
+Guillermo Fajardo: Okay.
+
+957
+02:06:25.950 --> 02:06:27.189
+Guillermo Fajardo: eso sí funciona.
+
+958
+02:06:27.760 --> 02:06:29.110
+Guillermo Fajardo: Ahora ha sido.
+
+959
+02:06:42.180 --> 02:06:44.369
+Guillermo Fajardo: Tiene que ser algo aquí en la gente manual.
+
+960
+02:06:46.190 --> 02:06:47.819
+Guillermo Fajardo: Vale, Sí,
+
+961
+02:07:06.220 --> 02:07:09.199
+Guillermo Fajardo: probablemente que estén puestos molestos. Los roles.
+
+962
+02:07:32.150 --> 02:07:33.770
+Guillermo Fajardo: que es una función normal.
+
+963
+02:07:43.560 --> 02:07:44.350
+Guillermo Fajardo: Vale.
+
+964
+02:07:57.110 --> 02:07:58.999
+Guillermo Fajardo: No tiene mucho sentido. Esto
+
+965
+02:08:08.050 --> 02:08:15.980
+Guillermo Fajardo: se os ocurre alguno porque puede ser esto fijaos el agente manual, lo puedo llamar.
+
+966
+02:08:16.360 --> 02:08:17.800
+Guillermo Fajardo: Y no hay ningún problema.
+
+967
+02:08:21.950 --> 02:08:26.760
+Guillermo Fajardo: Sin embargo, aquí revienta
+
+968
+02:08:39.440 --> 02:08:41.220
+Guillermo Fajardo: a ver. Voy a cambiar esto.
+
+969
+02:09:24.750 --> 02:09:26.170
+Guillermo Fajardo: a ver qué vamos a hacer.
+
+970
+02:09:50.310 --> 02:09:55.319
+Guillermo Fajardo: qué raro no dependien, o sea.
+
+971
+02:09:55.420 --> 02:10:02.680
+Guillermo Fajardo: o sea, atención a lo que está pasando, Dependiendo de la pregunta que haga, Me bloquea.
+
+972
+02:10:04.330 --> 02:10:10.990
+Diego Muñoz Alonso: Yo estoy probando ahora. Me funciona. Pero si pongo, quiero, Apple, me falla. Por ejemplo, es curioso.
+
+973
+02:10:23.460 --> 02:10:25.400
+Guillermo Fajardo: A ver si pongo aquí.
+
+974
+02:10:39.220 --> 02:10:40.529
+Guillermo Fajardo: Esto es muy tonto.
+
+975
+02:10:41.260 --> 02:10:42.550
+Guillermo Fajardo: Tiene ningún sentido.
+
+976
+02:10:47.780 --> 02:10:55.930
+Guillermo Fajardo: pues no sé exactamente qué está fallando aquí. A ver, creo que es del proveedor, pero me parece raro alguno que estéis utilizando Gaming directamente, os ha pasado
+
+977
+02:10:57.320 --> 02:10:58.530
+Guillermo Fajardo: o.
+
+978
+02:10:58.530 --> 02:11:01.110
+Cristian: Te estás autenticando con una Api o algo así.
+
+979
+02:11:02.230 --> 02:11:05.130
+Guillermo Fajardo: Sí, Estoy utilizando la Api de Open Router.
+
+980
+02:11:06.640 --> 02:11:18.969
+Guillermo Fajardo: y pero vamos que es el mismo modelo que llevamos utilizando, es decir el modelo. Lo hemos construido con Landchen utilizando como cerebro una l L m de Open Router, aunque la l m de germinar.
+
+981
+02:11:20.250 --> 02:11:26.549
+Guillermo Fajardo: y esa es la que llevamos utilizando en todo el ejercicio. Y este mismo modelo estamos utilizando el mismo modelo.
+
+982
+02:11:27.650 --> 02:11:30.040
+Guillermo Fajardo: dependiendo de la pregunta que le hagas.
+
+983
+02:11:30.690 --> 02:11:36.269
+Guillermo Fajardo: te la contesta o te o igual no tiene que ver con la pregunta igual es simplemente que está esto un poco.
+
+984
+02:11:36.580 --> 02:11:43.220
+Guillermo Fajardo: no sé saturado. Lo que pasa es que luego me da un error. 400 Uno mira donde.
+
+985
+02:11:43.220 --> 02:11:47.710
+Cristian: Sí, Yo antes lo he visto por ahí el 401. Por eso lo he preguntado, pero ella no.
+
+986
+02:11:47.710 --> 02:11:49.780
+Guillermo Fajardo: Y 4. Y el 401.
+
+987
+02:11:50.840 --> 02:11:54.470
+Cristian: Es que no te auténticas, O sea que no te estás autenticas. No.
+
+988
+02:11:56.700 --> 02:11:58.179
+Guillermo Fajardo: Mira sí, 401.
+
+989
+02:12:03.400 --> 02:12:09.900
+Cristian: Lo que se está saliendo con las Ips de Google. E igual algunas del pool están bloqueadas alguna.
+
+990
+02:12:09.900 --> 02:12:11.110
+Guillermo Fajardo: Y esa es buena. ¿
+
+991
+02:12:13.820 --> 02:12:17.589
+Guillermo Fajardo: Es verdad, Puede ser? Bueno, vamos a intentarlo aquí.
+
+992
+02:12:19.290 --> 02:12:21.209
+Guillermo Fajardo: Aquí va a terminar petando, ¿sí? O sí,
+
+993
+02:12:22.870 --> 02:12:27.640
+Guillermo Fajardo: Vale. Bueno, simplemente esto era un ejemplo.
+
+994
+02:12:27.940 --> 02:12:34.669
+Guillermo Fajardo: Un ejemplo. Para darle una pregunta un poco con el Truquillo
+
+995
+02:12:34.800 --> 02:12:40.249
+Guillermo Fajardo: y hacer que la gente entrara en un bucle y bueno que viera que puede pasar lo del bucle y que
+
+996
+02:12:40.420 --> 02:12:43.720
+Guillermo Fajardo: parámetros como el Max vueltas, pues son bastante relevantes.
+
+997
+02:12:45.130 --> 02:12:54.229
+Guillermo Fajardo: ¿por qué os estaba enseñando cómo hacer manualmente a un agente simplemente para que lo veáis, Porque realmente todas estas cosas, igual que lo del Atúo están ya completamente abstraídas.
+
+998
+02:12:54.420 --> 02:12:55.620
+Guillermo Fajardo: Hay.
+
+999
+02:12:55.840 --> 02:13:06.639
+Guillermo Fajardo: no tenéis por qué utilizar Lanchain. Hay otros Frameworks que son más sencillos que Fre que Lanchain no es que sea complicado, pero yo recomiendo mucho Landchain, porque
+
+1000
+02:13:06.800 --> 02:13:13.519
+Guillermo Fajardo: cuando ya sabes, más si quieres ir a cosas más avanzadas, Lunch in te deja meterte hasta las tripas.
+
+1001
+02:13:13.870 --> 02:13:19.930
+Guillermo Fajardo: Y eso es bastante útil cuando quieres hacer a gente muy potente. Os pongo un ejemplo directamente.
+
+1002
+02:13:21.260 --> 02:13:25.980
+Guillermo Fajardo: Imagínate que estáis haciendo un agente como el que yo he hecho.
+
+1003
+02:13:26.340 --> 02:13:33.240
+Guillermo Fajardo: que tiene que responderte información financiera y que ti. Tú tienes que poder preguntarle a la gente: oye no.
+
+1004
+02:13:33.680 --> 02:13:41.149
+Guillermo Fajardo: yo qué sé dame todos los precios de Dame todos los precios de envidia desde el 2 010
+
+1005
+02:13:42.380 --> 02:13:49.039
+Guillermo Fajardo: Claro que vas a hacer vas a coger y vas a meter un Atúl que le devuelva en texto
+
+1006
+02:13:49.770 --> 02:13:58.860
+Guillermo Fajardo: el oppenhielow close diario desde 2 005, o sea que no lo siento suspenso.
+
+1007
+02:13:59.220 --> 02:14:01.929
+Guillermo Fajardo: o sea que está mal, no funciona. Eso. Es decir.
+
+1008
+02:14:02.760 --> 02:14:08.599
+Guillermo Fajardo: va a haber muchas situaciones, especialmente con datos financieros y con otras cosas en los que tú
+
+1009
+02:14:09.690 --> 02:14:14.920
+Guillermo Fajardo: quieras pintar un gráfico o quieras generar objetos
+
+1010
+02:14:15.060 --> 02:14:23.019
+Guillermo Fajardo: que sepas que la gente no debe poder ver, o incluso piénsalo de otra manera, porque esto también lo hemos tenido que hacer Nosotros hemos tenido que hacer agentes
+
+1011
+02:14:23.230 --> 02:14:31.260
+Guillermo Fajardo: que sean capaces de recuperar archivos con información confidencial
+
+1012
+02:14:32.950 --> 02:14:40.990
+Guillermo Fajardo: para buscar esos archivos, ha tenido que de alguna manera coger información implícita de dentro del archivo confidencial
+
+1013
+02:14:41.790 --> 02:14:45.249
+Guillermo Fajardo: que no lo pueda ver en la gente y lo pueda ver el usuario.
+
+1014
+02:14:46.650 --> 02:14:54.530
+Guillermo Fajardo: Todo ese tipo de cosas ya requieren un manejo más fino no solo de las tool, sino de de cómo funciona la gente como tal.
+
+1015
+02:14:55.180 --> 02:14:59.950
+Guillermo Fajardo: que eso Lanchense, te va a permitir hacerlo, y otros no te van a permitir hacerlo.
+
+1016
+02:15:01.610 --> 02:15:09.990
+Guillermo Fajardo: Entonces, bueno, todo lo que os he puesto, la gente es el patrón supersencillo, que es el que siguen los agentes del riac risa ondananack
+
+1017
+02:15:10.610 --> 02:15:16.059
+Guillermo Fajardo: Y ahora fijaos que esto todo se puede hacer mucho más simple.
+
+1018
+02:15:20.010 --> 02:15:25.079
+Guillermo Fajardo: Esto es simplemente un patrón de respuesta. Es que lo siento, porque tengo que ir un pelín rápido, porque si No.
+
+1019
+02:15:25.550 --> 02:15:31.769
+Guillermo Fajardo: esa celda es bastante importante. Os lo he puesto ya en varios sitios, pero esta celda es bastante importante y la vais a tener que utilizar.
+
+1020
+02:15:32.050 --> 02:15:36.609
+Guillermo Fajardo: Esto es un modelo de Paydantic en el que estamos definiendo
+
+1021
+02:15:36.780 --> 02:15:43.229
+Guillermo Fajardo: cuál es la estructura que tiene que tener una respuesta y así nos aseguramos de que va a ser fiel, por así decirlo.
+
+1022
+02:15:43.910 --> 02:15:52.130
+Guillermo Fajardo: y hacer fijaos todo el agente. Y todo lo que hemos hecho, es esto.
+
+1023
+02:15:55.710 --> 02:15:58.269
+Guillermo Fajardo: Obviamente esto es una extracción hecha por Lanchy.
+
+1024
+02:15:58.460 --> 02:16:04.450
+Guillermo Fajardo: pero con eso le tenéis que dar las herramientas. Le tenéis que Dar el pront en la L. L. M.
+
+1025
+02:16:05.130 --> 02:16:12.329
+Guillermo Fajardo: Y lo del Respond Format: realmente es opcional. Te lo podría dar en texto, pero todo lo que es el agente, Ya lo tenéis puesto aquí
+
+1026
+02:16:14.020 --> 02:16:15.660
+Guillermo Fajardo: a ver si ahora no me
+
+1027
+02:16:16.730 --> 02:16:18.539
+Guillermo Fajardo: a ver si lo dice ahora.
+
+1028
+02:16:21.530 --> 02:16:22.909
+Guillermo Fajardo: me va a responder o no.
+
+1029
+02:16:25.070 --> 02:16:29.529
+Guillermo Fajardo: Otra vez lo de las secciones, pues tengo que arreglarlo
+
+1030
+02:16:35.270 --> 02:16:38.049
+Guillermo Fajardo: si en herramientas quito, por ejemplo.
+
+1031
+02:16:41.879 --> 02:16:42.580
+Guillermo Fajardo: por ejemplo.
+
+1032
+02:16:49.139 --> 02:16:49.900
+Guillermo Fajardo: sí.
+
+1033
+02:17:13.459 --> 02:17:18.699
+Diego Muñoz Alonso: Una una duda: se se va a crear un log con todas las tools que va utilizando respuestas intermedias.
+
+1034
+02:17:18.700 --> 02:17:25.600
+Guillermo Fajardo: Sí, sí, justo eso de lo que tú hablas es el estado que es la magia con la que hay que jugar los agentes
+
+1035
+02:17:25.799 --> 02:17:31.619
+Guillermo Fajardo: aquí. Le he hecho un truquillo, como me fallaba lo de secciones, pues le he quitado. Le he quitado la turco que utilizaba las acciones.
+
+1036
+02:17:32.139 --> 02:17:36.699
+Guillermo Fajardo: Pero mira ves mensajes acumulados en el vídeo 10. Si yo ahora cojo
+
+1037
+02:17:41.290 --> 02:17:43.290
+Guillermo Fajardo: ha guardado la respuesta o no.
+
+1038
+02:17:44.920 --> 02:17:45.780
+Guillermo Fajardo: Es Ruth
+
+1039
+02:17:56.600 --> 02:17:58.500
+Guillermo Fajardo: fijaos mensajes.
+
+1040
+02:17:58.870 --> 02:18:01.719
+Guillermo Fajardo: Primero, el mensaje del humano. Oye, ¿qué es esto?
+
+1041
+02:18:02.200 --> 02:18:08.460
+Guillermo Fajardo: Lo primero que hace la guía? No te digo nada, porque lo que estoy haciendo es llamar a un atún. Estoy razonando tal tal tal
+
+1042
+02:18:09.209 --> 02:18:14.740
+Guillermo Fajardo: y está cogiendo contexto. No, no le basta, va buscando más.
+
+1043
+02:18:15.490 --> 02:18:18.380
+Guillermo Fajardo: Aquí, sigue llamando más tours más tours.
+
+1044
+02:18:22.100 --> 02:18:28.629
+Guillermo Fajardo: Las tul le están respondiendo, es decir, no solamente ver la llamada, sino ver lo que está devolviendo el Atúl, y por aquí tiene que estar.
+
+1045
+02:18:38.420 --> 02:18:39.710
+Guillermo Fajardo: Ah, no vale. Sí.
+
+1046
+02:18:40.100 --> 02:18:53.279
+Guillermo Fajardo: Aquí simplemente está devolviendo. Está devolviendo la respuesta de una manera estructurada. Entonces ya simplemente lo tenéis ahí, pero siempre vais a tener ahí un log Y eso va a ser superinteresante, súper interesante, porque además
+
+1047
+02:18:55.639 --> 02:18:56.320
+Guillermo Fajardo: se llama
+
+1048
+02:19:02.150 --> 02:19:07.590
+Guillermo Fajardo: Fijaos simplemente poniendo esto porque te vas aprendiendo
+
+1049
+02:19:18.000 --> 02:19:20.260
+Guillermo Fajardo: Ahí lo han cambiado el state
+
+1050
+02:19:30.400 --> 02:19:31.200
+Guillermo Fajardo: aquí.
+
+1051
+02:19:37.150 --> 02:19:39.360
+Guillermo Fajardo: Bueno, los cojo a cojones
+
+1052
+02:19:47.010 --> 02:19:47.809
+Guillermo Fajardo: hasta Aragón.
+
+1053
+02:19:50.140 --> 02:19:50.860
+Guillermo Fajardo: No, claro.
+
+1054
+02:19:55.860 --> 02:19:57.600
+Guillermo Fajardo: Joder no lo está dando ahora.
+
+1055
+02:19:59.760 --> 02:20:07.389
+Guillermo Fajardo: Básicamente, cuando tú creas un agente, lo que va a identificar cada conversación es el config.
+
+1056
+02:20:07.630 --> 02:20:16.259
+Guillermo Fajardo: Eso es lo típico que estarías diciendo. Porque cuando tú creas un agente y le estás dando una memoria de tal manera que tú le puedes hacer ir haciendo más y más preguntas.
+
+1057
+02:20:16.760 --> 02:20:21.930
+Guillermo Fajardo: Tiene que saber un una cosa superbásica. Si quieres atender a más de una persona y no lo tienes en local.
+
+1058
+02:20:22.210 --> 02:20:25.689
+Guillermo Fajardo: Es. No tienes que mezclar conversaciones. Lógicamente.
+
+1059
+02:20:25.810 --> 02:20:31.750
+Guillermo Fajardo: ¿cómo hacemos eso? Pues súper fácil. Le damos un identificador a cada conversación y tirando para adelante.
+
+1060
+02:20:31.920 --> 02:20:38.679
+Guillermo Fajardo: Pero lo interesante de aquí que ahora mismo no me está saliendo, porque yo estoy acostumbrado a una versión a una
+
+1061
+02:20:39.120 --> 02:20:41.349
+Guillermo Fajardo: versión un poco más antigua en la librería.
+
+1062
+02:20:41.770 --> 02:20:56.649
+Guillermo Fajardo: Los de lanching. Ya os lo digo desde ya son un poco capullines en el sentido de que cambian mucho la librería. Los cambios que hacen muchas veces son cambios de estos son Breaking chains en el sentido de que lo anterior te deja de funcionar y cosas por el estilo.
+
+1063
+02:20:57.080 --> 02:21:04.390
+Guillermo Fajardo: Entonces, pues, hay mucha gente que nos vamos acumulando varias versiones y hacemos una versión, un salto de versión, cada X tiempo.
+
+1064
+02:21:04.880 --> 02:21:09.829
+Guillermo Fajardo: Y entonces lo que me está pasando es eso normalmente con esto. Deberías poder acceder.
+
+1065
+02:21:18.920 --> 02:21:20.939
+Guillermo Fajardo: Beet State. Ah, mira, está bien.
+
+1066
+02:21:24.550 --> 02:21:29.929
+Guillermo Fajardo: toma aquí. Está claro, el Estado
+
+1067
+02:21:30.170 --> 02:21:44.499
+Guillermo Fajardo: es todo lo que tiene por dentro. La gente que incluye el historial de conversaciones. Y tal aquí jugando con el estado es donde realmente se puede hacer magia porque el estado. Lo puedes configurar como te dé la gana.
+
+1068
+02:21:44.600 --> 02:21:49.319
+Guillermo Fajardo: Y entonces, aparte de los mensajes, pues le puedes hacer un Storage de objetos.
+
+1069
+02:21:50.090 --> 02:21:56.809
+Guillermo Fajardo: entonces de esa manera ya puedes, por ejemplo, pues tener una gente que sepa hacer código y puedes tener una tul
+
+1070
+02:21:56.990 --> 02:22:00.190
+Guillermo Fajardo: que te diga y
+
+1071
+02:22:00.440 --> 02:22:10.800
+Guillermo Fajardo: que te diga la forma y los atributos del objeto que tienes sin llegar a abrir el objeto de tal. De esa manera, puedes tener a lo mejor un data frame de 500 000 filas
+
+1072
+02:22:11.090 --> 02:22:24.690
+Guillermo Fajardo: y que, pues tengas la el shape del Data frame que tengas el nombre de las columnas, las descripciones, los tipos Así, un resumencillo. Y eso ya le permitiría a tu agente poder ir haciendo código sobre ese objeto
+
+1073
+02:22:24.820 --> 02:22:29.960
+Guillermo Fajardo: o si tienes un sistema de varios agentes que varios agentes vayan trabajando sobre el mismo objeto.
+
+1074
+02:22:30.560 --> 02:22:33.600
+Guillermo Fajardo: manipular bien el Estado
+
+1075
+02:22:34.020 --> 02:22:40.210
+Guillermo Fajardo: y configurarlo a tu gusto para la tarea es el secreto para hacer agentes potentes. De verdad.
+
+1076
+02:22:40.960 --> 02:22:45.729
+Diego Muñoz Alonso: Y aquí está el contexto, o sea, realmente la ventana de contexto, sería todo el estado dependiendo de la recuperación.
+
+1077
+02:22:45.730 --> 02:22:49.050
+Guillermo Fajardo: No, no. La ventana de contexto.
+
+1078
+02:22:49.190 --> 02:22:54.420
+Guillermo Fajardo: Casi todo de la gracia del Estado es que la L M no lo ve.
+
+1079
+02:22:55.120 --> 02:23:00.809
+Guillermo Fajardo: Porque si hubiera que meter todo esto en el contexto, sería una locura. La L L. M: Lo único que ve
+
+1080
+02:23:01.080 --> 02:23:05.919
+Guillermo Fajardo: son básicamente una versión simplificada de los Messengers.
+
+1081
+02:23:07.770 --> 02:23:16.440
+Guillermo Fajardo: normalmente va a ser una versión simplificada en el sentido de, por ejemplo, esto no lo ve si es.
+
+1082
+02:23:16.440 --> 02:23:18.770
+Diego Muñoz Alonso: O sea, hay mucha metadata que no, que no, que no.
+
+1083
+02:23:18.770 --> 02:23:27.390
+Guillermo Fajardo: Sí, efectivamente, pero es mucha metadata que si tú haces lógica con esa? Bueno con la metadata de los mensajes, no tiene mucho sentido.
+
+1084
+02:23:27.490 --> 02:23:34.400
+Guillermo Fajardo: pero que yo puedo meter dentro del State Snapshot, otros objetos, otros otras Kiss, otras cosas.
+
+1085
+02:23:34.640 --> 02:23:44.689
+Guillermo Fajardo: y hacer que mis Tools y a través de las Tools, el agente pueda modificarlas. Y entonces ya es cuando la gente gana una potencia mucho más grande
+
+1086
+02:23:45.880 --> 02:23:51.790
+Guillermo Fajardo: que se sale completamente de simplemente de hacer. Porque si te quedas en esto, lo que vas a hacer es un chatbot.
+
+1087
+02:23:52.860 --> 02:23:57.810
+Guillermo Fajardo: y los agentes potentes De verdad pueden hacer mucho más que eso.
+
+1088
+02:23:59.400 --> 02:24:05.769
+Guillermo Fajardo: O de aquí. Por ejemplo, en el State puedes ver, por ejemplo, puedes sacar los costes te lo va a poner aquí normalmente.
+
+1089
+02:24:07.940 --> 02:24:11.860
+Diego Muñoz Alonso: Y cómo lo calculamos. Hace un multiplicador de tokens por coste de un.
+
+1090
+02:24:11.860 --> 02:24:17.979
+Guillermo Fajardo: No, No, No hace falta normalmente en el en la Api que tú estés utilizando, puedes a lo mejor setear un parámetro
+
+1091
+02:24:18.130 --> 02:24:24.330
+Guillermo Fajardo: que te que te mande el coste de cada pregunta que estás haciendo. Entonces, en cada mensaje.
+
+1092
+02:24:25.020 --> 02:24:39.710
+Guillermo Fajardo: cada mensaje, a lo mejor de la I A tal. Te va a venir un un metadato que sea el coste y lo vas sumando. También está lo del el conteo de los tokens es súper fácil en ese sentido. Entonces hay muchas veces, Por ejemplo, mira, fíjate.
+
+1093
+02:24:42.110 --> 02:24:42.750
+Diego Muñoz Alonso: Mhm.
+
+1094
+02:24:44.340 --> 02:24:45.269
+Guillermo Fajardo: Aquí lo tienes.
+
+1095
+02:24:45.510 --> 02:24:53.199
+Guillermo Fajardo: Otra. Ve antes. Había que hacerlo muchas veces con los tokens y tal porque no te daban lo del coste. Pero ahora es muy normal que te den los tokens fíjate
+
+1096
+02:24:53.440 --> 02:24:54.970
+Guillermo Fajardo: metadatos de uso.
+
+1097
+02:24:56.920 --> 02:25:03.820
+Guillermo Fajardo: Con esto puedes sacar. Esto no es solamente importante a nivel de curiosidad, sino que imagino que estáis en un entorno laboral.
+
+1098
+02:25:04.320 --> 02:25:11.079
+Guillermo Fajardo: Hay muchos sitios en los que la gente no mide estas cosas y se va muy rápido de de madre. El coste
+
+1099
+02:25:11.520 --> 02:25:15.219
+Guillermo Fajardo: y que tú tengas metadata para decir.
+
+1100
+02:25:15.710 --> 02:25:18.129
+Guillermo Fajardo: no, yo he mejorado el uso? No, no, no, no, no.
+
+1101
+02:25:18.620 --> 02:25:22.610
+Guillermo Fajardo: Aquí están los tokens medios de las preguntas que se hacían antes.
+
+1102
+02:25:23.170 --> 02:25:25.779
+Guillermo Fajardo: vemos que las preguntas son más o menos igual de largas.
+
+1103
+02:25:25.900 --> 02:25:31.399
+Guillermo Fajardo: Y ahora vemos que hemos gastado un 30 por 100 menos de tokens por los cambios estos que hemos hecho.
+
+1104
+02:25:31.680 --> 02:25:35.800
+Guillermo Fajardo: Simplemente se puede medir. Eso te da mucho más poder para defender.
+
+1105
+02:25:35.930 --> 02:25:40.239
+Guillermo Fajardo: pues cualquier tipo de cosas. Pero eso ya es como a nivel de coste a nivel de
+
+1106
+02:25:40.730 --> 02:25:47.340
+Guillermo Fajardo: capacidad aumentada del para hacer cosas es completamente diferente.
+
+1107
+02:25:47.980 --> 02:25:51.810
+Guillermo Fajardo: Y con eso también puedes ver la trayectoria.
+
+1108
+02:25:52.450 --> 02:25:56.340
+Guillermo Fajardo: Por favor, miraos esto. Bueno, es que lo vais a necesitar para la práctica.
+
+1109
+02:25:57.510 --> 02:26:13.850
+Guillermo Fajardo: Os voy a comentar muy por encima la práctica que la tenéis ahí también subida. La podéis hacer en grupos de 3 a sugerencia de valero. Vamos a dar clase hoy el día siguiente y en la siguiente, en la tercera clase, cuando vamos a ver el
+
+1110
+02:26:14.140 --> 02:26:21.260
+Guillermo Fajardo: las entregas, básicamente vais a necesitar a las Apis Kiss. Por eso he dicho lo del buen Router
+
+1111
+02:26:21.660 --> 02:26:29.020
+Guillermo Fajardo: y vais a tener que hacer una entrega, sobre todo en Github. Con vuestra propuesta tenéis que construir
+
+1112
+02:26:29.130 --> 02:26:31.799
+Guillermo Fajardo: un agente que responda preguntas sobre los diezca
+
+1113
+02:26:32.090 --> 02:26:34.130
+Guillermo Fajardo: aquí. ¿lo tenéis todo bastante claro.
+
+1114
+02:26:35.540 --> 02:26:39.380
+Guillermo Fajardo: Esto simplemente lo que vamos a ver en las sesiones.
+
+1115
+02:26:40.020 --> 02:26:42.130
+Guillermo Fajardo: Estos son los datos que os he dado
+
+1116
+02:26:42.700 --> 02:26:46.650
+Guillermo Fajardo: se setea exactamente igual que se ha seteado hoy en clase.
+
+1117
+02:26:46.990 --> 02:26:53.349
+Guillermo Fajardo: No tenéis que descargar nada de Edgar. Ya os he preparado. Ya os he preparado el corpus, que eso es lo lo que está aquí.
+
+1118
+02:26:55.110 --> 02:26:59.870
+Guillermo Fajardo: Y esta es vuestra tarea. Tenéis que reimplantar estas herramientas
+
+1119
+02:27:01.820 --> 02:27:05.170
+Guillermo Fajardo: de tal manera que yo he hecho
+
+1120
+02:27:05.380 --> 02:27:12.479
+Guillermo Fajardo: una implementación, que es la que tenéis la que está en los cuadernos estos que vais a ver hoy el día siguiente.
+
+1121
+02:27:13.140 --> 02:27:20.219
+Guillermo Fajardo: Y os vais a medir básicamente con estos set de 20 preguntas con la versión básica y elemental que he hecho yo.
+
+1122
+02:27:20.470 --> 02:27:22.180
+Guillermo Fajardo: con la que hagáis vosotros
+
+1123
+02:27:22.440 --> 02:27:29.440
+Guillermo Fajardo: ejemplo súper fácil de esto que lo vais a ver vais a tener que seleccionar un y
+
+1124
+02:27:30.150 --> 02:27:32.310
+Guillermo Fajardo: un modelo para ser en Beddings.
+
+1125
+02:27:32.420 --> 02:27:41.230
+Guillermo Fajardo: Los modelos para hacer en Beddings los son muy ligeros, los podéis cargar y lanzar directamente en Google Colab.
+
+1126
+02:27:41.770 --> 02:27:42.620
+Guillermo Fajardo: O
+
+1127
+02:27:42.790 --> 02:27:48.270
+Guillermo Fajardo: también hay modelos de embeddings en Open Router, y en cualquier sitio, lo podéis coger de ahí. De hecho.
+
+1128
+02:27:48.540 --> 02:27:51.879
+Guillermo Fajardo: si no me equivoco, aquí está
+
+1129
+02:27:54.390 --> 02:27:57.440
+Guillermo Fajardo: Google tiene un modelo de embelings que te cagas.
+
+1130
+02:28:04.460 --> 02:28:05.950
+Guillermo Fajardo: ¿es ¿era esto?
+
+1131
+02:28:08.140 --> 02:28:12.569
+Guillermo Fajardo: Sí, es este Este modelo de embedings es la leche
+
+1132
+02:28:12.760 --> 02:28:17.379
+Guillermo Fajardo: y es un modelo de embelings que además lo puede hacer sobre texto, imágenes lo que a ti te de la gana.
+
+1133
+02:28:21.100 --> 02:28:34.230
+Guillermo Fajardo: entonces simplemente vais a tener que reimplantar las mismas tools que hemos hecho en clase, intentar mejorarlas. El la mejora va a venir sobre todo sobre lo fino que hagáis
+
+1134
+02:28:34.510 --> 02:28:39.490
+Guillermo Fajardo: el lo que sería la parte del
+
+1135
+02:28:40.710 --> 02:28:41.939
+Guillermo Fajardo: Se me acaba de ir.
+
+1136
+02:28:42.280 --> 02:28:55.259
+Guillermo Fajardo: La parte del Raj, es decir, oye ¿cómo ¿cómo voy a afinar? Cómo defino voy a hacer yo que, como he dividido los trozos del texto. ¿cómo he buscado los ítems.
+
+1137
+02:28:55.720 --> 02:29:01.169
+Guillermo Fajardo: ese tipo de cosas, las que he dado yo, son una versión bastante sencilla, luego
+
+1138
+02:29:01.350 --> 02:29:09.900
+Guillermo Fajardo: los warrers y ya entrar un poquito más al detalle. Esto lo vais a entender más y lo veis y lo veréis cuando vemos la la segunda clase.
+
+1139
+02:29:10.560 --> 02:29:20.460
+Guillermo Fajardo: Un Golden data de 20 preguntas con respuesta a que vosotros sepáis cuál es la respuesta y hacer que la gente se compare luchando contra esas preguntas.
+
+1140
+02:29:23.470 --> 02:29:35.940
+Guillermo Fajardo: La mejora de la medida del re trival, es decir, el re trival, es la capacidad de recuperar esos trozos. Eso ahora a lo mejor no lo entendéis tanto, pero lo vais a ver mejor en la clase siguiente
+
+1141
+02:29:36.800 --> 02:29:45.530
+Guillermo Fajardo: y simplemente escribir 3 evaluadores que esto es simplemente minifunciones
+
+1142
+02:29:45.670 --> 02:29:49.149
+Guillermo Fajardo: que sean capaces de decirte de alguna manera.
+
+1143
+02:29:49.670 --> 02:29:57.329
+Guillermo Fajardo: si lo ha hecho bien, si lo ha hecho mal si se ha inventado algo, si te ha dicho que no había respuesta, cuando sí que había respuesta, este tipo de cosas.
+
+1144
+02:29:58.260 --> 02:30:04.610
+Guillermo Fajardo: Os pongo aquí también la definición de los entregables, los criterios de evaluación. El criterio de evaluación simplemente está
+
+1145
+02:30:04.890 --> 02:30:06.930
+Guillermo Fajardo: esta diferencia.
+
+1146
+02:30:07.850 --> 02:30:17.920
+Guillermo Fajardo: simplemente tenéis aquí un poquito de anexos de Código que son bastante importantes. Todas estas cosas. Ya las tenéis en el notebook y la tenéis en el
+
+1147
+02:30:18.020 --> 02:30:19.990
+Guillermo Fajardo: ni A. C. S: Uno punto, Pay.
+
+1148
+02:30:21.470 --> 02:30:26.760
+Guillermo Fajardo: todas estas cosas están ahí ya directamente. Entonces simplemente lo que vais a tener que hacer es construir
+
+1149
+02:30:26.910 --> 02:30:32.609
+Guillermo Fajardo: una gente que haga las mismas cosas que las de las que hemos visto hoy, pero un poquito mejor
+
+1150
+02:30:32.930 --> 02:30:38.049
+Guillermo Fajardo: y para hacerlas un poquito mejor, pues vais a tener que meteros un poquito en las tripas de cómo funcionan las funciones
+
+1151
+02:30:38.910 --> 02:30:45.520
+Guillermo Fajardo: y cómo mejorarlas. Un poquito Es una práctica sencillita, pero lo justo como para que tengáis que meterle mano
+
+1152
+02:30:45.670 --> 02:30:49.870
+Guillermo Fajardo: y tengáis que jugar también un poquito con los datos financieros superimportante.
+
+1153
+02:30:52.020 --> 02:30:59.349
+Guillermo Fajardo: siempre para mejorar cualquier cosa relacionada con Ras o cualquier cosa que tenga que ver con datos financieros. Es muy importante
+
+1154
+02:31:00.450 --> 02:31:05.480
+Guillermo Fajardo: el conocimiento que tengáis vosotros de esos mismos datos financieros, es decir.
+
+1155
+02:31:05.860 --> 02:31:10.650
+Guillermo Fajardo: daos un paseíto por el latassette y mirarlo un poco.
+
+1156
+02:31:11.230 --> 02:31:19.299
+Guillermo Fajardo: No os imagináis cuánto trabajo, o cuánta o cómo va a afinar la intuición algo tan tonto como daros un paseíto por los data Friends.
+
+1157
+02:31:19.870 --> 02:31:22.470
+Guillermo Fajardo: y ya está.
+
+1158
+02:31:23.460 --> 02:31:24.910
+Higinio Paterna Ortiz: Una pregunta.
+
+1159
+02:31:25.910 --> 02:31:26.410
+Guillermo Fajardo: Sí.
+
+1160
+02:31:26.580 --> 02:31:36.489
+Higinio Paterna Ortiz: Para de cara a día más intrigable. Tiene que ser también formato, notebook, o hay que ponerlo mediante vamos terminal para pasárselo por parámetros. Las.
+
+1161
+02:31:36.490 --> 02:31:50.340
+Guillermo Fajardo: Vais en la tercera clase, lo vais a lo vais a presentar por grupos aquí. Os tengo puestos la entrega de la práctica que sea un notebook de un notebook, No, perdón que sea un Github.
+
+1162
+02:31:50.740 --> 02:31:51.670
+Guillermo Fajardo: Vale.
+
+1163
+02:31:51.880 --> 02:31:58.810
+Guillermo Fajardo: y va a ser importante. Es importante que sea un Github, un Github. ¿por qué? Porque vais a tener
+
+1164
+02:31:59.000 --> 02:32:04.500
+Guillermo Fajardo: las preguntas, El la tasa de preguntas que tenéis que generar el el
+
+1165
+02:32:06.390 --> 02:32:18.659
+Guillermo Fajardo: vais a tener que hacer en Beddings por vuestra cuenta. Luego, si lo hacéis, es en en un note el si lo haces en un notebook a no ser que tú te guardes los embeddings y todas estas cosas vas a tener que estar regenerándolos cada vez que lo ejecutes
+
+1166
+02:32:18.800 --> 02:32:32.180
+Guillermo Fajardo: entiendes. Entonces yo creo que es bastante mejor que lo hagáis en un en un entorno de Github que yo pueda ver luego el código. Además, así el código se queda como fijo.
+
+1167
+02:32:33.930 --> 02:32:36.889
+Guillermo Fajardo: y es que lo vais a tener que presentar, aunque sea brevemente.
+
+1168
+02:32:37.070 --> 02:32:43.319
+Guillermo Fajardo: Entonces, si te pones en un notebook a no ser que ya tengas las cosas preparadas de antes y vaya a funcionar bien.
+
+1169
+02:32:47.790 --> 02:32:49.819
+Guillermo Fajardo: De hecho, lo tengo puesto por aquí
+
+1170
+02:32:55.620 --> 02:32:56.400
+Guillermo Fajardo: aquí.
+
+1171
+02:33:03.350 --> 02:33:06.030
+Guillermo Fajardo: Entonces esto es lo que me tenéis que entregar.
+
+1172
+02:33:07.700 --> 02:33:15.920
+Guillermo Fajardo: Si tenéis algún agravio en contra, especial en contra de Giffa por algún motivo, Okay.
+
+1173
+02:33:16.030 --> 02:33:17.640
+Guillermo Fajardo: Pero
+
+1174
+02:33:18.970 --> 02:33:25.620
+Guillermo Fajardo: Pero no sé, no le veo mucho sentido. De todas maneras, como también me tenéis que poner las pregun, las respuestas y todo eso?
+
+1175
+02:33:26.300 --> 02:33:28.969
+Guillermo Fajardo: Eso sí me lo vais a tener que entregar igualmente. Así que.
+
+1176
+02:33:32.830 --> 02:33:35.250
+Guillermo Fajardo: y bueno, ¿hay alguna pregunta más.
+
+1177
+02:33:38.810 --> 02:33:44.800
+Guillermo Fajardo: También. Bueno, cuando no lo he puesto cualquier duda, cualquier cosa.
+
+1178
+02:33:52.080 --> 02:33:53.370
+Guillermo Fajardo: ese es mi correo.
+
+1179
+02:33:53.930 --> 02:33:57.210
+Guillermo Fajardo: ya sea de la práctica o de no o de lo que os dé la gana
+
+1180
+02:33:57.500 --> 02:33:59.210
+Guillermo Fajardo: por si os hace falta
+
+1181
+02:33:59.830 --> 02:34:08.539
+Guillermo Fajardo: y nada, pues con esto lo siento por haber ido, rapidillo. De hecho, yo creía que me iba a haber quedado corto y al final no ha sido justo. Al contrario.
+
+1182
+02:34:12.970 --> 02:34:19.480
+Guillermo Fajardo: Sé que esto es bastante contenido. Además, alguno. No lo habéis visto. Pero ya cuando lo veáis en clase, creo que va a cuadrar bastante mejor
+
+1183
+02:34:19.610 --> 02:34:23.910
+Guillermo Fajardo: y si nada, Pues si no hay más preguntas, pues ya os dejo os dejo marchar en paz.
+
+1184
+02:34:27.560 --> 02:34:28.710
+Javier Ch.: Y.
+
+1185
+02:34:28.710 --> 02:34:31.010
+Diego Muñoz Alonso: Gracias. Guille: No, gracias.
+
+1186
+02:34:31.540 --> 02:34:32.379
+Eduardo González: Muchas gracias.
+
+1187
+02:34:32.380 --> 02:34:32.760
+Guillermo Fajardo: Luego el.
+
+1188
+02:34:32.760 --> 02:34:34.180
+Cristian: Gracias hasta luego
+
+1189
+02:34:47.400 --> 02:34:48.310
+Cristian: accionarla.
+
+1190
+02:34:48.310 --> 02:34:48.980
+Guillermo Fajardo: Tenebrosa.
