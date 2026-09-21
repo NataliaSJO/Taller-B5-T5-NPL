@@ -1,0 +1,15 @@
+{
+  "sistema": "baseline",
+  "modelo": "openrouter:google/gemini-3.8-flash",
+  "agente_origen": "objeto agente de la sesion del notebook",
+  "fecha_utc": "20260917T180958Z",
+  "limite_recursion": 30,
+  "max_tokens": 1024,
+  "precio_entrada_usd_millon": null,
+  "precio_salida_usd_millon": null,
+  "k_retrieval": 5,
+  "consulta_retrieval": "pregunta original con filtros del golden set",
+  "tolerancia_relativa": 1e-06,
+  "tolerancia_absoluta": 0.01,
+  "chunks_sha256": "388ff3671742c2248e8f5cb1c75afbc786edfa0dc6f72a62d1fadf2310ec82b2"
+}

@@ -1,0 +1,340 @@
+[
+  {
+    "id": "propio-008",
+    "consulta": "NVIDIA FY2025 Form 10-K risk factors reliance on third-party suppliers contract manufacturing control",
+    "latencia_s": 11.279890600126237,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00134025,
+    "tokens_entrada": 67,
+    "tokens_salida": 344,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00134025,
+        "tokens": {
+          "input_tokens": 67,
+          "output_tokens": 344,
+          "total_tokens": 411,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 320
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-009",
+    "consulta": "Microsoft FY2024 10-K business impact cyberattacks security vulnerabilities",
+    "latencia_s": 3.628887299913913,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.0012045,
+    "tokens_entrada": 76,
+    "tokens_salida": 306,
+    "uso_llm": [
+      {
+        "coste_usd": 0.0012045,
+        "tokens": {
+          "input_tokens": 76,
+          "output_tokens": 306,
+          "total_tokens": 382,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 289
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-010",
+    "consulta": "Apple FY2025 10-K supply chain disruption critical components risk",
+    "latencia_s": 4.5017142000142485,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.0014865,
+    "tokens_entrada": 72,
+    "tokens_salida": 382,
+    "uso_llm": [
+      {
+        "coste_usd": 0.0014865,
+        "tokens": {
+          "input_tokens": 72,
+          "output_tokens": 382,
+          "total_tokens": 454,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 365
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-011",
+    "consulta": "Alphabet FY2024 10-K risk factors advertisers partners advertising technology",
+    "latencia_s": 3.250567900016904,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00142425,
+    "tokens_entrada": 64,
+    "tokens_salida": 367,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00142425,
+        "tokens": {
+          "input_tokens": 64,
+          "output_tokens": 367,
+          "total_tokens": 431,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 350
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-012",
+    "consulta": "Meta Platforms FY2025 10-K Risk Factors advantages of current or potential competitors",
+    "latencia_s": 3.3884000999387354,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00140475,
+    "tokens_entrada": 68,
+    "tokens_salida": 361,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00140475,
+        "tokens": {
+          "input_tokens": 68,
+          "output_tokens": 361,
+          "total_tokens": 429,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 341
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-013",
+    "consulta": "Amazon FY2024 10-K excess inventory risks profitability",
+    "latencia_s": 13.352146700024605,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00133125,
+    "tokens_entrada": 70,
+    "tokens_salida": 341,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00133125,
+        "tokens": {
+          "input_tokens": 70,
+          "output_tokens": 341,
+          "total_tokens": 411,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 326
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-014",
+    "consulta": "Apple FY2024 10-K Item 7A foreign exchange currency risk hedging",
+    "latencia_s": 3.159594199853018,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00152925,
+    "tokens_entrada": 69,
+    "tokens_salida": 394,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00152925,
+        "tokens": {
+          "input_tokens": 69,
+          "output_tokens": 394,
+          "total_tokens": 463,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 374
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-015",
+    "consulta": "NVIDIA FY2025 FY2024 total revenue comparison Data Center demand AI growth 10-K",
+    "latencia_s": 3.8293986001517624,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00143625,
+    "tokens_entrada": 110,
+    "tokens_salida": 361,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00143625,
+        "tokens": {
+          "input_tokens": 110,
+          "output_tokens": 361,
+          "total_tokens": 471,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 336
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-016",
+    "consulta": "Microsoft FY2025 FY2024 research and development expense comparison and R&D description AI training infrastructure costs",
+    "latencia_s": 3.799107800005004,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00180975,
+    "tokens_entrada": 113,
+    "tokens_salida": 460,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00180975,
+        "tokens": {
+          "input_tokens": 113,
+          "output_tokens": 460,
+          "total_tokens": 573,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 435
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-017",
+    "consulta": "Apple FY2025 FY2024 total net sales revenue and Mac segment sales drivers Form 10-K",
+    "latencia_s": 3.5991730999667197,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.0017355,
+    "tokens_entrada": 109,
+    "tokens_salida": 441,
+    "uso_llm": [
+      {
+        "coste_usd": 0.0017355,
+        "tokens": {
+          "input_tokens": 109,
+          "output_tokens": 441,
+          "total_tokens": 550,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 415
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-018",
+    "consulta": "Alphabet FY2025 FY2024 research and development expense Item 7 MD&A R&D priorities Form 10-K",
+    "latencia_s": 4.230550599982962,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.001728,
+    "tokens_entrada": 109,
+    "tokens_salida": 439,
+    "uso_llm": [
+      {
+        "coste_usd": 0.001728,
+        "tokens": {
+          "input_tokens": 109,
+          "output_tokens": 439,
+          "total_tokens": 548,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 408
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-019",
+    "consulta": "Meta FY2025 FY2024 operating income costs and expenses drivers 10-K",
+    "latencia_s": 3.3001776998862624,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00155175,
+    "tokens_entrada": 104,
+    "tokens_salida": 393,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00155175,
+        "tokens": {
+          "input_tokens": 104,
+          "output_tokens": 393,
+          "total_tokens": 497,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 371
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "propio-020",
+    "consulta": "Amazon FY2025 FY2024 net cash provided by operating activities statement of cash flows MD&A operating cash flow drivers YoY change",
+    "latencia_s": 3.1786110000684857,
+    "llamadas_modelo": 1,
+    "coste_usd": 0.00140175,
+    "tokens_entrada": 119,
+    "tokens_salida": 350,
+    "uso_llm": [
+      {
+        "coste_usd": 0.00140175,
+        "tokens": {
+          "input_tokens": 119,
+          "output_tokens": 350,
+          "total_tokens": 469,
+          "input_token_details": {
+            "cache_read": 0,
+            "cache_creation": 0
+          },
+          "output_token_details": {
+            "reasoning": 320
+          }
+        }
+      }
+    ]
+  }
+]

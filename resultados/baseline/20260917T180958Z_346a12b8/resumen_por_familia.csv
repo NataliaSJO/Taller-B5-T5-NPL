@@ -1,0 +1,4 @@
+,cifra_coincide_golden,cifra_coincide_golden,cita_localizable,cita_localizable,herramientas_esperadas_presentes,herramientas_esperadas_presentes,recall_ancla_at_k,recall_ancla_at_k,latencia_s,latencia_s,llamadas_herramienta,llamadas_herramienta,tokens_entrada,tokens_entrada,tokens_salida,tokens_salida,coste_estimado_usd,coste_estimado_usd,coste_reportado_usd,coste_reportado_usd,coste_usd,coste_usd,fallo_ejecucion,fallo_ejecucion
+,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count,mean,count
+familia,,,,,,,,,,,,,,,,,,,,,,,,
+extractiva,,0,,0,,0,0.0,1,40.28337960015051,1,,0,,0,,0,,0,,0,,0,1.0,1

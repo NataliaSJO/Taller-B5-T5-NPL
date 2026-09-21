@@ -1,0 +1,19 @@
+{
+  "archivo": "src/golden_set_propio.jsonl",
+  "sha256": "d3b64e6f07219bb3b43019a0405541367333f4907e96740a750785569d2c1149",
+  "preguntas": 20,
+  "familias": {
+    "numerica": 7,
+    "extractiva": 7,
+    "comparativa": 6
+  },
+  "exigir_20": true,
+  "problemas": [],
+  "evaluacion_api_ejecutada": true,
+  "estado": "parcial_por_limites_del_proveedor",
+  "respondidas": 7,
+  "pendientes": 13,
+  "ruta_resultados": "resultados/baseline/20260917T180626Z_938f35c6",
+  "ruta_reintento": "resultados/baseline/20260917T180958Z_346a12b8",
+  "ruta_preguntas_pendientes": "resultados/validacion/preguntas_pendientes.jsonl"
+}

@@ -1,0 +1,21 @@
+id,familia,error,error_retrieval,cifra_coincide_golden,cita_localizable,herramientas_esperadas_presentes,recall_ancla_at_k,latencia_s,llamadas_herramienta,tokens_entrada,tokens_salida,coste_estimado_usd,coste_reportado_usd,coste_usd
+propio-001,numerica,,,True,,True,,5.356179299997166,1.0,2115.0,311.0,,0.0027524999999999997,0.0027524999999999997
+propio-002,numerica,,,True,,True,,16.261597099946812,2.0,3864.0,953.0,,0.00647175,0.00647175
+propio-003,numerica,,,True,,True,,15.451744500081986,2.0,4012.0,652.0,,0.0054540000000000005,0.0054540000000000005
+propio-004,numerica,,,True,,True,,13.197308300063014,2.0,3845.0,572.0,,0.00502875,0.00502875
+propio-005,numerica,,,True,,True,,13.791131700156257,2.0,3951.0,678.0,,0.00550575,0.00550575
+propio-006,numerica,,,True,,True,,19.28129730001092,4.0,15112.0,975.0,,0.01499025,0.01499025
+propio-007,numerica,,,False,,True,,20.254237599903718,3.0,7857.0,1390.0,,0.01110525,0.01110525
+propio-008,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,2.52506130002439,,,,,,
+propio-009,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,4.962052599992603,,,,,,
+propio-010,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,3.1093824000563473,,,,,,
+propio-011,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,0.19420969998463988,,,,,,
+propio-012,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,1.0,0.2006357000209391,,,,,,
+propio-013,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,0.19544130004942417,,,,,,
+propio-014,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,1.0,0.21006630011834204,,,,,,
+propio-015,comparativa,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,0.19598179985769093,,,,,,
+propio-016,comparativa,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,0.20169429993256927,,,,,,
+propio-017,comparativa,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,1.0,0.20088449981994927,,,,,,
+propio-018,comparativa,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0.0,0.197061600163579,,,,,,
+propio-019,comparativa,TooManyRequestsResponseError: Rate limit exceeded: new-account-rpm/google/gemini-3.8-flash-20260902. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.,,,,,0.0,0.26566610019654036,,,,,,
+propio-020,comparativa,TooManyRequestsResponseError: Rate limit exceeded: new-account-rpm/google/gemini-3.8-flash-20260902. Rate limit reached: new accounts are limited to 20 requests per minute for this model. Please retry shortly.,,,,,1.0,0.08361870003864169,,,,,,

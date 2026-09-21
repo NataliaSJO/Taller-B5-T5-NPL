@@ -1,0 +1,17 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,recall_trayectoria,coste_juez_usd,error,traceback,detalle_api
+propio-001,numerica,True,evaluado,0.00271425,13.117925999918953,1,,True,True,,,,,
+propio-002,numerica,True,evaluado,0.004287,12.614544600015506,2,,True,True,,,,,
+propio-003,numerica,True,evaluado,0.00533925,12.359038499882445,2,,True,True,,,,,
+propio-004,numerica,True,evaluado,0.00445125,11.093004799913615,2,,True,True,,,,,
+propio-005,numerica,True,evaluado,0.00484125,13.894937800010666,2,,True,True,,,,,
+propio-006,numerica,True,evaluado,0.0035055,8.459915300132707,1,,True,True,,,,,
+propio-007,numerica,False,error,0.013968000000000001,68.63154129986651,4,,,,,,RuntimeError: El agente terminó sin respuesta estructurada; puede haber alcanzado un límite,"Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 811, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 580, in ejecutar
+    raise RuntimeError(""El agente terminó sin respuesta estructurada; puede haber alcanzado un límite"")
+RuntimeError: El agente terminó sin respuesta estructurada; puede haber alcanzado un límite
+",{}
+propio-008,extractiva,False,evaluado,0.024798675,27.80454510007985,5,False,,True,0.0,,,,
+propio-009,extractiva,False,evaluado,0.01258875,18.690599599853158,2,False,,True,0.0,,,,

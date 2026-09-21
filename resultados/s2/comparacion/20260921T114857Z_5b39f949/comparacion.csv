@@ -1,0 +1,3 @@
+version,preguntas,evaluadas,acierto,recall_trayectoria,coste_medio_usd,costes_conocidos,latencia_media_s,llamadas_medias,acierto_comparativa,acierto_extractiva,acierto_numerica
+baseline,20,5,0.25,,0.0053047500000000004,6,19.348476814272413,2.142857142857143,0.0,0.0,0.7142857142857143
+final,20,0,0.0,,,0,3.768669600132853,0.0,0.0,0.0,0.0

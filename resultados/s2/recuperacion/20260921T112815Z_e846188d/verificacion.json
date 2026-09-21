@@ -1,0 +1,11 @@
+{
+  "notebook": "src\\S2_Robustez_y_Evaluacion_Alumno.ipynb",
+  "sha256": "068545bb4b4718d931c4f52e6461e972a60dfdcc207bc683c8579a96e2ba29f9",
+  "celdas_ejecutadas": 15,
+  "bloques_exportables": 9,
+  "errores": 0,
+  "pruebas_locales_superadas": 14,
+  "api_ejecutada": false,
+  "resultados_retrieval": "resultados/s2/retrieval/20260921T113115Z_c57ae22c",
+  "modulo_sincronizado": true
+}

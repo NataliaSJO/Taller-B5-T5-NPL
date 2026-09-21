@@ -1,0 +1,15 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,recall_trayectoria,coste_juez_usd
+propio-001,numerica,True,evaluado,0.00325875,13.301818300038576,1,,True,True,,
+propio-002,numerica,True,evaluado,0.00472875,12.158491200068966,2,,True,True,,
+propio-003,numerica,True,evaluado,0.0034200000000000003,14.223936399910599,1,,True,True,,
+propio-004,numerica,True,evaluado,0.0050115,13.615670800209045,2,,True,True,,
+propio-005,numerica,True,evaluado,0.0072735,40.040992400143296,3,,True,True,,
+propio-006,numerica,True,evaluado,0.003354,9.79026689985767,1,,True,True,,
+propio-007,numerica,False,evaluado,0.00540675,20.043092400068417,2,,False,True,,
+propio-008,extractiva,False,evaluado,0.02081475,24.870701499981806,5,False,,True,0.0,
+propio-009,extractiva,False,evaluado,0.0155625,20.129925099899992,2,False,,True,0.0,
+propio-010,extractiva,False,evaluado,0.025624425,37.95104399998672,5,False,,True,0.0,
+propio-011,extractiva,False,evaluado,0.017583,29.897433599922806,3,False,,True,1.0,0.002748
+propio-012,extractiva,False,evaluado,0.008277,15.874119899934158,1,False,,True,1.0,0.00228075
+propio-013,extractiva,False,evaluado,0.00611775,12.37926679989323,1,False,,True,1.0,0.00308175
+propio-014,extractiva,False,evaluado,0.00411675,13.131837399909273,1,False,,True,1.0,0.00387825

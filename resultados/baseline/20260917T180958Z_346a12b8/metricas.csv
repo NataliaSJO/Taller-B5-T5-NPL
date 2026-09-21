@@ -1,0 +1,2 @@
+id,familia,error,error_retrieval,cifra_coincide_golden,cita_localizable,herramientas_esperadas_presentes,recall_ancla_at_k,latencia_s,llamadas_herramienta,tokens_entrada,tokens_salida,coste_estimado_usd,coste_reportado_usd,coste_usd
+propio-008,extractiva,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits.",,,,,0,40.28337960015051,,,,,,
