@@ -1,0 +1,123 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,cita_ancla,recall_trayectoria,coste_juez_usd,coste_estimado_usd,avisos_guardrail,error,traceback,detalle_api
+propio-001,numerica,True,evaluado,0.0066472499999999995,20.61768749996554,2,,True,True,,,,0.0066472499999999995,0,,,
+propio-002,numerica,True,evaluado,0.003945000000000001,8.667555799998809,2,,True,True,,,,0.003945000000000001,0,,,
+propio-003,numerica,True,evaluado,0.007746,24.901590799971018,3,,True,True,,,,0.007746,0,,,
+propio-004,numerica,True,evaluado,0.00466725,18.371017800003756,2,,True,True,,,,0.00466725,0,,,
+propio-005,numerica,True,evaluado,0.00847125,14.983931199996732,3,,True,True,,,,0.00847125,0,,,
+propio-006,numerica,True,evaluado,0.004251,9.805024100001901,2,,True,True,,,,0.004251,0,,,
+propio-007,numerica,True,evaluado,0.011103,21.29532020003535,3,,True,True,,,,0.011103,0,,,
+propio-008,extractiva,False,evaluado,0.04734494999999999,51.04745449998882,10,False,,True,False,0.0,0.0003207,0.04734494999999999,0,,,
+propio-009,extractiva,True,evaluado,0.018688200000000002,26.661319500009995,3,True,,True,False,0.0,0.0003144,0.018688200000000002,0,,,
+propio-010,extractiva,False,evaluado,0.009441,17.293638599978294,2,False,,True,False,0.0,,0.009441,0,,,
+propio-011,extractiva,False,evaluado,0.016689,23.647925099998247,3,False,,True,True,1.0,0.0003627,0.016689,0,,,
+propio-012,extractiva,False,evaluado,0.0078255,14.299991399981081,1,False,,True,True,1.0,0.000273,0.0078255,0,,,
+propio-013,extractiva,False,error,,17.821150099975057,1,,,,,,,0.001086,0,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1206, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 929, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 127, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id 'f8a59614-18e1-e59f-2f54-0afb26083b26'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 504, 'message': 'The operation was aborted', 'provider_name': 'Google'}]}, 'retry_after': None}"
+propio-014,extractiva,True,evaluado,0.0042345,7.312618799973279,1,True,,True,True,1.0,0.0001977,0.0042345,0,,,
+propio-015,comparativa,False,evaluado,0.047347875000000005,77.56305210001301,12,False,True,True,False,1.0,,0.047347875000000005,0,,,
+propio-016,comparativa,False,evaluado,0.02548365,34.53520270000445,7,False,True,True,False,1.0,,0.02548365,0,,,
+propio-017,comparativa,False,evaluado,0.0200865,25.000925400003325,6,False,True,True,False,1.0,,0.0200865,0,,,
+propio-018,comparativa,False,evaluado,0.07552762499999999,63.49913569999626,14,False,True,True,False,1.0,,0.07552762499999999,0,,,
+propio-019,comparativa,False,error,,15.184292299964,1,,,,,,,0.00118275,0,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1206, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 929, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 127, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id 'df8939cf-3bca-5355-874f-a218faebaf15'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 504, 'message': 'The operation was aborted', 'provider_name': 'Google'}]}, 'retry_after': None}"
+propio-020,comparativa,False,evaluado,0.015800250000000002,21.294549600046594,5,False,True,True,False,1.0,,0.015800250000000002,0,,,

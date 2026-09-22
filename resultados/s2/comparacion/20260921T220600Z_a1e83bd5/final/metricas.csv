@@ -1,0 +1,151 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,cita_ancla,recall_trayectoria,coste_juez_usd,coste_estimado_usd,avisos_guardrail,error,traceback,detalle_api
+propio-001,numerica,True,evaluado,0.0351184,54.28595639998093,5,,True,True,,,,0.0351184,0,,,
+propio-002,numerica,True,evaluado,0.014619799999999999,29.390639299992472,4,,True,True,,,,0.014619799999999999,0,,,
+propio-003,numerica,True,evaluado,0.031318225000000005,54.562769400014076,7,,True,True,,,,0.031318225000000005,0,,,
+propio-004,numerica,True,evaluado,0.0357136,49.964803599985316,6,,True,True,,,,0.0357136,1,,,
+propio-005,numerica,True,evaluado,0.0191177,43.41825869999593,5,,True,True,,,,0.0191177,0,,,
+propio-006,numerica,False,error,0.054500299999999995,64.58474349998869,8,,,,,,,0.054500299999999995,0,"GraphRecursionError: Recursion limit of 60 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT","Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1206, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 929, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3011, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 60 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT
+",{}
+propio-007,numerica,True,evaluado,0.031309500000000004,48.09412160003558,7,,True,True,,,,0.031309500000000004,0,,,
+propio-008,extractiva,False,error,,21.92788140004268,1,,,,,,,0.00124715,0,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1206, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 929, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 127, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id '8754c882-d9a0-4d40-4038-859a0296337b'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 504, 'message': 'The operation was aborted', 'provider_name': 'Google'}]}, 'retry_after': None}"
+propio-009,extractiva,True,evaluado,0.030117075,51.93250389996683,5,True,,True,False,0.0,0.0003154,0.030117075,0,,,
+propio-010,extractiva,True,evaluado,0.019765950000000004,34.18762829998741,4,True,,True,True,1.0,0.0002505,0.019765950000000004,0,,,
+propio-011,extractiva,False,evaluado,0.01778925,30.731206300028134,3,False,,True,True,1.0,0.0003782,0.01778925,0,,,
+propio-012,extractiva,False,evaluado,0.022607000000000002,34.92365670000436,3,False,,True,True,1.0,0.0003523,0.022607000000000002,0,,,
+propio-013,extractiva,True,evaluado,0.00680955,15.054608999984339,1,True,,True,True,1.0,0.0002796,0.00680955,0,,,
+propio-014,extractiva,True,evaluado,0.004540799999999999,18.217163000022992,1,True,,True,True,1.0,0.0002023,0.004540799999999999,0,,,
+propio-015,comparativa,True,evaluado,0.0202753,34.61861329997191,7,True,True,True,True,1.0,0.0003515,0.0202753,0,,,
+propio-016,comparativa,True,evaluado,0.027439825,46.85058439994464,7,True,True,True,True,1.0,0.0003375,0.027439825,0,,,
+propio-017,comparativa,False,evaluado,0.0211921,35.41484990000026,5,False,True,True,True,1.0,0.0004165,0.0211921,0,,,
+propio-018,comparativa,False,error,0.035695375,56.21821670001373,9,,,,,,,0.035695375,0,"GraphRecursionError: Recursion limit of 60 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT","Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1206, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 929, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3011, in stream
+    raise GraphRecursionError(msg)
+langgraph.errors.GraphRecursionError: Recursion limit of 60 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT
+",{}
+propio-019,comparativa,True,evaluado,0.027315375,50.58291139994981,7,True,True,True,True,1.0,0.0002648,0.027315375,0,,,
+propio-020,comparativa,False,error,,25.71712839999236,5,,,,,,,0.005465600000000001,0,BadRequestResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1206, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 929, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 127, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\1jose\AppData\Local\Programs\Python\Python311\Lib\site-packages\openrouter\chat.py"", line 868, in send
+    raise errors.BadRequestResponseError(response_data, http_res, http_res_text)
+openrouter.errors.badrequestresponse_error.BadRequestResponseError: Provider returned error
+During task with name 'model' and id '00ed087a-aeb7-78a5-8696-630c85fef17d'
+","{'codigo': 400, 'metadata': {'raw': 'Gemini models require OpenRouter reasoning details to be preserved in each request. Please refer to our docs: https://openrouter.ai/docs/guides/best-practices/reasoning-tokens#preserving-reasoning-blocks. Upstream error: {\n  ""error"": {\n    ""code"": 400,\n    ""message"": ""Corrupted thought signature."",\n    ""status"": ""INVALID_ARGUMENT""\n  }\n}\n', 'provider_name': 'Google AI Studio', 'is_byok': False, 'provider_error_code': '400', 'previous_errors': [{'code': 429, 'message': 'Provider returned error', 'provider_name': 'Google', 'raw': 'google/gemini-3.8-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations'}]}, 'retry_after': None}"

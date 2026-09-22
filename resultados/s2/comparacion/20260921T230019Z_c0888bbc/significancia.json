@@ -1,0 +1,6 @@
+{
+  "preguntas_comparadas": 20,
+  "solo_acierta_final": 8,
+  "solo_acierta_baseline": 0,
+  "p_valor_mcnemar": 0.0078125
+}

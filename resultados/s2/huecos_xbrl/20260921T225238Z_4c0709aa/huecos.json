@@ -1,0 +1,53 @@
+[
+  {
+    "ticker": "AMZN",
+    "ejercicio": 2024,
+    "concepto": "GrossProfit",
+    "pregunta": "¿Cuál fue el beneficio bruto (gross profit) de Amazon en el ejercicio fiscal 2024?",
+    "fuente": "texto",
+    "cifra": null,
+    "respuesta": "Amazon no reporta el beneficio bruto (gross profit) ni el margen bruto en su informe anual 10-K para el ejercicio fiscal 2024. La compañía explica que considera que los ingresos operativos (operating income) son una métrica más representativa debido a la diversidad de sus categorías de productos y servicios.",
+    "correcto": false,
+    "uso_list_available": false,
+    "llamadas": [
+      "get_xbrl_fact",
+      "search_filings",
+      "search_filings",
+      "search_filings",
+      "search_filings",
+      "search_filings",
+      "search_filings"
+    ],
+    "coste_usd": 0.035369775,
+    "latencia_s": 81.46716770000057
+  },
+  {
+    "ticker": "AMZN",
+    "ejercicio": 2025,
+    "concepto": "ResearchAndDevelopmentExpense",
+    "pregunta": "¿Cuánto gastó Amazon en investigación y desarrollo en el ejercicio fiscal 2025?",
+    "error": "GraphRecursionError: Recursion limit of 80 reached without hitting a stop condition. You can increase the limit by setting the `recursion_limit` config key.\nFor troubleshooting, visit: https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT",
+    "correcto": false
+  },
+  {
+    "ticker": "META",
+    "ejercicio": 2025,
+    "concepto": "GrossProfit",
+    "pregunta": "¿Cuál fue el beneficio bruto de Meta en el ejercicio fiscal 2025?",
+    "fuente": "ninguna",
+    "cifra": null,
+    "respuesta": "Meta Platforms, Inc. no reporta la partida ni el subtotal de beneficio bruto («gross profit») en su informe anual Formulario 10-K ni en sus estados financieros correspondientes al ejercicio fiscal 2025. En su estado consolidado de resultados, la compañía desglosa directamente los ingresos y los diversos costes y gastos operativos para determinar el resultado de las operaciones, sin publicar una cifra de beneficio bruto.",
+    "correcto": true,
+    "uso_list_available": true,
+    "llamadas": [
+      "list_available",
+      "get_xbrl_fact",
+      "search_filings",
+      "search_filings",
+      "search_filings",
+      "get_xbrl_fact"
+    ],
+    "coste_usd": 0.0460707,
+    "latencia_s": 56.07676810002886
+  }
+]

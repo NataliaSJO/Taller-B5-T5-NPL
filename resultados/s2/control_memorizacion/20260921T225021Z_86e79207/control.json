@@ -1,0 +1,445 @@
+[
+  {
+    "id": "propio-001",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": false,
+    "coste_usd": 0.006126,
+    "error": null,
+    "respuesta": {
+      "respuesta": "Al cierre del ejercicio fiscal 2024 (28 de septiembre de 2024), el total de activos de Apple fue de 364.980 millones de dólares.",
+      "cifra": 364980.0,
+      "unidad": "millones de USD",
+      "ticker": "AAPL",
+      "ejercicio": 2024,
+      "fuente": "xbrl",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [
+        {
+          "ticker": "AAPL",
+          "ejercicio": 2024,
+          "concepto": "Assets",
+          "valor": 364980000000.0,
+          "unidad": "USD"
+        }
+      ],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-002",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.0013455,
+    "error": null,
+    "respuesta": {
+      "respuesta": "Microsoft no ha presentado ni reportado los resultados del ejercicio fiscal 2025 (FY2025) en un informe anual 10-K, por lo que no se dispone de dicha cifra.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": null,
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-003",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.00331575,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No dispongo de los datos verificados del informe 10-K de FY2025 de NVIDIA en memoria para proporcionar la cifra exacta con total seguridad.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "NVDA",
+      "ejercicio": 2025,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-004",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.0009825,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No se dispone de los ingresos totales de Alphabet para el año fiscal 2025 (FY2025), ya que el informe anual 10-K correspondiente a dicho ejercicio fiscal aún no ha sido presentado o concluido.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": null,
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-005",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.001362,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No se dispone de la información sobre el efectivo y equivalentes de efectivo de Meta para el cierre del ejercicio fiscal 2025 (FY2025), ya que el informe anual 10-K correspondiente a dicho periodo aún no ha sido publicado.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "META",
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-006",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.003162,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No dispongo de la cifra exacta y verificada del patrimonio neto total de los accionistas (Total Stockholders' Equity) de Amazon al cierre del ejercicio 2024 con total certeza.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AMZN",
+      "ejercicio": 2024,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-007",
+    "familia": "numerica",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.00130125,
+    "error": null,
+    "respuesta": {
+      "respuesta": "El informe 10-K de Apple para el año fiscal 2025 (FY2025) no ha sido publicado o no está disponible, por lo que no es posible proporcionar el beneficio diluido por acción para dicho ejercicio.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AAPL",
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-008",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": null,
+    "se_abstiene": false,
+    "coste_usd": 0.0021375,
+    "error": null,
+    "respuesta": {
+      "respuesta": "Al operar bajo un modelo fabless y depender de proveedores externos para la fabricación de obleas (como TSMC), empaquetado avanzado, ensamblaje y pruebas, NVIDIA señala en sus factores de riesgo que tiene un control reducido sobre la capacidad de manufactura, los calendarios y plazos de entrega, los rendimientos de fabricación (yields), los costes de producción y la garantía de calidad.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "NVDA",
+      "ejercicio": 2025,
+      "fuente": "texto",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-009",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": true,
+    "se_abstiene": false,
+    "coste_usd": 0.00224925,
+    "error": null,
+    "respuesta": {
+      "respuesta": "En su 10-K del año fiscal 2024, Microsoft advierte que los ciberataques, las brechas de datos y las vulnerabilidades de seguridad pueden ocasionar: interrupción de operaciones y servicios; disminución de ingresos y pérdida de clientes; incremento sustancial de costes (para investigación, remediación, litigios y mejora de defensas); demandas de responsabilidad y sanciones regulatorias; daños severos a la reputación y a la confianza de los clientes; y perjuicios a su posición competitiva o pérdida de propiedad intelectual.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "MSFT",
+      "ejercicio": 2024,
+      "fuente": "texto",
+      "cita": "Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our competitive position.",
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-010",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.002895,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No se dispone del informe anual (Formulario 10-K) de Apple para el ejercicio fiscal 2025 (FY2025), ya que no ha sido presentado.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AAPL",
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-011",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": null,
+    "se_abstiene": false,
+    "coste_usd": 0.002979,
+    "error": null,
+    "respuesta": {
+      "respuesta": "En su informe 10-K para el ejercicio fiscal 2024, Alphabet identifica diversos factores de riesgo relacionados con anunciantes, socios y tecnologías publicitarias, entre los que destacan:\n\n1. **Dependencia y volatilidad del gasto de anunciantes:** La mayor parte de los ingresos proviene de la publicidad digital. Los anunciantes no tienen compromisos a largo plazo y pueden reducir, pausar o reasignar sus presupuestos a competidores o canales alternativos debido a presiones macroeconómicas, cambios en el comportamiento del consumidor o percepción de menor retorno de inversión (ROI).\n\n2. **Riesgos regulatorios y antimonopolio sobre tecnologías publicitarias (Ad Tech):** Alphabet enfrenta un intenso escrutinio y litigios antimonopolio (como demandas del Departamento de Justicia de EE. UU. y autoridades europeas) centrados en sus herramientas y plataformas de subasta/intermediación de tecnología publicitaria, lo que podría derivar en multas sustanciales, cambios forzosos en sus modelos comerciales o desinversiones estructurales.\n\n3. **Dependencia y escrutinio de acuerdos con socios de distribución:** Gran parte de las consultas de búsqueda y tráfico publicitario provienen de acuerdos de distribución con fabricantes de dispositivos, navegadores y operadores (como los acuerdos de reparto de ingresos o TAS). Estos acuerdos están bajo escrutinio judicial y regulatorio, y si se prohíben, modifican o los socios terminan la relación, el tráfico y los ingresos publicitarios se verían gravemente afectados.\n\n4. **Evolución tecnológica y privacidad (bloqueadores de anuncios e identificadores):** El auge de software de bloqueo de anuncios (ad blockers), las restricciones a las cookies de terceros y los cambios en identificadores móviles de privacidad (por plataformas o normativas de privacidad como RGPD) amenazan la capacidad de orientar y medir la eficacia publicitaria.\n\n5. **Transformación por Inteligencia Artificial:** La adopción de IA generativa y nuevas interfaces de búsqueda/descubrimiento puede alterar los hábitos de los usuarios y desafiar los formatos publicitarios tradicionales y su monetización.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "GOOGL",
+      "ejercicio": null,
+      "fuente": "texto",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-012",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.0022545,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No se dispone del informe Form 10-K correspondiente al ejercicio fiscal 2025 (FY2025) de Meta Platforms, Inc., por lo que no es posible detallar los factores de riesgo para dicho período.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": null,
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-013",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": null,
+    "se_abstiene": false,
+    "coste_usd": 0.002931,
+    "error": null,
+    "respuesta": {
+      "respuesta": "Según los factores de riesgo descritos en el informe 10-K de FY2024 de Amazon, si la empresa no gestiona adecuadamente sus niveles de inventario y acumula un exceso de existencias, esto puede obligarla a aplicar rebajas de precios (markdowns), asumir deterioros o amortizaciones de valor del inventario (write-downs o write-offs) e incurrir en mayores costes de almacenamiento y mantenimiento en sus centros logísticos, lo que reduciría sus márgenes operativos y afectaría negativamente a sus resultados financieros y rentabilidad.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AMZN",
+      "ejercicio": 2024,
+      "fuente": "texto",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-014",
+    "familia": "extractiva",
+    "cifra_de_memoria": null,
+    "cita_inventada": true,
+    "se_abstiene": false,
+    "coste_usd": 0.002439,
+    "error": null,
+    "respuesta": {
+      "respuesta": "Según el Item 7A del informe 10-K de Apple para el ejercicio fiscal 2024, la compañía puede utilizar contratos de derivados sobre divisas con instituciones financieras, tales como contratos forward (a plazo) y contratos de opciones, para cubrirse de los riesgos de tipo de cambio asociados a ciertos activos y pasivos existentes, transacciones firmemente comprometidas, flujos de efectivo futuros previstos e inversiones netas en subsidiarias extranjeras. Además, Apple también puede emplear deuda emitida y denominada en moneda extranjera para mitigar este riesgo.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AAPL",
+      "ejercicio": 2024,
+      "fuente": "texto",
+      "cita": "The Company may enter into foreign currency forward and option contracts with financial institutions to protect against foreign currency exchange rate risks associated with certain existing assets and liabilities, firmly committed transactions, forecasted future cash flows and net investments in foreign subsidiaries.",
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-015",
+    "familia": "comparativa",
+    "cifra_de_memoria": true,
+    "cita_inventada": null,
+    "se_abstiene": false,
+    "coste_usd": 0.00759975,
+    "error": null,
+    "respuesta": {
+      "respuesta": "En el ejercicio fiscal 2025 (FY2025), los ingresos totales de NVIDIA alcanzaron los 130.497 millones de dólares, frente a los 60.922 millones de dólares de FY2024. Esto supone una variación absoluta positiva de 69.575 millones de dólares (+114,2%).\n\nEn cuanto a la demanda de Centros de Datos (Data Center) e IA:\n- En FY2024, NVIDIA atribuyó el extraordinario aumento de ingresos principalmente a la arquitectura Hopper (en especial la plataforma HGX con GPUs H100), impulsada por la acelerada adopción y entrenamiento de modelos de lenguaje grande (LLM) e inteligencia artificial generativa por parte de proveedores de servicios en la nube y empresas de internet.\n- En FY2025, la compañía destacó que la demanda continuó acelerándose de forma masiva tanto para inferencia como para entrenamiento de IA generativa, liderada por la persistente demanda de sistemas Hopper (H100 y H200) y la expectación y primeros envíos de la nueva arquitectura Blackwell, expandiendo su base hacia sectores empresariales, soberanías de IA y centros de datos a hiperescala.",
+      "cifra": 130497000000.0,
+      "unidad": "USD",
+      "ticker": "NVDA",
+      "ejercicio": 2025,
+      "fuente": "xbrl",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [
+        {
+          "ticker": "NVDA",
+          "ejercicio": 2025,
+          "concepto": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "valor": 130497000000.0,
+          "unidad": "USD"
+        },
+        {
+          "ticker": "NVDA",
+          "ejercicio": 2024,
+          "concepto": "RevenueFromContractWithCustomerExcludingAssessedTax",
+          "valor": 60922000000.0,
+          "unidad": "USD"
+        }
+      ],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-016",
+    "familia": "comparativa",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.00174825,
+    "error": null,
+    "respuesta": {
+      "respuesta": "El informe anual Form 10-K de Microsoft correspondiente al ejercicio fiscal 2025 (FY2025, cerrado al 30 de junio de 2025) aún no ha sido publicado ni está disponible en los registros oficiales analizados, por lo que no es posible proporcionar las cifras auditadas de I+D de FY2025 ni compararlas con las de FY2024.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": null,
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-017",
+    "familia": "comparativa",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.00209775,
+    "error": null,
+    "respuesta": {
+      "respuesta": "El informe anual (Formulario 10-K) de Apple para el ejercicio fiscal 2025 (FY2025) no está disponible ni publicado, por lo que no es posible proporcionar las cifras auditadas de ingresos totales para FY2025 ni realizar la comparación solicitada frente a FY2024.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AAPL",
+      "ejercicio": 2025,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-018",
+    "familia": "comparativa",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.001524,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No dispongo de información verificable sobre el ejercicio fiscal 2025 (FY2025) de Alphabet, ya que dicho periodo no ha sido completado/publicado o no cuento con los datos de su informe anual Form 10-K para realizar la comparación solicitada.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": null,
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-019",
+    "familia": "comparativa",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.0014415,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No es posible proporcionar los beneficios operativos de Meta para FY2025 ni compararlos con FY2024, ya que el informe anual (Formulario 10-K) correspondiente al ejercicio fiscal 2025 no ha sido presentado o no se encuentra disponible.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": null,
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  },
+  {
+    "id": "propio-020",
+    "familia": "comparativa",
+    "cifra_de_memoria": false,
+    "cita_inventada": null,
+    "se_abstiene": true,
+    "coste_usd": 0.0021765,
+    "error": null,
+    "respuesta": {
+      "respuesta": "No se dispone de la información financiera correspondiente al ejercicio fiscal 2025 (FY2025) de Amazon, ya que el informe anual Form 10-K para dicho periodo no ha sido publicado. Por consiguiente, no es posible comparar los flujos netos de efectivo operativos ni las explicaciones de la dirección entre FY2024 y FY2025.",
+      "cifra": null,
+      "unidad": null,
+      "ticker": "AMZN",
+      "ejercicio": null,
+      "fuente": "ninguna",
+      "cita": null,
+      "chunk_id": null,
+      "datos": [],
+      "citas": []
+    }
+  }
+]

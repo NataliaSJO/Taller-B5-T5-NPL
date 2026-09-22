@@ -1,0 +1,53 @@
+[
+  {
+    "ticker": "AMZN",
+    "ejercicio": 2024,
+    "concepto": "GrossProfit",
+    "pregunta": "¿Cuál fue el beneficio bruto (gross profit) de Amazon en el ejercicio fiscal 2024?",
+    "fuente": "ninguna",
+    "cifra": null,
+    "respuesta": "El concepto de beneficio bruto (GrossProfit) no está disponible en los datos XBRL de Amazon (AMZN) para el ejercicio fiscal 2024 en el corpus.",
+    "correcto": true,
+    "uso_list_available": true,
+    "llamadas": [
+      "get_xbrl_fact",
+      "list_available"
+    ],
+    "coste_usd": 0.00380925,
+    "latencia_s": 25.67288720002398
+  },
+  {
+    "ticker": "AMZN",
+    "ejercicio": 2025,
+    "concepto": "ResearchAndDevelopmentExpense",
+    "pregunta": "¿Cuánto gastó Amazon en investigación y desarrollo en el ejercicio fiscal 2025?",
+    "fuente": "ninguna",
+    "cifra": null,
+    "respuesta": "El dato del gasto en investigación y desarrollo de Amazon para el ejercicio fiscal 2025 no está disponible en el corpus.",
+    "correcto": true,
+    "uso_list_available": true,
+    "llamadas": [
+      "list_available",
+      "get_xbrl_fact"
+    ],
+    "coste_usd": 0.007023,
+    "latencia_s": 13.779348200012464
+  },
+  {
+    "ticker": "META",
+    "ejercicio": 2025,
+    "concepto": "GrossProfit",
+    "pregunta": "¿Cuál fue el beneficio bruto de Meta en el ejercicio fiscal 2025?",
+    "fuente": "ninguna",
+    "cifra": null,
+    "respuesta": "El concepto de beneficio bruto (Gross Profit) para Meta en el ejercicio fiscal 2025 no está disponible en el corpus de datos XBRL.",
+    "correcto": true,
+    "uso_list_available": true,
+    "llamadas": [
+      "list_available",
+      "get_xbrl_fact"
+    ],
+    "coste_usd": 0.00549375,
+    "latencia_s": 12.62907309998991
+  }
+]

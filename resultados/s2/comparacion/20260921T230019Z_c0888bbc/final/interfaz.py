@@ -633,15 +633,9 @@ MARCA = "VERIFICACIÓN AUTOMÁTICA"
 AVISOS_GUARDRAIL = []
 # Medido sobre las 20 preguntas: el 80 % de los avisos eran el día de una fecha
 # de cierre o la numeración de una lista, y costaban un turno de modelo cada uno.
-# El mes en inglés va con nombre completo o abreviatura exacta y exige el año de
-# cuatro cifras detrás. Con un comodín, «aproximadamente» empezaba por «apr», se
-# comía «aproximadamente 128» de «128.528 mil millones» y el guardrail avisaba de
-# un 528e9 que nadie había escrito: los tres falsos positivos medidos.
-_MES_EN = (r"jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?"
-           r"|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?")
 _FECHAS = re.compile(
     r"\b\d{1,2}\s+de\s+[a-záéíóú]+(?:\s+de\s+\d{4})?\b"
-    r"|\b(?:" + _MES_EN + r")\.?\s+\d{1,2},?\s+\d{4}\b"
+    r"|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|sept|dec)[a-zé]*\.?\s+\d{1,2},?\s*\d{0,4}\b"
     r"|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}/\d{1,2}/\d{2,4}\b", re.I)
 _VINETAS = re.compile(r"(?m)^\s*\(?\d{1,2}[.)]\s+")
 _MESES = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -677,10 +671,6 @@ def extraer_cifras(texto):
         if "." in numero and "," in numero:
             decimal = "." if numero.rfind(".") > numero.rfind(",") else ","
             numero = numero.replace("," if decimal == "." else ".", "").replace(decimal, ".")
-        elif re.fullmatch(r"-?\d{1,3}[.,]\d{3}", numero) and escala and escala != "%":
-            # «128.528 mil millones» son 128,528 miles de millones, no 128528 de
-            # ellos: con una escala detrás, el separador único es decimal.
-            numero = numero.replace(",", ".")
         elif re.fullmatch(r"-?\d{1,3}(?:[.,]\d{3})+", numero):
             numero = numero.replace(".", "").replace(",", "")
         else:
@@ -1391,16 +1381,6 @@ def comparar(ruta_jsonl=RUTA_GOLDEN, salida=None):
     salida.mkdir(parents=True, exist_ok=False)
     base = evaluar(ruta_jsonl, etiqueta="baseline", salida=salida / "baseline")
     final = evaluar(ruta_jsonl, etiqueta="final", salida=salida / "final")
-    return escribir_comparacion(base, final, salida)
-
-
-def escribir_comparacion(base, final, salida):
-    """Tabla y significancia a partir de dos evaluaciones ya hechas.
-
-    Separada de `comparar` para que volver a medir sólo una de las dos mitades
-    produzca exactamente los mismos ficheros.
-    """
-    salida = Path(salida)
     tabla = pd.DataFrame([resumir(base, "baseline"), resumir(final, "final")])
     tabla.to_csv(salida / "comparacion.csv", index=False)
     pareada = prueba_pareada(base, final)
