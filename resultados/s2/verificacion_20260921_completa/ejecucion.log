@@ -1,0 +1,94 @@
+Autenticación OpenRouter: correcta.
+Crédito restante del límite de la clave: 99.846043825
+Validación local: {'preguntas': 20, 'comparativas': 6, 'anclas': 19, 'errores': []}
+Modelo: openrouter:google/gemini-3.8-flash max_tokens: 4096
+[baseline] 1/20 propio-001
+[baseline] 2/20 propio-002
+[baseline] 3/20 propio-003
+[baseline] 4/20 propio-004
+[baseline] 5/20 propio-005
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  11%|#1        | 22/199 [00:00<00:00, 197.39it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 1391.42it/s]
+[baseline] 6/20 propio-006
+[baseline] 7/20 propio-007
+[baseline] 8/20 propio-008
+[baseline] 9/20 propio-009
+[baseline] 10/20 propio-010
+[baseline] 11/20 propio-011
+[baseline] 12/20 propio-012
+[baseline] 13/20 propio-013
+[baseline] 14/20 propio-014
+[baseline] 15/20 propio-015
+[baseline] 16/20 propio-016
+[baseline] 17/20 propio-017
+[baseline] 18/20 propio-018
+[baseline] 19/20 propio-019
+[baseline] 20/20 propio-020
+[final] 1/20 propio-001
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  17%|#6        | 33/199 [00:00<00:00, 328.30it/s]Loading weights:  60%|######    | 120/199 [00:00<00:00, 645.05it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 964.04it/s]
+[final] 2/20 propio-002
+[final] 3/20 propio-003
+[final] 4/20 propio-004
+[final] 5/20 propio-005
+[final] 6/20 propio-006
+[final] 7/20 propio-007
+[final] 8/20 propio-008
+[final] 9/20 propio-009
+[final] 10/20 propio-010
+[final] 11/20 propio-011
+[final] 12/20 propio-012
+[final] 13/20 propio-013
+[final] 14/20 propio-014
+[final] 15/20 propio-015
+[final] 16/20 propio-016
+[final] 17/20 propio-017
+[final] 18/20 propio-018
+[final] 19/20 propio-019
+[final] 20/20 propio-020
+ version  preguntas  evaluadas  acierto  recall_trayectoria  coste_medio_usd  costes_conocidos  latencia_media_s  llamadas_medias  acierto_comparativa  acierto_extractiva  acierto_numerica
+baseline         20         20      0.3            0.769231          0.01604                20         27.375024             4.00                  0.0            0.000000          0.857143
+   final         20         18      0.6            1.000000          0.02201                19        228.587785             3.75                  0.5            0.285714          1.000000
+Sesión disponible en memoria para finalizar o repetir la verificación.
+[baseline] 1/20 propio-001
+[baseline] 2/20 propio-002
+[baseline] 3/20 propio-003
+[baseline] 4/20 propio-004
+[baseline] 5/20 propio-005
+[baseline] 6/20 propio-006
+[baseline] 7/20 propio-007
+[baseline] 8/20 propio-008
+[baseline] 9/20 propio-009
+[baseline] 10/20 propio-010
+[baseline] 11/20 propio-011
+[baseline] 12/20 propio-012
+[baseline] 13/20 propio-013
+[baseline] 14/20 propio-014
+[baseline] 15/20 propio-015
+[baseline] 16/20 propio-016
+[baseline] 17/20 propio-017
+[baseline] 18/20 propio-018
+[baseline] 19/20 propio-019
+[baseline] 20/20 propio-020
+[final] 1/20 propio-001
+[final] 2/20 propio-002
+[final] 3/20 propio-003
+[final] 4/20 propio-004
+[final] 5/20 propio-005
+[final] 6/20 propio-006
+[final] 7/20 propio-007
+[final] 8/20 propio-008
+[final] 9/20 propio-009
+[final] 10/20 propio-010
+[final] 11/20 propio-011
+[final] 12/20 propio-012
+[final] 13/20 propio-013
+[final] 14/20 propio-014
+[final] 15/20 propio-015
+[final] 16/20 propio-016
+[final] 17/20 propio-017
+[final] 18/20 propio-018
+[final] 19/20 propio-019
+[final] 20/20 propio-020
+ version  preguntas  evaluadas  acierto  recall_trayectoria  coste_medio_usd  costes_conocidos  latencia_media_s  llamadas_medias  acierto_comparativa  acierto_extractiva  acierto_numerica
+baseline         20         17     0.35                 0.8         0.012449                17         24.020063             3.75                  0.0            0.000000          1.000000
+   final         20         16     0.60                 1.0         0.022015                17         38.163178             3.65                  0.5            0.428571          0.857143

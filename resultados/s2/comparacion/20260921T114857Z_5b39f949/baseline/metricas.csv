@@ -1,0 +1,21 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,recall_trayectoria,coste_juez_usd,error
+propio-001,numerica,True,evaluado,0.0031867500000000003,7.461019000038505,1.0,,True,True,,,
+propio-002,numerica,True,evaluado,0.004158,12.548302399925888,2.0,,True,True,,,
+propio-003,numerica,True,evaluado,0.008795250000000001,54.33687009988353,3.0,False,True,True,,,
+propio-004,numerica,True,evaluado,0.0046785,12.40728159993887,2.0,,True,True,,,
+propio-005,numerica,False,error,0.00810225,26.068532600067556,3.0,,,,,,TypeError: 'NoneType' object is not a mapping
+propio-006,numerica,True,evaluado,0.0029077499999999997,7.175216400064528,1.0,,True,True,,,
+propio-007,numerica,False,error,,15.442115599988028,3.0,,,,,,"PaymentRequiredResponseError: This request would exceed your available credits given your current in-flight requests. Retry after in-flight requests settle, or add credits."
+propio-008,extractiva,False,no_intentado,,,,,,,,,
+propio-009,extractiva,False,no_intentado,,,,,,,,,
+propio-010,extractiva,False,no_intentado,,,,,,,,,
+propio-011,extractiva,False,no_intentado,,,,,,,,,
+propio-012,extractiva,False,no_intentado,,,,,,,,,
+propio-013,extractiva,False,no_intentado,,,,,,,,,
+propio-014,extractiva,False,no_intentado,,,,,,,,,
+propio-015,comparativa,False,no_intentado,,,,,,,,,
+propio-016,comparativa,False,no_intentado,,,,,,,,,
+propio-017,comparativa,False,no_intentado,,,,,,,,,
+propio-018,comparativa,False,no_intentado,,,,,,,,,
+propio-019,comparativa,False,no_intentado,,,,,,,,,
+propio-020,comparativa,False,no_intentado,,,,,,,,,

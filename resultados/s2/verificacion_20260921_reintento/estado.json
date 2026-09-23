@@ -1,0 +1,4 @@
+{
+  "estado": "interrumpida",
+  "motivo": "Se detecto salida truncada con 1024 tokens. Se repite con 4096 tokens en ambos agentes."
+}

@@ -1,0 +1,16 @@
+Autenticación OpenRouter: correcta.
+Crédito restante del límite de la clave: 99.92253775
+Validación local: {'preguntas': 20, 'comparativas': 6, 'anclas': 19, 'errores': []}
+Modelo: openrouter:google/gemini-3.8-flash max_tokens: 1024
+[baseline] 1/20 propio-001
+[baseline] 2/20 propio-002
+[baseline] 3/20 propio-003
+[baseline] 4/20 propio-004
+[baseline] 5/20 propio-005
+[baseline] 6/20 propio-006
+[baseline] 7/20 propio-007
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:  12%|#1        | 23/199 [00:00<00:00, 220.95it/s]Loading weights:  23%|##3       | 46/199 [00:00<00:00, 204.89it/s]Loading weights: 100%|##########| 199/199 [00:00<00:00, 834.04it/s]
+[baseline] 8/20 propio-008
+[baseline] 9/20 propio-009
+[baseline] 10/20 propio-010

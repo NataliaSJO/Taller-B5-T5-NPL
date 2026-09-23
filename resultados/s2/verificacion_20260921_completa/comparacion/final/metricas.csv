@@ -1,0 +1,217 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,recall_trayectoria,coste_juez_usd,error,traceback,detalle_api
+propio-001,numerica,True,evaluado,0.01449675,41.6259564999491,2,,True,True,,,,,
+propio-002,numerica,True,evaluado,0.022818,34.697112100198865,4,,True,True,,,,,
+propio-003,numerica,True,evaluado,0.020097,40.2812992001418,4,,True,True,,,,,
+propio-004,numerica,True,evaluado,0.0212505,58.08448079996742,4,,True,True,,,,,
+propio-005,numerica,True,evaluado,0.0157125,32.44905180018395,3,,True,True,,,,,
+propio-006,numerica,True,evaluado,0.011616,22.10892719984986,2,,True,True,,,,,
+propio-007,numerica,True,evaluado,0.00964425,35.107930100057274,3,,True,True,,,,,
+propio-008,extractiva,False,error,0.024896325,55.68734690011479,5,,,,,,ValueError: El modelo devolvió una consulta vacía,"Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 812, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 574, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py"", line 822, in _func
+    outputs = list(
+              ^^^^^
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py"", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py"", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py"", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py"", line 401, in __get_result
+    raise self._exception
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py"", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\runnables\config.py"", line 650, in _wrapped_fn
+    return contexts.pop().run(fn, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py"", line 1046, in _run_one
+    return self._execute_tool_sync(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py"", line 1006, in _execute_tool_sync
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py"", line 434, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py"", line 391, in _default_handle_tool_errors
+    raise e
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\prebuilt\tool_node.py"", line 958, in _execute_tool_sync
+    response = tool.invoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\tools\base.py"", line 764, in invoke
+    return self.run(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\tools\base.py"", line 1132, in run
+    raise error_to_raise
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\tools\base.py"", line 1098, in run
+    response = context.run(self._run, *tool_args, **tool_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\tools\structured.py"", line 152, in _run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 336, in search_filings
+    consulta = reescribir(query, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 221, in reescribir
+    raise ValueError(""El modelo devolvió una consulta vacía"")
+ValueError: El modelo devolvió una consulta vacía
+During task with name 'tools' and id '82c6ffd7-3f2f-e260-82f2-91d75fe9b4f5'
+",{}
+propio-009,extractiva,False,error,,3729.0625050999224,3,,,,,,ReadTimeout: The read operation timed out,"Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_transports\default.py"", line 101, in map_httpcore_exceptions
+    yield
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_transports\default.py"", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py"", line 256, in handle_request
+    raise exc from None
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\connection_pool.py"", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\connection.py"", line 103, in handle_request
+    return self._connection.handle_request(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\http11.py"", line 136, in handle_request
+    raise exc
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\http11.py"", line 106, in handle_request
+    ) = self._receive_response_headers(**kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\http11.py"", line 177, in _receive_response_headers
+    event = self._receive_event(timeout=timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_sync\http11.py"", line 217, in _receive_event
+    data = self._network_stream.read(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_backends\sync.py"", line 126, in read
+    with map_exceptions(exc_map):
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\contextlib.py"", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpcore\_exceptions.py"", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ReadTimeout: The read operation timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 812, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 574, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 3913, in invoke
+    for chunk in self.stream(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\main.py"", line 2967, in stream
+    for _ in runner.tick(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\pregel\_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langgraph\_internal\_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain\agents\factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\runnables\base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\agente\interfaz.py"", line 111, in _generate
+    return super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\langchain_openrouter\chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\chat.py"", line 830, in send
+    http_res = self.do_request(
+               ^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\basesdk.py"", line 291, in do_request
+    http_res = utils.retry(do, utils.Retries(retry_config[0], retry_config[1]))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\utils\retries.py"", line 222, in retry
+    return retry_with_backoff(
+           ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\utils\retries.py"", line 292, in retry_with_backoff
+    return func()
+           ^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\utils\retries.py"", line 195, in do_request
+    res = func()
+          ^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\basesdk.py"", line 274, in do
+    raise e
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\openrouter\basesdk.py"", line 269, in do
+    http_res = client.send(req, stream=stream)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_client.py"", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_client.py"", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_client.py"", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_client.py"", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_transports\default.py"", line 249, in handle_request
+    with map_httpcore_exceptions():
+  File ""C:\Users\Natalia\AppData\Local\Programs\Python\Python311\Lib\contextlib.py"", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File ""C:\Users\Natalia\workplace\Taller-B5-T5-NPL\.venv\Lib\site-packages\httpx\_transports\default.py"", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ReadTimeout: The read operation timed out
+During task with name 'model' and id 'bfdd865c-1057-8f4a-9b56-496ce0690d6a'
+",{}
+propio-010,extractiva,True,evaluado,0.0235878,49.32926529995166,3,True,,True,1.0,0.002886,,,
+propio-011,extractiva,False,evaluado,0.027217125,56.37156119989231,3,False,,True,1.0,,,,
+propio-012,extractiva,False,evaluado,0.029609025,47.41398710012436,3,False,,True,1.0,0.0040065,,,
+propio-013,extractiva,True,evaluado,0.0089745,21.86244919989258,1,True,,True,1.0,0.001377,,,
+propio-014,extractiva,False,evaluado,0.00883275,18.519963500089943,1,False,,True,1.0,0.002283,,,
+propio-015,comparativa,False,evaluado,0.0366291,65.00907619995996,6,False,True,True,1.0,,,,
+propio-016,comparativa,True,evaluado,0.018363749999999998,36.63170520006679,5,True,True,True,1.0,0.00287775,,,
+propio-017,comparativa,True,evaluado,0.0263166,44.233298000181094,5,True,True,True,1.0,0.001653,,,
+propio-018,comparativa,False,evaluado,0.03501525,69.2724016001448,6,False,True,True,1.0,0.00393,,,
+propio-019,comparativa,False,evaluado,0.03839505,73.20860189991072,7,False,True,True,1.0,0.00359625,,,
+propio-020,comparativa,True,evaluado,0.024710250000000003,40.798771099885926,5,True,True,True,1.0,0.00214575,,,

@@ -38,3 +38,23 @@ Para comprobar las dependencias instaladas:
 ```powershell
 .\.venv\Scripts\python.exe -m pip check
 ```
+
+## Evaluar el agente del notebook
+
+La ultima celda de `src/Baseline_Agente_10K.ipynb` valida las 20 preguntas
+de `src/golden_set_propio.jsonl` y ejecuta:
+
+```python
+resultados_baseline = evaluar(RUTA_EVALUACION, agente_evaluacion=agente)
+```
+
+Se utiliza el objeto `agente` creado en esa misma sesion. La evaluacion
+no crea otro modelo ni solicita otra clave. Si las funciones ya estaban
+cargadas antes de modificarlas, vuelve a ejecutar las celdas que definen
+`ejecutar` y `evaluar` antes de ejecutar la ultima celda.
+
+Cada ejecucion guarda una carpeta distinta en `resultados/baseline/`, con
+respuestas, trazas, metricas, resumen por familia y una copia del codigo
+y las preguntas utilizados. `coste_reportado_usd` recoge el coste que
+devuelve OpenRouter; `coste_usd` usa ese valor o, si falta, la estimacion
+con los precios configurados. Un coste desconocido permanece vacio.

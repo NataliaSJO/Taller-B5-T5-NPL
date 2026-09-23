@@ -1,0 +1,107 @@
+[
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "Evaluando el agente existente de esta sesion.\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-001 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-002 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-003 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-004 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-005 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-006 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-007 respondida\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-008 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-009 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-010 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-011 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-012 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-013 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-014 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-015 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-016 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-017 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-018 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "propio-019 ERROR\npropio-020 ERROR\n"
+  },
+  {
+    "output_type": "stream",
+    "name": "stdout",
+    "text": "\nResultados guardados en c:\\Users\\Natalia\\workplace\\Taller-B5-T5-NPL\\resultados\\baseline\\20260917T180626Z_938f35c6\n            cifra_coincide_golden       cita_localizable       herramientas_esperadas_presentes       recall_ancla_at_k       latencia_s       llamadas_herramienta       tokens_entrada       tokens_salida       coste_estimado_usd       coste_reportado_usd       coste_usd       fallo_ejecucion      \n                             mean count             mean count                             mean count              mean count       mean count                 mean count           mean count          mean count               mean count                mean count      mean count            mean count\nfamilia                                                                                                                                                                                                                                                                                                    \ncomparativa                   NaN     0              NaN     0                              NaN     0          0.333333     6   0.190818     6                  NaN     0            NaN     0           NaN     0                NaN     0                 NaN     0       NaN     0             1.0     6\nextractiva                    NaN     0              NaN     0                              NaN     0          0.285714     7   1.628121     7                  NaN     0            NaN     0           NaN     0                NaN     0                 NaN     0       NaN     0             1.0     7\nnumerica                 0.857143     7              NaN     0                              1.0     7               NaN     0  14.799071     7             2.285714     7    5822.285714     7    790.142857     7                NaN     0             0.00733     7   0.00733     7             0.0     7\nRUTA_EVALUACION_GUARDADA=c:\\Users\\Natalia\\workplace\\Taller-B5-T5-NPL\\resultados\\baseline\\20260917T180626Z_938f35c6\n"
+  }
+]
