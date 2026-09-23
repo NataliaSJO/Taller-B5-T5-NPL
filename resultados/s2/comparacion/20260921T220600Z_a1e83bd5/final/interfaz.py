@@ -54,11 +54,6 @@ MAX_TOKENS_JUEZ = int(os.getenv("MAX_TOKENS_JUEZ_10K", "256"))
 # Una pregunta colgada se comió 62 minutos de una evaluación; el corte es por
 # pregunta y deja seguir a las demás.
 LIMITE_SEGUNDOS = float(os.getenv("LIMITE_SEGUNDOS_10K", "150"))
-# El enunciado pide un límite de llamadas a herramienta por invocación. El de
-# modelo va por encima para que, agotadas las herramientas, queden turnos para
-# responder con lo que ya se tiene en vez de perder la respuesta.
-LIMITE_TOOLS = int(os.getenv("LIMITE_TOOLS_10K", "8"))
-LIMITE_MODELO = int(os.getenv("LIMITE_MODELO_10K", "12"))
 PRECIOS = miax_s2.PRECIOS_OPENROUTER
 # Tercera señal de ranking con la etiqueta de encabezado. Se activa aquí para
 # poder medir el buscador con y sin ella sobre las mismas preguntas.
@@ -123,36 +118,10 @@ def detalle_error_api(exc):
         return {}
 
 
-def sin_razonamiento(mensajes):
-    """Copia de los mensajes sin los bloques de razonamiento del proveedor."""
-    limpios = []
-    for m in mensajes:
-        extra = getattr(m, "additional_kwargs", None) or {}
-        sobran = {"reasoning_details", "reasoning_content"} & set(extra)
-        if sobran and hasattr(m, "model_copy"):
-            m = m.model_copy(update={"additional_kwargs": {k: v for k, v in extra.items()
-                                                           if k not in sobran}})
-        limpios.append(m)
-    return limpios
-
-
-def es_firma_corrupta(detalle):
-    """El 400 de Gemini cuando la firma de pensamiento no vuelve intacta."""
-    crudo = str(detalle.get("metadata", {}).get("raw", "")).lower()
-    return detalle.get("codigo") == 400 and ("thought signature" in crudo
-                                             or "reasoning details" in crudo)
-
-
 class ModeloOpenRouter(ChatOpenRouter):
-    """Reintenta reservas temporales, una desconexión y la firma de pensamiento.
-
-    Gemini exige que los bloques de razonamiento vuelvan intactos en cada
-    petición; cuando se pierden por el camino responde 400 y la pregunta se
-    perdía entera. Se reenvía una vez sin esos bloques antes de rendirse.
-    """
+    """Reintenta reservas temporales y una desconexión, conservando coste desconocido."""
     def _generate(self, messages, stop=None, run_manager=None, **kwargs):
         desconexiones = 0
-        limpiado = False
         for intento in range(4):
             try:
                 respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
@@ -167,11 +136,6 @@ class ModeloOpenRouter(ChatOpenRouter):
                     time.sleep(2)
                     continue
                 detalle = detalle_error_api(exc)
-                if es_firma_corrupta(detalle) and not limpiado:
-                    limpiado = True
-                    messages = sin_razonamiento(messages)
-                    print("OpenRouter: firma de pensamiento corrupta; se reenvía sin razonamiento previo.", flush=True)
-                    continue
                 temporal = detalle.get("metadata", {}).get("limit_source") == "openrouter_in_flight_budget"
                 if not temporal or intento == 3:
                     raise
@@ -538,22 +502,7 @@ def search_filings(query: str, ticker: str | None = None,
     trozos separados. Para obtener cifras usa get_xbrl_fact.
     """
     consulta = reescribir(query, config)
-    fragmentos = hibrido(consulta, ticker, fiscal_year, item, k, encabezados=USAR_ENCABEZADOS)
-    # Un filtro mal inferido deja el recall en cero. Antes de devolver vacío y
-    # gastar un turno entero del modelo, se reintenta soltando el item, que es
-    # el filtro que el modelo acierta menos.
-    if not fragmentos and item is not None:
-        fragmentos = hibrido(consulta, ticker, fiscal_year, None, k, encabezados=USAR_ENCABEZADOS)
-        if fragmentos:
-            return (f"Sin resultados en el Item {item}; se ha buscado en toda la compañía "
-                    f"y ejercicio.\n\n" + formatear(fragmentos))
-    if not fragmentos and fiscal_year is not None:
-        fragmentos = hibrido(consulta, ticker, None, item, k, encabezados=USAR_ENCABEZADOS)
-        if fragmentos:
-            return (f"Sin resultados para FY{fiscal_year}; se ha buscado en todos los "
-                    f"ejercicios disponibles. Comprueba el ejercicio de cada fragmento.\n\n"
-                    + formatear(fragmentos))
-    return formatear(fragmentos)
+    return formatear(hibrido(consulta, ticker, fiscal_year, item, k, encabezados=USAR_ENCABEZADOS))
 
 
 @tool
@@ -597,18 +546,8 @@ HERRAMIENTAS = [list_available, get_xbrl_fact, search_filings, read_section]
 SYSTEM_FINAL = """Eres un analista de informes 10-K. Usa sólo las cuatro herramientas.
 Cada cifra requiere get_xbrl_fact, incluso si aparece en texto. Si falta un concepto,
 consulta los disponibles y list_available; nunca inventes datos ni los estimes.
-Si get_xbrl_fact dice que ese concepto no existe para esa compañía y ejercicio y
-list_available lo confirma, la respuesta correcta es que NO está en el corpus:
-responde con fuente "ninguna" y cifra vacía, y deja de buscar. No lo sustituyas
-por otro concepto, no lo derives del texto y no encadenes más búsquedas: hay
-huecos reales y decirlo es la respuesta, no un fracaso.
 Para texto usa search_filings con los filtros que puedas inferir de la pregunta.
-Si la pregunta sólo pide una cifra, get_xbrl_fact basta: responde con fuente
-"xbrl" sin buscar texto. Busca texto sólo si se pregunta por lo que dice el
-informe. Para cuando tengas lo que necesitas: cada llamada de más cuesta.
-En comparativas consulta XBRL y texto de AMBOS ejercicios según lo que se pregunte,
-y escribe en la prosa los cuatro números: el valor de cada ejercicio, la variación
-absoluta y la variación porcentual. Una comparativa sin la variación no compara.
+En comparativas consulta XBRL y texto de AMBOS ejercicios según lo que se pregunte.
 Incluye en datos todos los hechos usados, con concepto, valor en unidades originales
 y ejercicio correcto. La cifra principal corresponde al ejercicio preguntado primero.
 Puedes calcular diferencia y crecimiento a partir de dos hechos del MISMO concepto
@@ -616,9 +555,6 @@ y márgenes entre dos hechos del MISMO ejercicio; cualquier otro número debe es
 escrito tal cual en el fragmento que cites.
 Cada cita es UNA sola frase copiada literalmente de un fragmento: no unas trozos
 separados ni saltes por encima de la numeración de página que aparece en medio.
-No afirmes nada que tus citas no sostengan: si enumeras varios puntos, aporta una
-cita para cada uno en citas, y si no la tienes, no incluyas ese punto. Vale más
-una respuesta corta y respaldada que una lista amplia a medio citar.
 Incluye las citas literales y sus chunk_id en citas; en cita/chunk_id va la principal.
 No confundas ejercicio fiscal con fecha de presentación. Si no hay evidencia, dilo.
 Escribe cantidades sin separador de miles y con punto decimal; permite millones,
@@ -633,15 +569,9 @@ MARCA = "VERIFICACIÓN AUTOMÁTICA"
 AVISOS_GUARDRAIL = []
 # Medido sobre las 20 preguntas: el 80 % de los avisos eran el día de una fecha
 # de cierre o la numeración de una lista, y costaban un turno de modelo cada uno.
-# El mes en inglés va con nombre completo o abreviatura exacta y exige el año de
-# cuatro cifras detrás. Con un comodín, «aproximadamente» empezaba por «apr», se
-# comía «aproximadamente 128» de «128.528 mil millones» y el guardrail avisaba de
-# un 528e9 que nadie había escrito: los tres falsos positivos medidos.
-_MES_EN = (r"jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?"
-           r"|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?")
 _FECHAS = re.compile(
     r"\b\d{1,2}\s+de\s+[a-záéíóú]+(?:\s+de\s+\d{4})?\b"
-    r"|\b(?:" + _MES_EN + r")\.?\s+\d{1,2},?\s+\d{4}\b"
+    r"|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|sept|dec)[a-zé]*\.?\s+\d{1,2},?\s*\d{0,4}\b"
     r"|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}/\d{1,2}/\d{2,4}\b", re.I)
 _VINETAS = re.compile(r"(?m)^\s*\(?\d{1,2}[.)]\s+")
 _MESES = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -677,10 +607,6 @@ def extraer_cifras(texto):
         if "." in numero and "," in numero:
             decimal = "." if numero.rfind(".") > numero.rfind(",") else ","
             numero = numero.replace("," if decimal == "." else ".", "").replace(decimal, ".")
-        elif re.fullmatch(r"-?\d{1,3}[.,]\d{3}", numero) and escala and escala != "%":
-            # «128.528 mil millones» son 128,528 miles de millones, no 128528 de
-            # ellos: con una escala detrás, el separador único es decimal.
-            numero = numero.replace(",", ".")
         elif re.fullmatch(r"-?\d{1,3}(?:[.,]\d{3})+", numero):
             numero = numero.replace(".", "").replace(",", "")
         else:
@@ -925,30 +851,6 @@ def limite_de_tiempo(state: AgentState, runtime) -> dict | None:
         fuente="ninguna"), "jump_to": "end"}
 
 
-AVISO_ESQUEMA = "FALTA LA RESPUESTA ESTRUCTURADA"
-
-
-@after_model(can_jump_to=["model"])
-def exigir_respuesta_estructurada(state: AgentState, runtime) -> dict | None:
-    """Si el modelo contesta en prosa, se le pide el esquema una sola vez.
-
-    Terminar sin respuesta estructurada tira a la basura una respuesta que puede
-    ser correcta, y cuenta como error en la tabla. Pasó en propio-011.
-    """
-    if state.get("structured_response"):
-        return None
-    mensajes = mensajes_de(state)
-    ultimo = mensajes[-1] if mensajes else {}
-    if ultimo.get("type") != "ai" or ultimo.get("tool_calls"):
-        return None
-    if any(str(m.get("content", "")).startswith(AVISO_ESQUEMA)
-           for m in mensajes if m.get("type") == "human"):
-        return None
-    return {"messages": [{"role": "user", "content": (
-        AVISO_ESQUEMA + ": devuelve lo que ya has averiguado con el esquema "
-        "RespuestaFinanciera, no en prosa suelta.")}], "jump_to": "model"}
-
-
 @lru_cache(maxsize=2)
 def construir_agente(version="final"):
     if version == "baseline":
@@ -959,9 +861,8 @@ def construir_agente(version="final"):
         model=modelo(), tools=HERRAMIENTAS, system_prompt=SYSTEM_FINAL,
         response_format=RespuestaFinanciera, checkpointer=InMemorySaver(),
         middleware=[limite_de_tiempo,
-                    ToolCallLimitMiddleware(run_limit=LIMITE_TOOLS, exit_behavior="continue"),
-                    ModelCallLimitMiddleware(run_limit=LIMITE_MODELO),
-                    exigir_respuesta_estructurada, verificar_cifras_contra_xbrl],
+                    ToolCallLimitMiddleware(run_limit=8, exit_behavior="continue"),
+                    ModelCallLimitMiddleware(run_limit=10), verificar_cifras_contra_xbrl],
     )
 
 
@@ -1028,7 +929,7 @@ def ejecutar(pregunta, version="final", thread_id=None, agente_evaluacion=None):
         resultado = agente.invoke(
             {"messages": [{"role": "user", "content": pregunta}]},
             config={"configurable": {"thread_id": thread_id or uuid4().hex},
-                    "callbacks": [registro], "recursion_limit": 80},
+                    "callbacks": [registro], "recursion_limit": 60},
         )
         if not resultado.get("structured_response"):
             raise RuntimeError("El agente terminó sin respuesta estructurada; puede haber alcanzado un límite")
@@ -1237,8 +1138,8 @@ def configuracion(ruta_jsonl):
              RAIZ / "corpus/xbrl_facts.parquet", RAIZ / "requirements.txt"]
     return {"modelo": MODELO, "max_tokens": MAX_TOKENS, "temperature": 0,
             "timeout_ms": 180000, "reintentos_red": 1, "reescritura_vacia": "consulta_original",
-            "k": K, "tolerancia": TOLERANCIA, "limite_tools_final": LIMITE_TOOLS,
-            "limite_modelo_final": LIMITE_MODELO, "python": sys.version,
+            "k": K, "tolerancia": TOLERANCIA, "limite_tools_final": 8,
+            "limite_modelo_final": 10, "python": sys.version,
             "hashes": {str(p.relative_to(RAIZ) if p.is_relative_to(RAIZ) else p):
                        hashlib.sha256(p.read_bytes()).hexdigest() for p in rutas}}
 
@@ -1368,43 +1269,13 @@ def resumir(tabla, etiqueta):
             **{f"acierto_{f}": g.acierto.mean() for f, g in tabla.groupby("familia")}}
 
 
-def prueba_pareada(base, final):
-    """McNemar exacto sobre las mismas preguntas: n=20 no da para medias sueltas.
-
-    Devuelve los discordantes y la probabilidad de ver esa asimetría por azar si
-    los dos sistemas fueran iguales. No convierte 20 preguntas en una certeza:
-    sirve para no presentar como mejora lo que cabe en el ruido.
-    """
-    from math import comb
-    unidas = base[["id", "acierto"]].merge(final[["id", "acierto"]], on="id",
-                                           suffixes=("_base", "_final"))
-    gana = int((~unidas.acierto_base & unidas.acierto_final).sum())
-    pierde = int((unidas.acierto_base & ~unidas.acierto_final).sum())
-    n = gana + pierde
-    p = (sum(comb(n, i) for i in range(min(gana, pierde) + 1)) / 2 ** n * 2) if n else 1.0
-    return {"preguntas_comparadas": len(unidas), "solo_acierta_final": gana,
-            "solo_acierta_baseline": pierde, "p_valor_mcnemar": min(1.0, p)}
-
-
 def comparar(ruta_jsonl=RUTA_GOLDEN, salida=None):
     salida = Path(salida) if salida else nueva_salida("comparacion")
     salida.mkdir(parents=True, exist_ok=False)
     base = evaluar(ruta_jsonl, etiqueta="baseline", salida=salida / "baseline")
     final = evaluar(ruta_jsonl, etiqueta="final", salida=salida / "final")
-    return escribir_comparacion(base, final, salida)
-
-
-def escribir_comparacion(base, final, salida):
-    """Tabla y significancia a partir de dos evaluaciones ya hechas.
-
-    Separada de `comparar` para que volver a medir sólo una de las dos mitades
-    produzca exactamente los mismos ficheros.
-    """
-    salida = Path(salida)
     tabla = pd.DataFrame([resumir(base, "baseline"), resumir(final, "final")])
     tabla.to_csv(salida / "comparacion.csv", index=False)
-    pareada = prueba_pareada(base, final)
-    guardar_json(salida / "significancia.json", pareada)
     # Sólo destacar mejores valores si ambas evaluaciones están completas.
     completa = all(tabla.evaluadas == tabla.preguntas)
     lineas = ["| Métrica | Baseline | Final |", "| --- | ---: | ---: |"]

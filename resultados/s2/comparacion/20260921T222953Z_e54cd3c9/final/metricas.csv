@@ -1,0 +1,28 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,cita_ancla,recall_trayectoria,coste_juez_usd,coste_estimado_usd,avisos_guardrail,error,traceback,detalle_api
+propio-001,numerica,True,evaluado,0.007953,13.534505900053773,1,,True,True,,,,0.007953,1,,,
+propio-002,numerica,True,evaluado,0.007893,14.550216900010128,2,,True,True,,,,0.007893,1,,,
+propio-003,numerica,True,evaluado,0.00417525,8.69255850004265,1,,True,True,,,,0.00417525,0,,,
+propio-004,numerica,True,evaluado,0.010982249999999999,19.558437799976673,2,,True,True,,,,0.010982249999999999,1,,,
+propio-005,numerica,True,evaluado,0.00551775,11.335509900003672,2,,True,True,,,,0.00551775,0,,,
+propio-006,numerica,True,evaluado,0.00475125,6.459510300017428,1,,True,True,,,,0.00475125,0,,,
+propio-007,numerica,True,evaluado,0.00522825,10.564388700004201,2,,True,True,,,,0.00522825,0,,,
+propio-008,extractiva,True,evaluado,0.0077485,16.7432695000316,1,True,,True,True,1.0,0.0002305,0.0077485,0,,,
+propio-009,extractiva,True,evaluado,0.01654295,29.700786600005813,2,True,,True,False,0.0,0.0003108,0.01654295,0,,,
+propio-010,extractiva,True,evaluado,0.0199809,35.451117900025565,3,True,,True,True,1.0,0.0003062,0.0199809,0,,,
+propio-011,extractiva,False,error,0.027329525,73.72740189998876,3,,,,,,,0.027329525,0,RuntimeError: El agente terminó sin respuesta estructurada; puede haber alcanzado un límite,"Traceback (most recent call last):
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 1265, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""c:\Users/1jose/Desktop/educacion/master_bme/modulo 5/agentes/Taller-B5-T5-NPL\agente\interfaz.py"", line 994, in ejecutar
+    raise RuntimeError(""El agente terminó sin respuesta estructurada; puede haber alcanzado un límite"")
+RuntimeError: El agente terminó sin respuesta estructurada; puede haber alcanzado un límite
+",{}
+propio-012,extractiva,True,evaluado,0.0153147,25.38101930002449,2,True,,True,True,1.0,0.0003173,0.0153147,0,,,
+propio-013,extractiva,True,evaluado,0.0046313,27.72161030001007,1,True,,True,True,1.0,0.0002559,0.0046313,0,,,
+propio-014,extractiva,True,evaluado,0.005289899999999999,14.834953999961726,1,True,,True,True,1.0,0.0002208,0.005289899999999999,0,,,
+propio-015,comparativa,True,evaluado,0.02457685,35.26546699996106,6,True,True,True,False,0.5,0.0003872,0.02457685,0,,,
+propio-016,comparativa,True,evaluado,0.01275035,42.96310870000161,5,True,True,True,True,1.0,0.0003408,0.01275035,0,,,
+propio-017,comparativa,True,evaluado,0.02259935,37.15606279997155,5,True,True,True,True,1.0,0.0003021,0.02259935,0,,,
+propio-018,comparativa,True,evaluado,0.041911975,57.53596850001486,9,True,True,True,True,1.0,0.0003248,0.041911975,0,,,
+propio-019,comparativa,True,evaluado,0.037867399999999996,48.98660880001262,8,True,True,True,True,1.0,0.0002792,0.037867399999999996,0,,,
+propio-020,comparativa,True,evaluado,0.027464975000000003,57.64548659999855,6,True,True,True,True,1.0,0.0002859,0.027464975000000003,0,,,

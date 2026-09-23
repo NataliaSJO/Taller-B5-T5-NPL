@@ -1,69 +1,83 @@
-# Evaluación del baseline con el agente del notebook
+# Resultados de la evaluación
 
-Se ha utilizado el objeto `agente` de la sesión abierta de
-`src/Baseline_Agente_10K.ipynb`, sin reconstruirlo ni copiar la clave de API.
-El modelo de la sesión era `openrouter:google/gemini-3.8-flash`, con un
-máximo de 1.024 tokens de salida por llamada.
+Modelo del agente: `openrouter:google/gemini-3.8-flash`, máximo 4096 tokens de salida, temperatura 0. Tolerancia numérica 1%. Límite de 8 llamadas a herramienta y 12 al modelo por pregunta.
 
-## Estado
+Carpeta de resultados: `resultados\s2\comparacion\20260921T230019Z_c0888bbc`.
 
-- El golden set pasa el validador de clase con `exigir_20=True`:
-  20 preguntas, de las cuales 6 son comparativas.
-- Se intentaron las 20 preguntas y se guardó un registro para cada una.
-- Las 7 preguntas numéricas devolvieron respuesta estructurada.
-- Las 13 preguntas extractivas y comparativas no llegaron a completar
-  su respuesta: OpenRouter rechazó peticiones por crédito disponible y,
-  posteriormente, por el límite de 20 solicitudes por minuto de la cuenta.
-- Después de esperar se reintentó `propio-008`; volvió a producirse un
-  `PaymentRequiredResponseError`. Ese intento también está conservado.
+## Baseline frente a sistema final
 
-La evaluación está **parcial**, no completada satisfactoriamente para las
-20 preguntas. Los errores de infraestructura no deben interpretarse como
-respuestas incorrectas del agente ni ocultarse al comparar sistemas.
+| Métrica | Baseline | Final |
+| --- | --- | --- |
+| Preguntas evaluadas | 20 | 20 |
+| Acierto global | 55.0% | **95.0%** |
+| Acierto numéricas | 85.7% | **100.0%** |
+| Acierto extractivas | 71.4% | **100.0%** |
+| Acierto comparativas | 0.0% | **83.3%** |
+| Cita válida | 35.7% | **92.3%** |
+| Cita sobre el ancla del golden | 23.1% | **84.6%** |
+| Recall@5 del buscador (aislado) | 26.3% | **73.7%** |
+| Recall de la trayectoria | 76.9% | **88.5%** |
+| Coste medio (USD) | 0.0145 | **0.0144** |
+| Coste medio estimado (USD) | 0.0145 | **0.0144** |
+| Latencia media (s) | **24.3** | 30.6 |
+| Llamadas a herramienta | 3.75 | **3.00** |
+| Avisos del guardrail | 0 | 3 |
 
-## Resultados guardados
+Prueba pareada (McNemar exacto) sobre las mismas 20 preguntas: sólo acierta el final en 8, sólo el baseline en 0, p = 0.008. Con 20 preguntas el intervalo de confianza de una tasa ronda ±20 puntos: la tabla se lee junto a esta prueba, no en su lugar.
 
-La ejecución principal está en:
+## Buscador: matriz de mejoras
 
-`baseline/20260917T180626Z_938f35c6/`
+| Variante | Recall@1 | Recall@3 | Recall@5 | Recall@10 | Evidencias |
+| --- | --- | --- | --- | --- | --- |
+| denso | 0.0% | 0.0% | 0.0% | 0.0% | 19 |
+| filtros | 5.3% | 10.5% | 26.3% | 47.4% | 19 |
+| hibrido | 5.3% | 15.8% | 26.3% | 36.8% | 19 |
+| hibrido_enc | 0.0% | 15.8% | 21.1% | 36.8% | 19 |
+| denso_reescrito | 15.8% | 31.6% | 36.8% | 47.4% | 19 |
+| filtros_reescrito | 36.8% | 63.2% | 63.2% | 84.2% | 19 |
+| hibrido_reescrito | 36.8% | 57.9% | 63.2% | 100.0% | 19 |
+| hibrido_enc_reescrito | 31.6% | 68.4% | 73.7% | 84.2% | 19 |
 
-Contiene `respuestas.jsonl`, `metricas.csv`, `resumen_por_familia.csv`,
-`configuracion.json`, `preguntas.jsonl` y las copias de `baseline.ipynb`
-y `miax_s1.py` utilizadas. El reintento está en:
+Los filtros salen del golden: la medición aísla el buscador y es una cota superior de lo que consigue el agente, que debe inferirlos de la pregunta.
+Carpeta: `resultados\s2\retrieval\20260921T215557Z_b69136ba`.
 
-`baseline/20260917T180958Z_346a12b8/`
+## Varianza entre ejecuciones
 
-El coste comunicado por OpenRouter para las 7 respuestas completas suma
-**0,05130825 USD**. Es un subtotal conocido: las llamadas intermedias de
-ejecuciones fallidas pueden tener consumo que estas métricas no recogen.
+El **mismo** agente baseline, las mismas preguntas y los mismos evaluadores, medido dos veces. La temperatura es 0, pero ni la API ni el juez son deterministas.
 
-En las 7 preguntas numéricas, 6 pasan la comprobación conjunta de cifra
-y unidad. `propio-007` devuelve la cifra correcta, 7,46, pero usa la unidad
-`USD/acción` en lugar de `USD/shares`, y el comparador literal la rechaza.
-La respuesta también recurre al texto tras encontrar el valor redondeado
-de la herramienta. Son observaciones para revisar en la siguiente sesión;
-no se han alterado las respuestas ni las reglas para mejorar la puntuación.
+| Familia | Ejecución 1 | Ejecución 2 |
+| --- | --- | --- |
+| Global | 45.0% | 55.0% |
+| comparativa | 0.0% | 0.0% |
+| extractiva | 28.6% | 71.4% |
+| numerica | 100.0% | 85.7% |
 
-Las comprobaciones son las iniciales del baseline. No demuestran todavía
-que cada cita respalde toda la respuesta ni que las comparativas se hayan
-resuelto completamente. Las medias de respuestas y costes excluyen valores
-desconocidos; sus columnas `count` muestran cuántos casos sustentan cada media.
+Cambian de resultado **4 de 20 preguntas**. Una de ellas se explica por el reintento de firma de pensamiento que incorpora la segunda ejecución; el resto es ruido. Con 7 preguntas por familia, las cifras por familia se mueven decenas de puntos sin que cambie nada: no se deben leer como diferencias reales.
 
-## Reanudar las preguntas pendientes
+## Control de memorización (sin herramientas)
 
-`validacion/preguntas_pendientes.jsonl` contiene las 13 preguntas sin
-respuesta completa. Cuando se haya resuelto la disponibilidad de crédito,
-se pueden evaluar con el mismo agente de la sesión:
+Las mismas preguntas contra el mismo modelo, sin corpus ni herramientas. Mide cuánto del acierto no depende del 10-K: el enunciado penaliza acertar por el camino equivocado.
 
-```python
-resultados_pendientes = evaluar(
-    RAIZ / "resultados/validacion/preguntas_pendientes.jsonl",
-    agente_evaluacion=agente,
-)
+| Medida | Valor |
+| --- | --- |
+| Cifras acertadas de memoria | 1/13 (7.7%) |
+| Abstenciones | 13/20 |
+| Citas inventadas (no existen en el corpus) | 2/2 |
+| Coste del control (USD) | 0.0521 |
+
+## Huecos reales del XBRL
+
+Conceptos que una compañía no reporta (Amazon no publica GrossProfit, Liabilities ni ResearchAndDevelopmentExpense; Meta y Alphabet tampoco GrossProfit). La respuesta correcta es decir que no está. El golden propio no cubre este caso, así que se mide aparte.
+
+| Ejecución | Se abstiene correctamente | Coste (USD) |
+| --- | --- | --- |
+| 20260921T225238 | 1/3 | 0.0814 |
+| 20260921T225752 | 3/3 | 0.0163 |
+
+## Cómo se regenera
+
+```powershell
+python -m unittest discover -s tests -v
+python scripts/ejecutar_evaluacion_s2.py --salida resultados\s2\<carpeta>
+python scripts/generar_resumen.py --comparacion <carpeta>\comparacion --retrieval resultados\s2\retrieval\<marca>
 ```
-
-No hace falta repetir las siete preguntas ya respondidas. Esta llamada
-guarda otra carpeta y conserva la ejecución anterior. El límite del proveedor
-se aplica a solicitudes al modelo, no a preguntas: una pregunta puede
-necesitar varias solicitudes. Si vuelve a aparecer un error 429, hay que
-esperar el plazo indicado por el proveedor antes de reintentar.

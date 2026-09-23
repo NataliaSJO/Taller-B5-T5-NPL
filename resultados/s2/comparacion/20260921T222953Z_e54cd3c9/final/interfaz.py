@@ -597,11 +597,6 @@ HERRAMIENTAS = [list_available, get_xbrl_fact, search_filings, read_section]
 SYSTEM_FINAL = """Eres un analista de informes 10-K. Usa sólo las cuatro herramientas.
 Cada cifra requiere get_xbrl_fact, incluso si aparece en texto. Si falta un concepto,
 consulta los disponibles y list_available; nunca inventes datos ni los estimes.
-Si get_xbrl_fact dice que ese concepto no existe para esa compañía y ejercicio y
-list_available lo confirma, la respuesta correcta es que NO está en el corpus:
-responde con fuente "ninguna" y cifra vacía, y deja de buscar. No lo sustituyas
-por otro concepto, no lo derives del texto y no encadenes más búsquedas: hay
-huecos reales y decirlo es la respuesta, no un fracaso.
 Para texto usa search_filings con los filtros que puedas inferir de la pregunta.
 Si la pregunta sólo pide una cifra, get_xbrl_fact basta: responde con fuente
 "xbrl" sin buscar texto. Busca texto sólo si se pregunta por lo que dice el
@@ -633,15 +628,9 @@ MARCA = "VERIFICACIÓN AUTOMÁTICA"
 AVISOS_GUARDRAIL = []
 # Medido sobre las 20 preguntas: el 80 % de los avisos eran el día de una fecha
 # de cierre o la numeración de una lista, y costaban un turno de modelo cada uno.
-# El mes en inglés va con nombre completo o abreviatura exacta y exige el año de
-# cuatro cifras detrás. Con un comodín, «aproximadamente» empezaba por «apr», se
-# comía «aproximadamente 128» de «128.528 mil millones» y el guardrail avisaba de
-# un 528e9 que nadie había escrito: los tres falsos positivos medidos.
-_MES_EN = (r"jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?"
-           r"|aug(?:ust)?|sept?(?:ember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?")
 _FECHAS = re.compile(
     r"\b\d{1,2}\s+de\s+[a-záéíóú]+(?:\s+de\s+\d{4})?\b"
-    r"|\b(?:" + _MES_EN + r")\.?\s+\d{1,2},?\s+\d{4}\b"
+    r"|\b(?:ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic|jan|apr|aug|sept|dec)[a-zé]*\.?\s+\d{1,2},?\s*\d{0,4}\b"
     r"|\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}/\d{1,2}/\d{2,4}\b", re.I)
 _VINETAS = re.compile(r"(?m)^\s*\(?\d{1,2}[.)]\s+")
 _MESES = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -677,10 +666,6 @@ def extraer_cifras(texto):
         if "." in numero and "," in numero:
             decimal = "." if numero.rfind(".") > numero.rfind(",") else ","
             numero = numero.replace("," if decimal == "." else ".", "").replace(decimal, ".")
-        elif re.fullmatch(r"-?\d{1,3}[.,]\d{3}", numero) and escala and escala != "%":
-            # «128.528 mil millones» son 128,528 miles de millones, no 128528 de
-            # ellos: con una escala detrás, el separador único es decimal.
-            numero = numero.replace(",", ".")
         elif re.fullmatch(r"-?\d{1,3}(?:[.,]\d{3})+", numero):
             numero = numero.replace(".", "").replace(",", "")
         else:
@@ -925,30 +910,6 @@ def limite_de_tiempo(state: AgentState, runtime) -> dict | None:
         fuente="ninguna"), "jump_to": "end"}
 
 
-AVISO_ESQUEMA = "FALTA LA RESPUESTA ESTRUCTURADA"
-
-
-@after_model(can_jump_to=["model"])
-def exigir_respuesta_estructurada(state: AgentState, runtime) -> dict | None:
-    """Si el modelo contesta en prosa, se le pide el esquema una sola vez.
-
-    Terminar sin respuesta estructurada tira a la basura una respuesta que puede
-    ser correcta, y cuenta como error en la tabla. Pasó en propio-011.
-    """
-    if state.get("structured_response"):
-        return None
-    mensajes = mensajes_de(state)
-    ultimo = mensajes[-1] if mensajes else {}
-    if ultimo.get("type") != "ai" or ultimo.get("tool_calls"):
-        return None
-    if any(str(m.get("content", "")).startswith(AVISO_ESQUEMA)
-           for m in mensajes if m.get("type") == "human"):
-        return None
-    return {"messages": [{"role": "user", "content": (
-        AVISO_ESQUEMA + ": devuelve lo que ya has averiguado con el esquema "
-        "RespuestaFinanciera, no en prosa suelta.")}], "jump_to": "model"}
-
-
 @lru_cache(maxsize=2)
 def construir_agente(version="final"):
     if version == "baseline":
@@ -960,8 +921,7 @@ def construir_agente(version="final"):
         response_format=RespuestaFinanciera, checkpointer=InMemorySaver(),
         middleware=[limite_de_tiempo,
                     ToolCallLimitMiddleware(run_limit=LIMITE_TOOLS, exit_behavior="continue"),
-                    ModelCallLimitMiddleware(run_limit=LIMITE_MODELO),
-                    exigir_respuesta_estructurada, verificar_cifras_contra_xbrl],
+                    ModelCallLimitMiddleware(run_limit=LIMITE_MODELO), verificar_cifras_contra_xbrl],
     )
 
 
@@ -1391,16 +1351,6 @@ def comparar(ruta_jsonl=RUTA_GOLDEN, salida=None):
     salida.mkdir(parents=True, exist_ok=False)
     base = evaluar(ruta_jsonl, etiqueta="baseline", salida=salida / "baseline")
     final = evaluar(ruta_jsonl, etiqueta="final", salida=salida / "final")
-    return escribir_comparacion(base, final, salida)
-
-
-def escribir_comparacion(base, final, salida):
-    """Tabla y significancia a partir de dos evaluaciones ya hechas.
-
-    Separada de `comparar` para que volver a medir sólo una de las dos mitades
-    produzca exactamente los mismos ficheros.
-    """
-    salida = Path(salida)
     tabla = pd.DataFrame([resumir(base, "baseline"), resumir(final, "final")])
     tabla.to_csv(salida / "comparacion.csv", index=False)
     pareada = prueba_pareada(base, final)

@@ -227,6 +227,159 @@ class PruebasS2(unittest.TestCase):
         self.assertIn("= 7 USD/shares", herramienta.invoke({
             "ticker": "AAPL", "fiscal_year": 2025, "concept": "EarningsPerShareDiluted"}))
 
+    def test_extraer_cifras_ignora_fechas_y_vinetas(self):
+        # Los dos falsos positivos medidos: el dia de la fecha de cierre y la lista.
+        self.assertEqual(s.extraer_cifras("Cerro el 28 de septiembre de 2024 con 100 millones USD."),
+                         [(100000000.0, False)])
+        self.assertEqual(s.extraer_cifras("Riesgos:\n1. Competencia.\n2. Regulacion."), [])
+        self.assertEqual(s.extraer_cifras("September 28, 2024 fue el cierre."), [])
+        self.assertEqual(s.extraer_cifras("El margen fue del 49,0 %."), [(49.0, True)])
+        # "aproximadamente" empieza por "apr": no puede confundirse con April.
+        leidas = s.extraer_cifras("128528000000 USD (aproximadamente 128.528 mil millones)")
+        self.assertEqual(len(leidas), 2)
+        for valor, es_porcentaje in leidas:  # la escala hace decimal al separador
+            self.assertFalse(es_porcentaje)
+            self.assertAlmostEqual(valor, 128528000000.0, delta=1)
+        self.assertEqual(s.extraer_cifras("El cierre fue en April 2025 y no hay cifra."), [])
+
+    def test_numero_citado_del_texto_no_es_invento(self):
+        r = s.RespuestaFinanciera(respuesta="Data Center crecio un 142 % segun el informe.",
+                                  fuente="texto")
+        base = traza(r)
+        self.assertTrue(s.desajustes_cifras(base))  # sin contexto sigue siendo un invento
+        con_texto = {**base, "messages": base["messages"] + [ToolMessage(
+            content="[NVDA-2025-7-0007] Data Center revenue for fiscal year 2025 was up 142%.",
+            tool_call_id="t2", name="search_filings")]}
+        self.assertEqual(s.desajustes_cifras(con_texto), [])
+
+    def test_margen_entre_dos_hechos_del_mismo_ejercicio(self):
+        hechos = {("AAPL", 2024, "GrossProfit"): (180683000000.0, "USD"),
+                  ("AAPL", 2024, "Revenues"): (391035000000.0, "USD")}
+        _, porcentajes = s.valores_admisibles(hechos)
+        self.assertTrue(any(abs(p - 46.2) < 0.5 for p in porcentajes))
+
+    def test_cita_reparada_sobre_ruido_de_pagina(self):
+        # Caso real de propio-011: la cita cosia por encima de "10. Table of Contents".
+        fragmento = s.datos()[1]["GOOGL-2024-1A-0001"]
+        rota = ("We generate a significant portion of our revenues from advertising. "
+                "Reduced spending by advertisers, a loss of partners, or new and existing "
+                "technologies that block ads online and/or affect our ability to personalize "
+                "ads could harm our business. We generated more than 75% of total revenues "
+                "from online advertising in 2024. Many of our advertisers, companies that "
+                "distribute our products and services, digital publishers, and content "
+                "providers can terminate their contracts with us at any time. These partners "
+                "may not continue to do business with us if we do not create more value (such "
+                "as increased numbers of users or customers, new sales leads, increased brand "
+                "awareness, or more effective monetization) than their available alternatives.")
+        self.assertNotIn(s.miax_s2.normalizar(rota), s.miax_s2.normalizar(fragmento["texto"]))
+        r = s.RespuestaFinanciera(respuesta="Depende de la publicidad.", fuente="texto",
+                                  ticker="GOOGL", ejercicio=2024,
+                                  cita=rota, chunk_id=fragmento["chunk_id"])
+        resultado = {"structured_response": r, "messages": [ToolMessage(
+            content=s.formatear([{**fragmento, "puntuacion": 0.1}]),
+            tool_call_id="t1", name="search_filings")]}
+        corregida, cambios = s.reparar_citas(resultado)
+        self.assertTrue(cambios)
+        self.assertIn(s.miax_s2.normalizar(corregida.cita),
+                      s.miax_s2.normalizar(fragmento["texto"]))
+
+    def test_cita_valida_no_exige_el_ancla_del_golden(self):
+        item = next(g for g in self.golden if g["id"] == "propio-008")
+        otro = next(f for f in s.datos()[1].values()
+                    if f["ticker"] == item["ticker"] and f["fiscal_year"] == item["fiscal_year"]
+                    and f["item"] == item["item_esperado"]
+                    and s.miax_s2.normalizar(item["ancla_texto"]) not in s.miax_s2.normalizar(f["texto"]))
+        frase = [x for x in otro["texto"].split(". ") if len(x) > 80][0] + "."
+        r = {"respuesta": "Depende de proveedores externos.", "fuente": "texto",
+             "cita": frase, "chunk_id": otro["chunk_id"]}
+        resultado = {"structured_response": r, "juicio_cita": {"respalda": True},
+                     "messages": [ToolMessage(content=s.formatear([{**otro, "puntuacion": 0.1}]),
+                                              tool_call_id="t1", name="search_filings")]}
+        self.assertTrue(s.cita_correcta(item, resultado))   # criterio del enunciado
+        self.assertFalse(s.cita_ancla(item, resultado))     # medida estricta, informativa
+
+    def test_etiquetas_cubren_el_corpus(self):
+        etiquetas = s.etiquetas()
+        self.assertEqual(len(etiquetas), len(s.datos()[1]))
+        self.assertEqual(etiquetas["NVDA-2025-7-0001"], "Demand and Supply")
+
+    def test_limite_de_tiempo_cierra_la_pregunta(self):
+        # Una pregunta colgada no debe llevarse por delante el resto de la evaluación.
+        modelo = ModeloGuion(respuestas=[salida_modelo(respuesta(), "r1")])
+        agente = s.create_agent(model=modelo, tools=[s.get_xbrl_fact],
+            response_format=ToolStrategy(s.RespuestaFinanciera),
+            middleware=[s.limite_de_tiempo])
+        with patch.object(s, "_INICIO_PREGUNTA", s.time.perf_counter() - s.LIMITE_SEGUNDOS - 1):
+            r = agente.invoke({"messages": [HumanMessage(content="Activos Apple 2024")]})
+        self.assertEqual(r["structured_response"].fuente, "ninguna")
+        self.assertEqual(modelo._posicion, 0)  # ni siquiera se llega a llamar al modelo
+
+    def test_coste_estimado_rellena_el_desconocido(self):
+        registro = s.RegistroLLM()
+        registro.llamadas = [{"coste_usd": None, "modelo": "google/gemini-3.8-flash",
+                              "tokens": {"input_tokens": 1000, "output_tokens": 1000}}]
+        resumen = registro.resumen()
+        self.assertIsNone(resumen["coste_usd"])
+        self.assertAlmostEqual(resumen["coste_estimado_usd"], (0.75 + 3.75) / 1e3, places=6)
+
+    def test_reintento_de_firma_de_pensamiento(self):
+        # Gemini responde 400 si los bloques de razonamiento no vuelven intactos.
+        exc = RuntimeError("Provider returned error")
+        exc.raw_response = httpx.Response(400, json={"error": {"metadata": {
+            "raw": "Gemini models require OpenRouter reasoning details to be preserved. "
+                   "Upstream error: Corrupted thought signature."}}})
+        modelo = s.ModeloOpenRouter(model="prueba", api_key="prueba", client=Mock())
+        esperado = ChatResult(generations=[ChatGeneration(message=AIMessage(content="ok"))])
+        mensajes = [AIMessage(content="", additional_kwargs={"reasoning_details": [{"x": 1}]})]
+        vistos = []
+
+        def responder(messages, **kwargs):
+            vistos.append(messages)
+            if len(vistos) == 1:
+                raise exc
+            return esperado
+
+        with patch.object(s.ChatOpenRouter, "_generate", side_effect=responder):
+            self.assertIs(modelo._generate(mensajes), esperado)
+        self.assertEqual(len(vistos), 2)
+        self.assertIn("reasoning_details", vistos[0][0].additional_kwargs)
+        self.assertNotIn("reasoning_details", vistos[1][0].additional_kwargs)
+
+    def test_busqueda_reintenta_sin_el_item(self):
+        # Un item mal inferido devolvia vacio y gastaba un turno entero del modelo.
+        with patch.object(s, "reescribir", side_effect=lambda q, c=None: q):
+            salida = s.search_filings.invoke({
+                "query": "foreign exchange risk hedging", "ticker": "AAPL",
+                "fiscal_year": 2024, "item": "1A", "k": 3})
+        self.assertIn("AAPL-2024-1A", salida)
+        with patch.object(s, "reescribir", side_effect=lambda q, c=None: q),              patch.object(s, "hibrido", side_effect=[[], [{"chunk_id": "AAPL-2024-7A-0001",
+                 "ticker": "AAPL", "fiscal_year": 2024, "item": "7A", "texto": "t",
+                 "puntuacion": 0.1}]]):
+            salida = s.search_filings.invoke({
+                "query": "x", "ticker": "AAPL", "fiscal_year": 2024, "item": "1A", "k": 3})
+        self.assertIn("Sin resultados en el Item 1A", salida)
+        self.assertIn("AAPL-2024-7A-0001", salida)
+
+    def test_prueba_pareada_detecta_empate(self):
+        import pandas as pd
+        a = pd.DataFrame({"id": ["a", "b", "c"], "acierto": [True, False, True]})
+        b = pd.DataFrame({"id": ["a", "b", "c"], "acierto": [True, True, False]})
+        r = s.prueba_pareada(a, b)
+        self.assertEqual((r["solo_acierta_final"], r["solo_acierta_baseline"]), (1, 1))
+        self.assertEqual(r["p_valor_mcnemar"], 1.0)
+
+    def test_respuesta_en_prosa_se_reconduce_al_esquema(self):
+        # propio-011 se perdio asi: el modelo contesto en prosa y el grafo acabo sin esquema.
+        modelo = ModeloGuion(respuestas=[AIMessage(content="La respuesta es que si."),
+                                        salida_modelo(respuesta(), "r1")])
+        agente = s.create_agent(model=modelo, tools=[s.get_xbrl_fact],
+            response_format=ToolStrategy(s.RespuestaFinanciera),
+            middleware=[s.exigir_respuesta_estructurada])
+        r = agente.invoke({"messages": [HumanMessage(content="Activos Apple 2024")]})
+        self.assertEqual(r["structured_response"].cifra, 364980000000)
+        self.assertEqual(modelo._posicion, 2)
+        self.assertEqual(sum(s.AVISO_ESQUEMA in str(m.content) for m in r["messages"]), 1)
+
     def test_agente_final_limita_a_ocho_herramientas(self):
         peticiones = [{"name": "get_xbrl_fact", "id": f"t{i}", "args": {
             "ticker": "AAPL", "fiscal_year": 2024, "concept": "Assets"}} for i in range(9)]
@@ -245,18 +398,18 @@ class PruebasS2(unittest.TestCase):
         finally:
             s.construir_agente.cache_clear()
 
-    def test_agente_final_limita_modelo_a_diez(self):
+    def test_agente_final_limita_el_numero_de_llamadas_al_modelo(self):
         modelo = ModeloGuion(respuestas=[AIMessage(content="", tool_calls=[{
             "name": "get_xbrl_fact", "id": f"t{i}", "args": {
                 "ticker": "AMZN", "fiscal_year": 2025, "concept": "GrossProfit"}}])
-            for i in range(12)])
+            for i in range(s.LIMITE_MODELO + 2)])
         s.construir_agente.cache_clear()
         try:
             with patch.object(s, "modelo", return_value=modelo):
                 agente = s.construir_agente()
             r = agente.invoke({"messages": [HumanMessage(content="Margen bruto Amazon")]},
                 config={"configurable": {"thread_id": "test-bucle"}, "recursion_limit": 100})
-            self.assertEqual(modelo._posicion, 10)
+            self.assertEqual(modelo._posicion, s.LIMITE_MODELO)
             self.assertIsNone(r.get("structured_response"))
         finally:
             s.construir_agente.cache_clear()
