@@ -48,10 +48,15 @@ def generar(comparacion, retrieval, salida):
           "seis compañías en dos ejercicios; las comparativas aportan evidencia de ambos años.")
     texto("El agente consulta get_xbrl_fact para cifras, search_filings para texto, read_section "
           "para una sección completa y list_available para comprobar cobertura. El sistema final "
-          "incorpora filtros, fusión BM25/densa por posiciones y reescritura al inglés. Conserva "
-          "decimales XBRL, comprueba cifras y permite una corrección antes de abstenerse; limita "
-          "a ocho llamadas a herramientas y diez al modelo, con reescrituras adicionales registradas.")
+          "incorpora filtros, fusión BM25/densa por posiciones, etiqueta de encabezado y "
+          "reescritura al inglés. Conserva decimales XBRL, repara la cita al tramo literal del "
+          "fragmento, comprueba cifras y permite una corrección antes de abstenerse; limita a "
+          f"{config['limite_tools_final']} llamadas a herramientas y {config['limite_modelo_final']} "
+          f"al modelo por pregunta, con un corte de tiempo y las reescrituras registradas.")
     texto("El acierto exige superar los criterios aplicables de cifra, cita y trayectoria. "
+          "El criterio de cita es el del enunciado —que exista y respalde lo que se afirma—; que "
+          "además caiga sobre la frase anclada en el golden se reporta aparte, porque eso mide "
+          "recuperación y penalizaba pasajes distintos igualmente válidos. "
           "La cita se comprueba literalmente, con sus metadatos y procedencia, antes del juez "
           "semántico. Las preguntas numéricas sin anclas no necesitan juez. Los fallos técnicos "
           "se conservan y no se presentan como respuestas evaluadas.")
@@ -90,15 +95,30 @@ def generar(comparacion, retrieval, salida):
           f"máximo de salida {config_retrieval['max_tokens']} tokens. La comparación de agentes "
           f"utiliza {config['max_tokens']} tokens. No se han repetido las consultas de este "
           "experimento al cambiar el límite de salida de los agentes.")
-    tabla([["Variante", "Recall@5", "Evidencias"]] +
-          [[r.variante, f"{r.recall_at_5:.2%}", str(r.evidencias)] for r in recall.itertuples()])
+    curva_ruta = retrieval / "recall_por_k.csv"
+    if curva_ruta.is_file():
+        curva = pd.read_csv(curva_ruta).set_index("variante")
+        columnas = [c for c in curva.columns if c.startswith("recall_at_")]
+        tabla([["Variante"] + [c.replace("recall_at_", "Recall@") for c in columnas] + ["Evidencias"]] +
+              [[v] + [f"{fila[c]:.2%}" for c in columnas] + [str(int(fila["evidencias"]))]
+               for v, fila in curva.iterrows()])
+    else:
+        tabla([["Variante", "Recall@5", "Evidencias"]] +
+              [[r.variante, f"{r.recall_at_5:.2%}", str(r.evidencias)] for r in recall.itertuples()])
     rec = recall.set_index("variante").recall_at_5
-    texto(f"Los filtros cambian el recall en {(rec['filtros']-rec['denso'])*100:+.1f} puntos; "
-          f"la fusión híbrida añade {(rec['hibrido']-rec['filtros'])*100:+.1f}; la reescritura añade "
-          f"{(rec['hibrido_reescrito']-rec['hibrido'])*100:+.1f}. "
-          "En esta medición, la fusión no mejoró el resultado del filtrado. Los filtros proceden "
-          "del golden: esta prueba aísla el buscador y no mide si el agente sabe elegirlos. "
-          "El recall de la trayectoria agrega todas las búsquedas del agente y no equivale al recall@5.")
+    def delta(a, b):
+        return f"{(rec[a]-rec[b])*100:+.1f}" if a in rec.index and b in rec.index else "no medido"
+    texto("La matriz separa las dos mejoras en lugar de encadenarlas, que es lo que permite "
+          "atribuirlas. Sobre la consulta original, los filtros cambian el recall@5 en "
+          f"{delta('filtros', 'denso')} puntos y la fusión BM25 en {delta('hibrido', 'filtros')}. "
+          f"Reescribir la consulta cambia el filtrado en {delta('filtros_reescrito', 'filtros')} "
+          f"puntos y el híbrido en {delta('hibrido_reescrito', 'hibrido')}: la reescritura es, "
+          "sobre todo, traducción, porque las preguntas van en español y el corpus está en inglés. "
+          f"La etiqueta de encabezado añade {delta('hibrido_enc_reescrito', 'hibrido_reescrito')} "
+          "puntos sobre el híbrido reescrito. "
+          "Los filtros proceden del golden: esta prueba aísla el buscador y no mide si el agente "
+          "sabe elegirlos. El recall de la trayectoria agrega todas las búsquedas del agente y no "
+          "equivale al recall@5.")
     texto("Revisión de respuestas y costes", True)
     for version in ["baseline", "final"]:
         registros = [json.loads(l) for l in (comparacion / version / "respuestas.jsonl").read_text(encoding="utf-8").splitlines()]

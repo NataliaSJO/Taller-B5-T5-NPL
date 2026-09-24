@@ -1,0 +1,23 @@
+{
+  "modelo": "openrouter:google/gemini-3.8-flash",
+  "max_tokens": 4096,
+  "temperature": 0,
+  "timeout_ms": 180000,
+  "reintentos_red": 1,
+  "reescritura_vacia": "consulta_original",
+  "k": 5,
+  "tolerancia": 0.01,
+  "limite_tools_final": 8,
+  "limite_modelo_final": 10,
+  "python": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]",
+  "hashes": {
+    "src\\golden_set_propio.jsonl": "d3b64e6f07219bb3b43019a0405541367333f4907e96740a750785569d2c1149",
+    "src\\Baseline_Agente_10K.ipynb": "50e9355c9302bcec1289faadbe27e0d1ad196036d4bb710e730ac8d70d5b2054",
+    "agente\\interfaz.py": "3fec3938350501dfaa7681d80ecad7878cee7f92148778085e75c08dbbac7606",
+    "corpus\\chunks.jsonl": "388ff3671742c2248e8f5cb1c75afbc786edfa0dc6f72a62d1fadf2310ec82b2",
+    "corpus\\xbrl_facts.parquet": "f802fc89c2dba96dfef3dd2ef5025e5540620358fc2944e5303093a929127610",
+    "requirements.txt": "22f0322cadd45ef4c74d8a05bb6e2966f59907cc7e0de8285a2d94c2858b13cd"
+  },
+  "juzgar": true,
+  "version": "final"
+}

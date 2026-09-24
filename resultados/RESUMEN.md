@@ -1,69 +1,113 @@
-# Evaluación del baseline con el agente del notebook
+# Resultados de la evaluación
 
-Se ha utilizado el objeto `agente` de la sesión abierta de
-`src/Baseline_Agente_10K.ipynb`, sin reconstruirlo ni copiar la clave de API.
-El modelo de la sesión era `openrouter:google/gemini-3.8-flash`, con un
-máximo de 1.024 tokens de salida por llamada.
+Modelo del agente: `openrouter:google/gemini-3.8-flash`, máximo 4096 tokens de salida, temperatura 0. Tolerancia numérica 1%. Límite de 8 llamadas a herramienta y 12 al modelo por pregunta.
 
-## Estado
+Modelos en las llamadas registradas (`respuestas.jsonl` del final): agente y reescritura, `google/gemini-3.8-flash`; juez de citas, `anthropic/claude-opus-5.5`. `configuracion.json` de esta carpeta sólo guarda el modelo del agente.
 
-- El golden set pasa el validador de clase con `exigir_20=True`:
-  20 preguntas, de las cuales 6 son comparativas.
-- Se intentaron las 20 preguntas y se guardó un registro para cada una.
-- Las 7 preguntas numéricas devolvieron respuesta estructurada.
-- Las 13 preguntas extractivas y comparativas no llegaron a completar
-  su respuesta: OpenRouter rechazó peticiones por crédito disponible y,
-  posteriormente, por el límite de 20 solicitudes por minuto de la cuenta.
-- Después de esperar se reintentó `propio-008`; volvió a producirse un
-  `PaymentRequiredResponseError`. Ese intento también está conservado.
+Carpeta de resultados: `resultados/s2/verificacion_20260924_opus/comparacion`.
 
-La evaluación está **parcial**, no completada satisfactoriamente para las
-20 preguntas. Los errores de infraestructura no deben interpretarse como
-respuestas incorrectas del agente ni ocultarse al comparar sistemas.
+## Baseline frente a sistema final
 
-## Resultados guardados
+| Métrica | Baseline | Final |
+| --- | --- | --- |
+| Preguntas evaluadas | 20 | 20 |
+| Acierto global | 30.0% | **90.0%** |
+| Acierto numéricas | 85.7% | **100.0%** |
+| Acierto extractivas | 0.0% | **85.7%** |
+| Acierto comparativas | 0.0% | **83.3%** |
+| Cita válida | 0.0% | **84.6%** |
+| Cita sobre el ancla del golden | 46.2% | **92.3%** |
+| Recall@5 del buscador (aislado) | 26.3% | **68.4%** |
+| Recall de la trayectoria | 92.3% | **100.0%** |
+| Coste medio del agente (USD) | 0.0166 | **0.0157** |
+| Coste medio estimado del agente (USD) | 0.0166 | **0.0157** |
+| Coste del juez por pregunta (USD) | 0.0034 | 0.0053 |
+| Coste total del juez (USD) | 0.0674 | 0.1063 |
+| Latencia media (s) | **27.0** | 27.1 |
+| Llamadas a herramienta | 3.85 | **3.05** |
+| Avisos del guardrail | 0 | 0 |
 
-La ejecución principal está en:
+El coste del agente incluye la reescritura de consultas. El del juez es sólo de la evaluación: no forma parte del agente en uso.
 
-`baseline/20260917T180626Z_938f35c6/`
+Prueba pareada (McNemar exacto) sobre las mismas 20 preguntas: sólo acierta el final en 12, sólo el baseline en 0, p = 0.0005. Con 20 preguntas el intervalo de confianza de una tasa ronda ±20 puntos: la tabla se lee junto a esta prueba, no en su lugar.
 
-Contiene `respuestas.jsonl`, `metricas.csv`, `resumen_por_familia.csv`,
-`configuracion.json`, `preguntas.jsonl` y las copias de `baseline.ipynb`
-y `miax_s1.py` utilizadas. El reintento está en:
+## Buscador: matriz de mejoras
 
-`baseline/20260917T180958Z_346a12b8/`
+| Variante | Recall@1 | Recall@3 | Recall@5 | Recall@10 | Evidencias |
+| --- | --- | --- | --- | --- | --- |
+| denso | 0.0% | 0.0% | 0.0% | 0.0% | 19 |
+| filtros | 5.3% | 10.5% | 26.3% | 47.4% | 19 |
+| hibrido | 5.3% | 15.8% | 26.3% | 36.8% | 19 |
+| hibrido_enc | 0.0% | 15.8% | 21.1% | 36.8% | 19 |
+| denso_reescrito | 15.8% | 21.1% | 26.3% | 47.4% | 19 |
+| filtros_reescrito | 26.3% | 57.9% | 63.2% | 84.2% | 19 |
+| hibrido_reescrito | 31.6% | 57.9% | 73.7% | 94.7% | 19 |
+| hibrido_enc_reescrito | 31.6% | 68.4% | 68.4% | 73.7% | 19 |
 
-El coste comunicado por OpenRouter para las 7 respuestas completas suma
-**0,05130825 USD**. Es un subtotal conocido: las llamadas intermedias de
-ejecuciones fallidas pueden tener consumo que estas métricas no recogen.
+Los filtros salen del golden: la medición aísla el buscador y es una cota superior de lo que consigue el agente, que debe inferirlos de la pregunta.
+Carpeta: `resultados/s2/retrieval/20260924T084746Z_7fb3e330`.
 
-En las 7 preguntas numéricas, 6 pasan la comprobación conjunta de cifra
-y unidad. `propio-007` devuelve la cifra correcta, 7,46, pero usa la unidad
-`USD/acción` en lugar de `USD/shares`, y el comparador literal la rechaza.
-La respuesta también recurre al texto tras encontrar el valor redondeado
-de la herramienta. Son observaciones para revisar en la siguiente sesión;
-no se han alterado las respuestas ni las reglas para mejorar la puntuación.
+## Cambios frente a una ejecución anterior
 
-Las comprobaciones son las iniciales del baseline. No demuestran todavía
-que cada cita respalde toda la respuesta ni que las comparativas se hayan
-resuelto completamente. Las medias de respuestas y costes excluyen valores
-desconocidos; sus columnas `count` muestran cuántos casos sustentan cada media.
+Ejecución anterior: `resultados/s2/comparacion/20260921T230019Z_c0888bbc`. Mismas 20 preguntas y mismos evaluadores de código. Si cambia el juez, cambia la vara de medir: las diferencias no son sólo del agente.
 
-## Reanudar las preguntas pendientes
+| Versión | Acierto antes | Acierto ahora | Juez antes | Juez ahora |
+| --- | --- | --- | --- | --- |
+| baseline | 55.0% | 30.0% | `google/gemini-3.5-flash-lite` | `anthropic/claude-opus-5.5` |
+| final | 95.0% | 90.0% | `google/gemini-3.5-flash-lite` | `anthropic/claude-opus-5.5` |
 
-`validacion/preguntas_pendientes.jsonl` contiene las 13 preguntas sin
-respuesta completa. Cuando se haya resuelto la disponibilidad de crédito,
-se pueden evaluar con el mismo agente de la sesión:
+Preguntas que cambian de resultado:
 
-```python
-resultados_pendientes = evaluar(
-    RAIZ / "resultados/validacion/preguntas_pendientes.jsonl",
-    agente_evaluacion=agente,
-)
+| Versión | Pregunta | Familia | Antes | Ahora | Evaluador que cambia |
+| --- | --- | --- | --- | --- | --- |
+| baseline | propio-008 | extractiva | acierto | fallo | cita |
+| baseline | propio-009 | extractiva | acierto | fallo | cita |
+| baseline | propio-012 | extractiva | acierto | fallo | cita |
+| baseline | propio-013 | extractiva | acierto | fallo | cita |
+| baseline | propio-014 | extractiva | acierto | fallo | cita |
+| final | propio-011 | extractiva | acierto | fallo | cita |
+| final | propio-015 | comparativa | fallo | acierto | cita |
+| final | propio-018 | comparativa | acierto | fallo | cita |
+
+## Varianza entre ejecuciones
+
+El **mismo** agente baseline, las mismas preguntas y los mismos evaluadores, medido dos veces. La temperatura es 0, pero ni la API ni el juez son deterministas.
+
+Ejecución 1: `resultados/s2/comparacion/20260921T220600Z_a1e83bd5`, juez `google/gemini-3.5-flash-lite`. Ejecución 2: `resultados/s2/comparacion/20260921T230019Z_c0888bbc`, juez `google/gemini-3.5-flash-lite`.
+
+| Familia | Ejecución 1 | Ejecución 2 |
+| --- | --- | --- |
+| Global | 45.0% | 55.0% |
+| comparativa | 0.0% | 0.0% |
+| extractiva | 28.6% | 71.4% |
+| numerica | 100.0% | 85.7% |
+
+Cambian de resultado **4 de 20 preguntas**. Una de ellas se explica por el reintento de firma de pensamiento que incorpora la segunda ejecución; el resto es ruido. Con 7 preguntas por familia, las cifras por familia se mueven decenas de puntos sin que cambie nada: no se deben leer como diferencias reales.
+
+## Control de memorización (sin herramientas)
+
+Las mismas preguntas contra el mismo modelo, sin corpus ni herramientas. Mide cuánto del acierto no depende del 10-K: el enunciado penaliza acertar por el camino equivocado.
+
+| Medida | Valor |
+| --- | --- |
+| Cifras acertadas de memoria | 1/13 (7.7%) |
+| Abstenciones | 13/20 |
+| Citas inventadas (no existen en el corpus) | 2/2 |
+| Coste del control (USD) | 0.0521 |
+
+## Huecos reales del XBRL
+
+Conceptos que una compañía no reporta (Amazon no publica GrossProfit, Liabilities ni ResearchAndDevelopmentExpense; Meta y Alphabet tampoco GrossProfit). La respuesta correcta es decir que no está. El golden propio no cubre este caso, así que se mide aparte.
+
+| Ejecución | Se abstiene correctamente | Coste (USD) |
+| --- | --- | --- |
+| 20260921T225238 | 1/3 | 0.0814 |
+| 20260921T225752 | 3/3 | 0.0163 |
+
+## Cómo se regenera
+
+```powershell
+python -m unittest discover -s tests -v
+python scripts/ejecutar_evaluacion_s2.py --salida resultados\s2\<carpeta>
+python scripts/generar_resumen.py --comparacion <carpeta>\comparacion --retrieval resultados\s2\retrieval\<marca> [--anterior <otra comparación>] [--repeticion <A> --repeticion-de <B>]
 ```
-
-No hace falta repetir las siete preguntas ya respondidas. Esta llamada
-guarda otra carpeta y conserva la ejecución anterior. El límite del proveedor
-se aplica a solicitudes al modelo, no a preguntas: una pregunta puede
-necesitar varias solicitudes. Si vuelve a aparecer un error 429, hay que
-esperar el plazo indicado por el proveedor antes de reintentar.

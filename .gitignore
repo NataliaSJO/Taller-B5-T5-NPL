@@ -8,13 +8,17 @@ __pycache__/
 venv/
 env/
 ENV/
+TallerB5T5_env/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Local environment files
+# Local environment files: ninguna clave puede entrar en el repositorio
 .env
 .env.*
+*.env
+env.env
+secrets.*
 
 # IDE / editor settings
 .vscode/
@@ -43,3 +47,12 @@ Thumbs.db
 # Project-corpus artifacts
 /dataset/corpus/
 /dataset/corpus_miax_2026.zip
+
+# Etiquetas derivadas: se regeneran solas desde el corpus verificado
+/corpus/derivado/
+
+# Ficheros temporales de Word
+~$*
+
+# Copias previas del modulo que guarda la celda de exportacion del notebook
+/resultados/s2/exportacion/

@@ -1,0 +1,11 @@
+{
+  "preguntas": 20,
+  "con_cifra_esperada": 13,
+  "aciertos_de_memoria": 1,
+  "tasa_memoria": 0.07692307692307693,
+  "citas_emitidas": 2,
+  "citas_inventadas": 2,
+  "abstenciones": 13,
+  "coste_usd": 0.052068,
+  "modelo": "openrouter:google/gemini-3.8-flash"
+}
