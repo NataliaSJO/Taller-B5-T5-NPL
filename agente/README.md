@@ -52,24 +52,42 @@ retrieval = medir_retrieval(usar_llm=True)
 Estas llamadas usan la API. El modo local del notebook no llama al LLM.
 ### Configuración por entorno
 
-Todo se fija antes de importar el módulo; los valores por defecto son los que se
-usaron para medir:
+Todo se fija antes de importar el módulo. El agente y la reescritura van por
+defecto a Gemini 3.8 Flash y el juez a Claude Opus 5.5, de otra familia para que el
+agente no se juzgue a sí mismo. El juez ya no hereda el modelo auxiliar: cambiar
+`MODELO_AUX_10K` no cambia el juez.
 
 | Variable | Por defecto | Para qué |
 | --- | --- | --- |
 | `MODELO_10K` | `openrouter:google/gemini-3.8-flash` | cerebro del agente |
-| `MODELO_AUX_10K` | `openrouter:google/gemini-3.5-flash-lite` | reescritura de consultas |
-| `MODELO_JUEZ_10K` | el auxiliar | juez de citas |
+| `MODELO_AUX_10K` | `openrouter:google/gemini-3.8-flash` | reescritura de consultas |
+| `MODELO_JUEZ_10K` | `openrouter:anthropic/claude-opus-5.5` | juez de citas, de otra familia que el agente |
 | `MAX_TOKENS_10K` | 4096 | salida del agente |
-| `MAX_TOKENS_AUX_10K` / `MAX_TOKENS_JUEZ_10K` | 128 / 256 | salida de las tareas cortas |
+| `MAX_TOKENS_AUX_10K` / `MAX_TOKENS_JUEZ_10K` | 1024 / 1024 | salida de las tareas cortas (incluye el razonamiento del modelo) |
 | `LIMITE_SEGUNDOS_10K` | 150 | corte por pregunta |
 | `USAR_ENCABEZADOS_10K` | 1 | tercera señal de ranking con la etiqueta derivada |
 
-Reescribir y juzgar son tareas de una frase y no pagan el modelo grande. El juez
-se configura aparte a propósito: si es el mismo modelo que el agente, se está
-midiendo con un juez que tiende a favorecer sus propias salidas. Si se trunca la
-salida estructurada, aumenta `MAX_TOKENS_10K` y vuelve a medir **ambos** agentes
+La reescritura usa el mismo modelo que el agente, con un tope de 1024 tokens porque
+Gemini 3.8 Flash razona antes de contestar (con 128 las consultas salían cortadas).
+El juez se configura aparte a propósito: si fuera el mismo modelo que el agente, se
+estaría midiendo con un juez que tiende a favorecer sus propias salidas. Si se trunca
+la salida estructurada, aumenta `MAX_TOKENS_10K` y vuelve a medir **ambos** agentes
 con la misma configuración.
+
+Para repetir la comparación del 21-sep (55 % -> 95 %), que usó Gemini 3.5 Flash Lite
+para reescribir **y** para juzgar, no basta con `MODELO_AUX_10K`: hay que fijar las
+dos variables, y para ser exactos también los topes de entonces:
+
+```bash
+export MODELO_AUX_10K=openrouter:google/gemini-3.5-flash-lite
+export MODELO_JUEZ_10K=openrouter:google/gemini-3.5-flash-lite
+export MAX_TOKENS_AUX_10K=128 MAX_TOKENS_JUEZ_10K=256
+```
+
+Con solo `MODELO_AUX_10K` se mediría con el juez Opus, mucho más exigente (con él,
+el baseline baja del 55 al 30 %). Hay una diferencia que no se deshace por entorno:
+el juez pide ahora la salida con `json_schema` en lugar de `function_calling`,
+porque Claude Opus 5.5 rechaza lo segundo; con Flash Lite funcionan los dos.
 
 ## Etiquetas derivadas del corpus
 

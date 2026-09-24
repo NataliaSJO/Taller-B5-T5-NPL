@@ -8,6 +8,7 @@ __pycache__/
 venv/
 env/
 ENV/
+TallerB5T5_env/
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/

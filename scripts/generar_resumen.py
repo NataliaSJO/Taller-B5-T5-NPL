@@ -6,7 +6,8 @@ como faltante en vez de rellenarlo.
 
 Uso:
     python scripts/generar_resumen.py --comparacion resultados/s2/comparacion/<marca> \
-                                      --retrieval resultados/s2/retrieval/<marca>
+                                      --retrieval resultados/s2/retrieval/<marca> \
+                                      [--anterior resultados/s2/comparacion/<otra marca>]
 """
 import argparse
 import json
@@ -48,6 +49,30 @@ def tabla_md(cabecera, filas):
 BUSCADOR = {"baseline": "filtros", "final": "hibrido_enc_reescrito"}
 
 
+def modelos_llamados(carpeta: Path) -> tuple[list[str], list[str]]:
+    """Modelos que aparecen en las llamadas registradas: (agente y reescritura, juez).
+
+    configuracion.json no guardó el juez ni la reescritura hasta el 24-sep; las
+    llamadas sí, en respuestas.jsonl, así que sirven también para carpetas anteriores.
+    """
+    ruta = carpeta / "respuestas.jsonl"
+    if not ruta.is_file():
+        return [], []
+    agente, juez = set(), set()
+    for linea in ruta.read_text(encoding="utf-8").splitlines():
+        if not linea.strip():
+            continue
+        r = json.loads(linea).get("resultado") or {}
+        agente.update(u["modelo"] for u in r.get("uso_llm", []) if u.get("modelo"))
+        for clave in ("juicio_cita", "diagnostico_juez"):
+            juez.update(u["modelo"] for u in (r.get(clave) or {}).get("uso_llm", []) if u.get("modelo"))
+    return sorted(agente), sorted(juez)
+
+
+def lista(modelos: list[str]) -> str:
+    return ", ".join(f"`{m}`" for m in modelos) or "no registrado"
+
+
 def relativa(ruta: Path) -> str:
     """Ruta legible dentro del repositorio, se pase absoluta o relativa."""
     ruta = ruta.resolve()
@@ -55,9 +80,13 @@ def relativa(ruta: Path) -> str:
 
 
 def seccion_varianza(actual: Path, repeticion: Path | None) -> list[str]:
-    """Mismo agente baseline, dos ejecuciones: cuánto se mueve la métrica sola."""
+    """Mismo agente baseline, dos ejecuciones: cuánto se mueve la métrica sola.
+
+    Las dos tienen que usar el mismo juez: si no, se mide el cambio de juez, no el ruido.
+    """
     if repeticion is None or not (repeticion / "baseline/metricas.csv").is_file():
         return []
+    juez_1, juez_2 = modelos_llamados(repeticion / "baseline")[1], modelos_llamados(actual / "baseline")[1]
     a = pd.read_csv(repeticion / "baseline/metricas.csv")
     b = pd.read_csv(actual / "baseline/metricas.csv")
     u = a[["id", "familia", "acierto"]].merge(b[["id", "acierto"]], on="id",
@@ -70,12 +99,39 @@ def seccion_varianza(actual: Path, repeticion: Path | None) -> list[str]:
             "El **mismo** agente baseline, las mismas preguntas y los mismos evaluadores, "
             "medido dos veces. La temperatura es 0, pero ni la API ni el juez son "
             "deterministas.", "",
+            f"Ejecución 1: `{relativa(repeticion)}`, juez {lista(juez_1)}. "
+            f"Ejecución 2: `{relativa(actual)}`, juez {lista(juez_2)}.", "",
             tabla_md(["Familia", "Ejecución 1", "Ejecución 2"], filas), "",
             f"Cambian de resultado **{cambian} de {len(u)} preguntas**. Una de ellas se explica "
             "por el reintento de firma de pensamiento que incorpora la segunda ejecución; el "
             "resto es ruido. Con 7 preguntas por familia, las cifras por familia se mueven "
             "decenas de puntos sin que cambie nada: no se deben leer como diferencias reales.",
             ""]
+
+
+def seccion_anterior(actual: Path, anterior: Path | None) -> list[str]:
+    """Qué cambia, pregunta a pregunta, frente a otra ejecución de las mismas preguntas."""
+    if anterior is None or not (anterior / "final/metricas.csv").is_file():
+        return []
+    resumen, cambios = [], []
+    for v in ("baseline", "final"):
+        a = pd.read_csv(anterior / v / "metricas.csv")
+        b = pd.read_csv(actual / v / "metricas.csv")
+        resumen.append([v, porcentaje(a.acierto.mean()), porcentaje(b.acierto.mean()),
+                        lista(modelos_llamados(anterior / v)[1]), lista(modelos_llamados(actual / v)[1])])
+        u = a.merge(b, on="id", suffixes=("_a", "_b"))
+        for _, r in u[u.acierto_a != u.acierto_b].iterrows():
+            motivo = [e for e in ("cita", "cifra", "trayectoria") if str(r[f"{e}_a"]) != str(r[f"{e}_b"])]
+            cambios.append([v, r["id"], r["familia_b"], "acierto" if r.acierto_a else "fallo",
+                            "acierto" if r.acierto_b else "fallo", ", ".join(motivo) or "sin cambio visible"])
+    partes = ["## Cambios frente a una ejecución anterior", "",
+              f"Ejecución anterior: `{relativa(anterior)}`. Mismas 20 preguntas y mismos evaluadores de "
+              "código. Si cambia el juez, cambia la vara de medir: las diferencias no son sólo del agente.", "",
+              tabla_md(["Versión", "Acierto antes", "Acierto ahora", "Juez antes", "Juez ahora"], resumen), ""]
+    if cambios:
+        partes += ["Preguntas que cambian de resultado:", "",
+                   tabla_md(["Versión", "Pregunta", "Familia", "Antes", "Ahora", "Evaluador que cambia"], cambios), ""]
+    return partes
 
 
 def seccion_controles(control: Path | None, huecos: list[Path]) -> list[str]:
@@ -114,7 +170,8 @@ def seccion_controles(control: Path | None, huecos: list[Path]) -> list[str]:
 
 
 def generar(comparacion: Path, retrieval: Path | None, control: Path | None = None,
-            huecos: list[Path] | None = None, repeticion: Path | None = None) -> str:
+            huecos: list[Path] | None = None, repeticion: Path | None = None,
+            repeticion_de: Path | None = None, anterior: Path | None = None) -> str:
     tablas = {v: pd.read_csv(comparacion / v / "metricas.csv") for v in ("baseline", "final")}
     recall_aislado = {}
     if retrieval is not None and (retrieval / "recall.csv").is_file():
@@ -125,10 +182,16 @@ def generar(comparacion: Path, retrieval: Path | None, control: Path | None = No
               f"Modelo del agente: `{config['modelo']}`, máximo {config['max_tokens']} tokens de "
               f"salida, temperatura {config['temperature']}. Tolerancia numérica "
               f"{config['tolerancia']:.0%}. Límite de {config['limite_tools_final']} llamadas a "
-              f"herramienta y {config['limite_modelo_final']} al modelo por pregunta.", "",
-              f"Carpeta de resultados: `{relativa(comparacion)}`.", ""]
+              f"herramienta y {config['limite_modelo_final']} al modelo por pregunta.", ""]
+    agente, juez = modelos_llamados(comparacion / "final")
+    partes += [f"Modelos en las llamadas registradas (`respuestas.jsonl` del final): agente y "
+               f"reescritura, {lista(agente)}; juez de citas, {lista(juez)}."
+               + (f" `configuracion.json` confirma reescritura `{config['modelo_reescritura']}` y "
+                  f"juez `{config['modelo_juez']}`." if "modelo_juez" in config else
+                  " `configuracion.json` de esta carpeta sólo guarda el modelo del agente."), "",
+               f"Carpeta de resultados: `{relativa(comparacion)}`.", ""]
 
-    filas, menor_es_mejor = [], {"Coste medio (USD)", "Coste medio estimado (USD)",
+    filas, menor_es_mejor = [], {"Coste medio del agente (USD)", "Coste medio estimado del agente (USD)",
                                  "Latencia media (s)", "Llamadas a herramienta"}
     metricas = [
         ("Preguntas evaluadas", lambda t: (t.estado == "evaluado").sum(), lambda v: str(int(v))),
@@ -140,8 +203,10 @@ def generar(comparacion: Path, retrieval: Path | None, control: Path | None = No
         ("Cita sobre el ancla del golden", lambda t: t.cita_ancla.dropna().mean() if "cita_ancla" in t and t.cita_ancla.notna().any() else float("nan"), porcentaje),
         ("Recall@5 del buscador (aislado)", lambda t, v=None: float("nan"), porcentaje),
         ("Recall de la trayectoria", lambda t: t.recall_trayectoria.mean(), porcentaje),
-        ("Coste medio (USD)", lambda t: t.coste_usd.mean(), lambda v: numero(v, 4)),
-        ("Coste medio estimado (USD)", lambda t: t.coste_estimado_usd.mean() if "coste_estimado_usd" in t else float("nan"), lambda v: numero(v, 4)),
+        ("Coste medio del agente (USD)", lambda t: t.coste_usd.mean(), lambda v: numero(v, 4)),
+        ("Coste medio estimado del agente (USD)", lambda t: t.coste_estimado_usd.mean() if "coste_estimado_usd" in t else float("nan"), lambda v: numero(v, 4)),
+        ("Coste del juez por pregunta (USD)", lambda t: t.coste_juez_usd.fillna(0).sum() / len(t) if "coste_juez_usd" in t else float("nan"), lambda v: numero(v, 4)),
+        ("Coste total del juez (USD)", lambda t: t.coste_juez_usd.fillna(0).sum() if "coste_juez_usd" in t else float("nan"), lambda v: numero(v, 4)),
         ("Latencia media (s)", lambda t: t.latencia_s.mean(), lambda v: numero(v, 1)),
         ("Llamadas a herramienta", lambda t: t.llamadas.mean(), lambda v: numero(v, 2)),
         ("Avisos del guardrail", lambda t: t.avisos_guardrail.sum() if "avisos_guardrail" in t else float("nan"), lambda v: numero(v, 0)),
@@ -155,18 +220,22 @@ def generar(comparacion: Path, retrieval: Path | None, control: Path | None = No
         textos = {v: formatea(x) for v, x in valores.items()}
         # Los avisos del guardrail no se resaltan: el baseline no lo lleva, así que
         # «menos avisos» no es mérito suyo ni «más» es mérito del final.
-        comparable = nombre not in {"Preguntas evaluadas", "Avisos del guardrail"}
+        # El juez tampoco: es coste de la evaluación, no del agente.
+        comparable = nombre not in {"Preguntas evaluadas", "Avisos del guardrail",
+                                    "Coste del juez por pregunta (USD)", "Coste total del juez (USD)"}
         if completa and comparable and not any(pd.isna(x) for x in valores.values()):
             mejor = min(valores, key=valores.get) if nombre in menor_es_mejor else max(valores, key=valores.get)
             if valores["baseline"] != valores["final"]:
                 textos[mejor] = f"**{textos[mejor]}**"
         filas.append([nombre, textos["baseline"], textos["final"]])
     partes += ["## Baseline frente a sistema final", "",
-               tabla_md(["Métrica", "Baseline", "Final"], filas), ""]
+               tabla_md(["Métrica", "Baseline", "Final"], filas), "",
+               "El coste del agente incluye la reescritura de consultas. El del juez es sólo de la "
+               "evaluación: no forma parte del agente en uso.", ""]
 
     gana, pierde, p = mcnemar(tablas["baseline"], tablas["final"])
     partes += [f"Prueba pareada (McNemar exacto) sobre las mismas 20 preguntas: sólo acierta el "
-               f"final en {gana}, sólo el baseline en {pierde}, p = {p:.3f}. Con 20 preguntas el "
+               f"final en {gana}, sólo el baseline en {pierde}, p = {p:.4f}. Con 20 preguntas el "
                f"intervalo de confianza de una tasa ronda ±20 puntos: la tabla se lee junto a esta "
                f"prueba, no en su lugar.", ""]
     if not completa:
@@ -196,14 +265,16 @@ def generar(comparacion: Path, retrieval: Path | None, control: Path | None = No
                    "superior de lo que consigue el agente, que debe inferirlos de la pregunta.",
                    f"Carpeta: `{relativa(retrieval)}`.", ""]
 
-    partes += seccion_varianza(comparacion, repeticion)
+    partes += seccion_anterior(comparacion, anterior)
+    partes += seccion_varianza(repeticion_de or comparacion, repeticion)
     partes += seccion_controles(control, huecos or [])
     partes += ["## Cómo se regenera", "",
                "```powershell",
                "python -m unittest discover -s tests -v",
                "python scripts/ejecutar_evaluacion_s2.py --salida resultados\\s2\\<carpeta>",
                "python scripts/generar_resumen.py --comparacion <carpeta>\\comparacion "
-               "--retrieval resultados\\s2\\retrieval\\<marca>",
+               "--retrieval resultados\\s2\\retrieval\\<marca> "
+               "[--anterior <otra comparación>] [--repeticion <A> --repeticion-de <B>]",
                "```", ""]
     return "\n".join(partes)
 
@@ -218,10 +289,15 @@ def main():
                    help="carpetas de prueba_huecos_xbrl.py, en orden cronológico")
     p.add_argument("--repeticion", type=Path, default=None,
                    help="otra comparación con el mismo baseline, para medir la varianza")
+    p.add_argument("--repeticion-de", type=Path, default=None,
+                   help="comparación con la que se empareja --repeticion (por defecto, --comparacion); "
+                        "las dos deben usar el mismo juez")
+    p.add_argument("--anterior", type=Path, default=None,
+                   help="comparación anterior con las mismas preguntas, para ver qué cambia")
     p.add_argument("--salida", type=Path, default=RAIZ / "resultados/RESUMEN.md")
     args = p.parse_args()
     texto = generar(args.comparacion, args.retrieval, args.control, args.huecos,
-                    args.repeticion)
+                    args.repeticion, args.repeticion_de, args.anterior)
     args.salida.write_text(texto, encoding="utf-8")
     print(texto)
     print("\nEscrito en", args.salida)

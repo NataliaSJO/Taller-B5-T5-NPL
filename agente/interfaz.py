@@ -12,6 +12,7 @@ import time
 import zipfile
 import httpx
 from datetime import datetime, timezone
+from dotenv import load_dotenv
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -34,6 +35,8 @@ from langgraph.checkpoint.memory import InMemorySaver
 _inicio = Path(__file__).resolve().parent if "__file__" in globals() else Path.cwd()
 RAIZ = next(p for p in [_inicio, *_inicio.parents]
             if (p / "Material_Clase/miax_s1.py").is_file())
+# La clave y los modelos pueden venir de .env; lo definido en el entorno manda.
+load_dotenv(RAIZ / ".env")
 for _carpeta in (RAIZ / "Clase_2", RAIZ / "Material_Clase"):
     if str(_carpeta) not in sys.path:
         sys.path.insert(0, str(_carpeta))
@@ -43,14 +46,21 @@ import miax_s2
 miax_s1.CANDIDATOS_CORPUS = [RAIZ / "corpus"]
 miax_s2.CANDIDATOS_CORPUS = [RAIZ / "corpus"]
 MODELO = os.getenv("MODELO_10K", "openrouter:google/gemini-3.8-flash")
-# Reescribir una consulta y juzgar una cita son tareas de una frase: no pagan el
-# modelo grande. El juez se configura aparte para poder sacarlo de la familia del
-# agente y medir cuánto se auto-favorece.
-MODELO_AUXILIAR = os.getenv("MODELO_AUX_10K", "openrouter:google/gemini-3.5-flash-lite")
-MODELO_JUEZ = os.getenv("MODELO_JUEZ_10K", MODELO_AUXILIAR)
+# La reescritura de consultas usa el mismo modelo que el agente.
+MODELO_AUXILIAR = os.getenv("MODELO_AUX_10K", "openrouter:google/gemini-3.8-flash")
+# El juez de citas va aparte y ya no hereda el modelo auxiliar: es de otra familia
+# (Anthropic) que el agente (Google), porque un modelo que se juzga a sí mismo
+# tiende a aprobarse.
+MODELO_JUEZ = os.getenv("MODELO_JUEZ_10K", "openrouter:anthropic/claude-opus-5.5")
+# La comparación del 21-sep (55 % -> 95 %) usó Gemini 3.5 Flash Lite para reescribir
+# y para juzgar. Para repetirla no basta con MODELO_AUX_10K: hay que fijar las dos
+# variables, MODELO_AUX_10K y MODELO_JUEZ_10K, a openrouter:google/gemini-3.5-flash-lite
+# (y los topes de entonces: MAX_TOKENS_AUX_10K=128 y MAX_TOKENS_JUEZ_10K=256).
 MAX_TOKENS = int(os.getenv("MAX_TOKENS_10K", "4096"))
-MAX_TOKENS_AUX = int(os.getenv("MAX_TOKENS_AUX_10K", "128"))
-MAX_TOKENS_JUEZ = int(os.getenv("MAX_TOKENS_JUEZ_10K", "256"))
+# Gemini 3.8 Flash razona antes de contestar y ese razonamiento cuenta en el tope:
+# con 128 tokens la reescritura salía cortada ("Microsoft FY20"). Sólo se paga lo usado.
+MAX_TOKENS_AUX = int(os.getenv("MAX_TOKENS_AUX_10K", "1024"))
+MAX_TOKENS_JUEZ = int(os.getenv("MAX_TOKENS_JUEZ_10K", "1024"))
 # Una pregunta colgada se comió 62 minutos de una evaluación; el corte es por
 # pregunta y deja seguir a las demás.
 LIMITE_SEGUNDOS = float(os.getenv("LIMITE_SEGUNDOS_10K", "150"))
@@ -59,7 +69,7 @@ LIMITE_SEGUNDOS = float(os.getenv("LIMITE_SEGUNDOS_10K", "150"))
 # responder con lo que ya se tiene en vez de perder la respuesta.
 LIMITE_TOOLS = int(os.getenv("LIMITE_TOOLS_10K", "8"))
 LIMITE_MODELO = int(os.getenv("LIMITE_MODELO_10K", "12"))
-PRECIOS = miax_s2.PRECIOS_OPENROUTER
+PRECIOS = {**miax_s2.PRECIOS_OPENROUTER, "anthropic/claude-opus-5.5": (4.00, 20.00)}
 # Tercera señal de ranking con la etiqueta de encabezado. Se activa aquí para
 # poder medir el buscador con y sin ella sobre las mismas preguntas.
 USAR_ENCABEZADOS = os.getenv("USAR_ENCABEZADOS_10K", "1") == "1"
@@ -481,7 +491,7 @@ def medir_retrieval(ruta_jsonl=RUTA_GOLDEN, usar_llm=False, salida=None, ks=(1, 
     curva.to_csv(salida / "recall_por_k.csv")
     guardar_json(salida / "reescrituras.json", consultas)
     guardar_json(salida / "configuracion.json",
-                 {**configuracion(ruta_jsonl), "modelo_reescritura": MODELO_AUXILIAR, "ks": list(ks)})
+                 {**configuracion(ruta_jsonl), "ks": list(ks)})
     tabla.attrs["salida"] = str(salida)
     tabla.attrs["curva"] = curva
     return tabla
@@ -1131,9 +1141,12 @@ def juzgar_cita(item, resultado):
             "El motivo, en una sola frase.")},
         {"role": "user", "content": mensaje},
     ]
-    # Juez fuera del modelo del agente cuando se configure: un LLM puntúa mejor
-    # sus propias salidas, y ese sesgo no se puede medir si son el mismo.
-    juez = modelo(MODELO_JUEZ, MAX_TOKENS_JUEZ).with_structured_output(JuicioCita, include_raw=True)
+    # Por defecto el juez es de otra familia que el agente (MODELO_JUEZ): un LLM
+    # puntúa mejor sus propias salidas, y ese sesgo no se puede medir si son el mismo.
+    # json_schema y no function_calling: éste fuerza tool_choice, que Claude Opus 5.5
+    # rechaza con un 400. json_schema funciona igual con Gemini.
+    juez = modelo(MODELO_JUEZ, MAX_TOKENS_JUEZ).with_structured_output(
+        JuicioCita, method="json_schema", include_raw=True)
     intentos = []
     for intento in range(2):
         salida = juez.invoke(mensajes, config={"callbacks": [registro]})
@@ -1235,7 +1248,12 @@ def configuracion(ruta_jsonl):
     rutas = [Path(ruta_jsonl), RAIZ / "src/Baseline_Agente_10K.ipynb",
              RAIZ / "agente/interfaz.py", RAIZ / "corpus/chunks.jsonl",
              RAIZ / "corpus/xbrl_facts.parquet", RAIZ / "requirements.txt"]
-    return {"modelo": MODELO, "max_tokens": MAX_TOKENS, "temperature": 0,
+    # Los tres modelos y sus topes: sin el del juez, una carpeta de resultados no dice
+    # con qué vara se midió (la del 24-sep con juez Opus sólo guardaba el del agente).
+    return {"modelo": MODELO, "modelo_reescritura": MODELO_AUXILIAR, "modelo_juez": MODELO_JUEZ,
+            "max_tokens": MAX_TOKENS, "max_tokens_reescritura": MAX_TOKENS_AUX,
+            "max_tokens_juez": MAX_TOKENS_JUEZ, "usar_encabezados": USAR_ENCABEZADOS,
+            "limite_segundos": LIMITE_SEGUNDOS, "temperature": 0,
             "timeout_ms": 180000, "reintentos_red": 1, "reescritura_vacia": "consulta_original",
             "k": K, "tolerancia": TOLERANCIA, "limite_tools_final": LIMITE_TOOLS,
             "limite_modelo_final": LIMITE_MODELO, "python": sys.version,

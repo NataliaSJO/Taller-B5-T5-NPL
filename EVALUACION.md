@@ -53,8 +53,11 @@ conexión se reintenta una vez, conservando como desconocido el coste informado
 de la solicitud sin respuesta; junto a él se guarda el coste estimado por tarifa.
 Si el modelo devuelve una reescritura vacía, se busca con la consulta original;
 no se inventa una consulta usando respuestas del golden. Ambos agentes usan el
-mismo máximo de 4096 tokens por llamada; la reescritura y el juez usan el modelo
-auxiliar y límites cortos.
+mismo máximo de 4096 tokens por llamada. La reescritura usa el modelo auxiliar (por
+defecto, el mismo Gemini 3.8 Flash del agente) y el juez tiene su propia variable (por
+defecto, Claude Opus 5.5, de otra familia); las dos tareas tienen un tope de 1024
+tokens. La comparación del 21-sep usó Flash Lite en ambas: para repetirla hay que
+fijar `MODELO_AUX_10K` y `MODELO_JUEZ_10K` (ver `agente/README.md`).
 
 ## Desde el notebook
 
@@ -100,7 +103,8 @@ El resumen del repositorio se regenera con:
 
 ```powershell
 python scripts\generar_resumen.py --comparacion <carpeta>\comparacion ^
-  --retrieval resultados\s2etrieval\<marca> ^
+  --retrieval resultados\s2
+etrieval\<marca> ^
   --control resultados\s2\control_memorizacion\<marca> ^
   --huecos resultados\s2\huecos_xbrl\<antes> resultados\s2\huecos_xbrl\<despues> ^
   --repeticion <otra carpeta de comparacion con el mismo baseline>

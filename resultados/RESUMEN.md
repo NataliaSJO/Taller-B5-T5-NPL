@@ -2,28 +2,34 @@
 
 Modelo del agente: `openrouter:google/gemini-3.8-flash`, máximo 4096 tokens de salida, temperatura 0. Tolerancia numérica 1%. Límite de 8 llamadas a herramienta y 12 al modelo por pregunta.
 
-Carpeta de resultados: `resultados\s2\comparacion\20260921T230019Z_c0888bbc`.
+Modelos en las llamadas registradas (`respuestas.jsonl` del final): agente y reescritura, `google/gemini-3.8-flash`; juez de citas, `anthropic/claude-opus-5.5`. `configuracion.json` de esta carpeta sólo guarda el modelo del agente.
+
+Carpeta de resultados: `resultados/s2/verificacion_20260924_opus/comparacion`.
 
 ## Baseline frente a sistema final
 
 | Métrica | Baseline | Final |
 | --- | --- | --- |
 | Preguntas evaluadas | 20 | 20 |
-| Acierto global | 55.0% | **95.0%** |
+| Acierto global | 30.0% | **90.0%** |
 | Acierto numéricas | 85.7% | **100.0%** |
-| Acierto extractivas | 71.4% | **100.0%** |
+| Acierto extractivas | 0.0% | **85.7%** |
 | Acierto comparativas | 0.0% | **83.3%** |
-| Cita válida | 35.7% | **92.3%** |
-| Cita sobre el ancla del golden | 23.1% | **84.6%** |
-| Recall@5 del buscador (aislado) | 26.3% | **73.7%** |
-| Recall de la trayectoria | 76.9% | **88.5%** |
-| Coste medio (USD) | 0.0145 | **0.0144** |
-| Coste medio estimado (USD) | 0.0145 | **0.0144** |
-| Latencia media (s) | **24.3** | 30.6 |
-| Llamadas a herramienta | 3.75 | **3.00** |
-| Avisos del guardrail | 0 | 3 |
+| Cita válida | 0.0% | **84.6%** |
+| Cita sobre el ancla del golden | 46.2% | **92.3%** |
+| Recall@5 del buscador (aislado) | 26.3% | **68.4%** |
+| Recall de la trayectoria | 92.3% | **100.0%** |
+| Coste medio del agente (USD) | 0.0166 | **0.0157** |
+| Coste medio estimado del agente (USD) | 0.0166 | **0.0157** |
+| Coste del juez por pregunta (USD) | 0.0034 | 0.0053 |
+| Coste total del juez (USD) | 0.0674 | 0.1063 |
+| Latencia media (s) | **27.0** | 27.1 |
+| Llamadas a herramienta | 3.85 | **3.05** |
+| Avisos del guardrail | 0 | 0 |
 
-Prueba pareada (McNemar exacto) sobre las mismas 20 preguntas: sólo acierta el final en 8, sólo el baseline en 0, p = 0.008. Con 20 preguntas el intervalo de confianza de una tasa ronda ±20 puntos: la tabla se lee junto a esta prueba, no en su lugar.
+El coste del agente incluye la reescritura de consultas. El del juez es sólo de la evaluación: no forma parte del agente en uso.
+
+Prueba pareada (McNemar exacto) sobre las mismas 20 preguntas: sólo acierta el final en 12, sólo el baseline en 0, p = 0.0005. Con 20 preguntas el intervalo de confianza de una tasa ronda ±20 puntos: la tabla se lee junto a esta prueba, no en su lugar.
 
 ## Buscador: matriz de mejoras
 
@@ -33,17 +39,41 @@ Prueba pareada (McNemar exacto) sobre las mismas 20 preguntas: sólo acierta el 
 | filtros | 5.3% | 10.5% | 26.3% | 47.4% | 19 |
 | hibrido | 5.3% | 15.8% | 26.3% | 36.8% | 19 |
 | hibrido_enc | 0.0% | 15.8% | 21.1% | 36.8% | 19 |
-| denso_reescrito | 15.8% | 31.6% | 36.8% | 47.4% | 19 |
-| filtros_reescrito | 36.8% | 63.2% | 63.2% | 84.2% | 19 |
-| hibrido_reescrito | 36.8% | 57.9% | 63.2% | 100.0% | 19 |
-| hibrido_enc_reescrito | 31.6% | 68.4% | 73.7% | 84.2% | 19 |
+| denso_reescrito | 15.8% | 21.1% | 26.3% | 47.4% | 19 |
+| filtros_reescrito | 26.3% | 57.9% | 63.2% | 84.2% | 19 |
+| hibrido_reescrito | 31.6% | 57.9% | 73.7% | 94.7% | 19 |
+| hibrido_enc_reescrito | 31.6% | 68.4% | 68.4% | 73.7% | 19 |
 
 Los filtros salen del golden: la medición aísla el buscador y es una cota superior de lo que consigue el agente, que debe inferirlos de la pregunta.
-Carpeta: `resultados\s2\retrieval\20260921T215557Z_b69136ba`.
+Carpeta: `resultados/s2/retrieval/20260924T084746Z_7fb3e330`.
+
+## Cambios frente a una ejecución anterior
+
+Ejecución anterior: `resultados/s2/comparacion/20260921T230019Z_c0888bbc`. Mismas 20 preguntas y mismos evaluadores de código. Si cambia el juez, cambia la vara de medir: las diferencias no son sólo del agente.
+
+| Versión | Acierto antes | Acierto ahora | Juez antes | Juez ahora |
+| --- | --- | --- | --- | --- |
+| baseline | 55.0% | 30.0% | `google/gemini-3.5-flash-lite` | `anthropic/claude-opus-5.5` |
+| final | 95.0% | 90.0% | `google/gemini-3.5-flash-lite` | `anthropic/claude-opus-5.5` |
+
+Preguntas que cambian de resultado:
+
+| Versión | Pregunta | Familia | Antes | Ahora | Evaluador que cambia |
+| --- | --- | --- | --- | --- | --- |
+| baseline | propio-008 | extractiva | acierto | fallo | cita |
+| baseline | propio-009 | extractiva | acierto | fallo | cita |
+| baseline | propio-012 | extractiva | acierto | fallo | cita |
+| baseline | propio-013 | extractiva | acierto | fallo | cita |
+| baseline | propio-014 | extractiva | acierto | fallo | cita |
+| final | propio-011 | extractiva | acierto | fallo | cita |
+| final | propio-015 | comparativa | fallo | acierto | cita |
+| final | propio-018 | comparativa | acierto | fallo | cita |
 
 ## Varianza entre ejecuciones
 
 El **mismo** agente baseline, las mismas preguntas y los mismos evaluadores, medido dos veces. La temperatura es 0, pero ni la API ni el juez son deterministas.
+
+Ejecución 1: `resultados/s2/comparacion/20260921T220600Z_a1e83bd5`, juez `google/gemini-3.5-flash-lite`. Ejecución 2: `resultados/s2/comparacion/20260921T230019Z_c0888bbc`, juez `google/gemini-3.5-flash-lite`.
 
 | Familia | Ejecución 1 | Ejecución 2 |
 | --- | --- | --- |
@@ -79,5 +109,5 @@ Conceptos que una compañía no reporta (Amazon no publica GrossProfit, Liabilit
 ```powershell
 python -m unittest discover -s tests -v
 python scripts/ejecutar_evaluacion_s2.py --salida resultados\s2\<carpeta>
-python scripts/generar_resumen.py --comparacion <carpeta>\comparacion --retrieval resultados\s2\retrieval\<marca>
+python scripts/generar_resumen.py --comparacion <carpeta>\comparacion --retrieval resultados\s2\retrieval\<marca> [--anterior <otra comparación>] [--repeticion <A> --repeticion-de <B>]
 ```
