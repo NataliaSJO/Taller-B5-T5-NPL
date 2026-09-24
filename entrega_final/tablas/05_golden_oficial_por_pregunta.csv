@@ -1,0 +1,141 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,cita_ancla,recall_trayectoria,coste_juez_usd,coste_estimado_usd,avisos_guardrail,error,traceback,detalle_api
+of-001,extractiva,True,evaluado,0.007098,47.02786220796406,1,True,,True,False,0.0,0.01184,0.007098,0,,,
+of-002,extractiva,True,evaluado,0.008445,30.308636459056288,2,True,,True,True,1.0,0.004468,0.008445,0,,,
+of-003,extractiva,False,evaluado,0.07895775,61.07340029196348,7,False,,True,True,1.0,0.012216,0.07895775,0,,,
+of-004,extractiva,True,evaluado,0.0143385,30.618418458034284,2,True,,True,True,1.0,0.006924,0.0143385,0,,,
+of-005,extractiva,False,error,,235.88795529096387,2,,,,,,,0.0035647499999999998,0,"ConnectError: [Errno 8] nodename nor servname provided, or not known","Traceback (most recent call last):
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_transports/default.py"", line 101, in map_httpcore_exceptions
+    yield
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_transports/default.py"", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py"", line 256, in handle_request
+    raise exc from None
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_sync/connection_pool.py"", line 236, in handle_request
+    response = connection.handle_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_sync/connection.py"", line 101, in handle_request
+    raise exc
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_sync/connection.py"", line 78, in handle_request
+    stream = self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_sync/connection.py"", line 124, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_backends/sync.py"", line 207, in connect_tcp
+    with map_exceptions(exc_map):
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py"", line 158, in __exit__
+    self.gen.throw(value)
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpcore/_exceptions.py"", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [Errno 8] nodename nor servname provided, or not known
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File ""/private/tmp/claude-501/-Users-emiliosanchez-TallerB5-T5-Taller-B5-T5-NPL/54dfbcb8-75f9-498d-bcc2-ce43b5b4b28d/scratchpad/github/agente/interfaz.py"", line 1323, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/private/tmp/claude-501/-Users-emiliosanchez-TallerB5-T5-Taller-B5-T5-NPL/54dfbcb8-75f9-498d-bcc2-ce43b5b4b28d/scratchpad/github/agente/interfaz.py"", line 1038, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/main.py"", line 3913, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/main.py"", line 2967, in stream
+    for _ in runner.tick(
+             ^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/_internal/_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/_internal/_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain/agents/factory.py"", line 1483, in model_node
+    model_response = _execute_model_sync(request)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain/agents/factory.py"", line 1454, in _execute_model_sync
+    output = model_.invoke(messages)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/runnables/base.py"", line 6014, in invoke
+    return self.bound.invoke(
+           ^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""/private/tmp/claude-501/-Users-emiliosanchez-TallerB5-T5-Taller-B5-T5-NPL/54dfbcb8-75f9-498d-bcc2-ce43b5b4b28d/scratchpad/github/agente/interfaz.py"", line 168, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_openrouter/chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/chat.py"", line 830, in send
+    http_res = self.do_request(
+               ^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/basesdk.py"", line 291, in do_request
+    http_res = utils.retry(do, utils.Retries(retry_config[0], retry_config[1]))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/utils/retries.py"", line 222, in retry
+    return retry_with_backoff(
+           ^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/utils/retries.py"", line 292, in retry_with_backoff
+    return func()
+           ^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/utils/retries.py"", line 195, in do_request
+    res = func()
+          ^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/basesdk.py"", line 274, in do
+    raise e
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/basesdk.py"", line 269, in do
+    http_res = client.send(req, stream=stream)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_client.py"", line 914, in send
+    response = self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_client.py"", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_client.py"", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_client.py"", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_transports/default.py"", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py"", line 158, in __exit__
+    self.gen.throw(value)
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/httpx/_transports/default.py"", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [Errno 8] nodename nor servname provided, or not known
+During task with name 'model' and id '04e31ab3-ec62-f424-f49d-c5ab73b42438'
+",{}
+of-006,extractiva,False,evaluado,0.008196,219.34786674997304,3,False,,True,False,1.0,,0.008196,0,,,
+of-007,numerica,True,evaluado,0.005214,11.684066500049084,2,,True,True,,,,0.005214,0,,,
+of-008,numerica,True,evaluado,0.005952,11.618503334000707,2,,True,True,,,,0.005952,0,,,
+of-009,numerica,True,evaluado,0.00550725,12.021482708049007,2,,True,True,,,,0.00550725,0,,,
+of-010,numerica,True,evaluado,0.0034702500000000002,7.970463666017167,1,,True,True,,,,0.0034702500000000002,0,,,
+of-011,numerica,True,evaluado,0.0073755,20.914124375092797,2,,True,True,,,,0.0073755,0,,,
+of-012,numerica,True,evaluado,0.00524325,25.908799582975917,2,,True,True,,,,0.00524325,0,,,
+of-013,numerica,True,evaluado,0.0030907499999999997,12.551175624947064,1,,True,True,,,,0.0030907499999999997,0,,,
+of-014,comparativa,False,evaluado,0.038427975,57.621485249954276,5,True,False,True,False,1.0,0.005652,0.038427975,1,,,
+of-015,comparativa,False,evaluado,0.025275000000000002,47.527870709076524,5,True,False,True,True,1.0,0.006112,0.025275000000000002,0,,,
+of-016,comparativa,False,evaluado,0.042105975,132.45719774998724,9,False,True,True,False,0.0,0.011016,0.042105975,0,,,
+of-017,comparativa,False,evaluado,0.020277,35.68076483299956,4,True,False,True,True,1.0,0.005424,0.020277,0,,,
+of-018,comparativa,False,evaluado,0.017954249999999998,57.42298791592475,6,False,False,False,False,0.0,,0.017954249999999998,0,,,
+of-019,comparativa,False,evaluado,0.0208155,43.57594800007064,4,True,False,True,True,1.0,0.008776,0.0208155,0,,,
+of-020,comparativa,False,evaluado,0.046138725,60.94462287495844,6,True,False,True,True,1.0,0.005912,0.046138725,0,,,

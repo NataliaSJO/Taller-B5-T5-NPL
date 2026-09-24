@@ -1,0 +1,57 @@
+{
+  "medido": {
+    "gasto": {
+      "agente_usd": 5.055790598699996,
+      "juez_usd": 0.8326293,
+      "otros_usd": 0.394172525,
+      "total_usd": 6.282592423699996
+    },
+    "pregunta": {
+      "preguntas": 20,
+      "coste_agente_usd": 0.015747622499999975,
+      "coste_juez_usd": 0.005316800000000001,
+      "latencia_s": 27.13313521044329,
+      "tokens_entrada": 12166.1,
+      "tokens_salida": 2083.9,
+      "llamadas_modelo": 3.6,
+      "fraccion_con_catalogo": 0.6,
+      "llamadas_tras_catalogo": 3.0
+    },
+    "local": {
+      "informes": 12,
+      "fragmentos": 1749,
+      "tokens_corpus": 649119,
+      "catalogo_lineas": 12,
+      "catalogo_caracteres": 585,
+      "busqueda_s": 0.1733067083056085,
+      "embeddings_por_s": 16.81606589022441
+    }
+  },
+  "estimado": {
+    "empresas": 500,
+    "informes": 1000,
+    "preguntas": 10000,
+    "fragmentos": 145750.0,
+    "tokens_corpus": 54093250.0,
+    "indice_mb": 223.872,
+    "embeddings_h": 2.407585185227341,
+    "catalogo_tokens": 12187.5,
+    "coste_pregunta_arreglado_usd": 0.015747622499999975,
+    "coste_pregunta_tal_cual_usd": 0.032200747499999974,
+    "total_arreglado_usd": 157.47622499999974,
+    "total_tal_cual_usd": 322.0074749999997,
+    "total_luna_usd": 9.760287499999901,
+    "juez_todo_usd": 53.168000000000006,
+    "juez_muestra_5_usd": 2.6584000000000003,
+    "horas_en_serie": 75.36982002900913,
+    "horas_en_paralelo": 7.536982002900913,
+    "busqueda_s_cota": 14.44222569213404
+  },
+  "supuestos": {
+    "ejercicios": 2,
+    "caracteres_por_token": 4,
+    "paralelo": 10,
+    "final": "/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/resultados/s2/verificacion_20260924_opus/comparacion/final",
+    "panel": "/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/resultados/s2/panel_modelos/20260924_juez_opus"
+  }
+}

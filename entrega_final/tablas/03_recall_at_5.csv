@@ -1,0 +1,9 @@
+variante,recall_at_5,evidencias
+denso,0.0,19
+filtros,0.2631578947368421,19
+hibrido,0.2631578947368421,19
+hibrido_enc,0.21052631578947367,19
+denso_reescrito,0.2631578947368421,19
+filtros_reescrito,0.631578947368421,19
+hibrido_reescrito,0.7368421052631579,19
+hibrido_enc_reescrito,0.6842105263157895,19

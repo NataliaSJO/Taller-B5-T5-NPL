@@ -1,0 +1,2 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,cita_ancla,recall_trayectoria,coste_juez_usd,coste_estimado_usd,avisos_guardrail
+ho-003,extractiva,True,evaluado,0.03962475,87.56262791703921,4,True,,True,True,1.0,0.004812,0.03962475,0

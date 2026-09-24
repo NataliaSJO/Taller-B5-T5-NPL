@@ -1,0 +1,106 @@
+id,familia,acierto,estado,coste_usd,latencia_s,llamadas,cita,cifra,trayectoria,cita_ancla,recall_trayectoria,coste_juez_usd,coste_estimado_usd,avisos_guardrail,error,traceback,detalle_api
+ho-001,extractiva,True,evaluado,0.0166374,59.588767042034306,2,True,,True,True,1.0,0.004964,0.0166374,0,,,
+ho-002,extractiva,True,evaluado,0.0111825,24.87711283401586,2,True,,True,True,1.0,0.004724,0.0111825,0,,,
+ho-003,extractiva,False,error,,14.276692708022892,2,,,,,,,0.0025845,0,TooManyRequestsResponseError: Provider returned error,"Traceback (most recent call last):
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/agente/interfaz.py"", line 1323, in evaluar
+    r = funcion_responder(item[""pregunta""]) if funcion_responder else ejecutar(item[""pregunta""], etiqueta)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/agente/interfaz.py"", line 1038, in ejecutar
+    resultado = agente.invoke(
+                ^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/main.py"", line 3913, in invoke
+    for chunk in self.stream(
+                 ^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/main.py"", line 2967, in stream
+    for _ in runner.tick(
+             ^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/_runner.py"", line 207, in tick
+    run_with_retry(
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/pregel/_retry.py"", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/_internal/_runnable.py"", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/_internal/_runnable.py"", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/prebuilt/tool_node.py"", line 822, in _func
+    outputs = list(
+              ^^^^^
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py"", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py"", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py"", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py"", line 401, in __get_result
+    raise self._exception
+  File ""/opt/homebrew/Cellar/python@3.12/3.12.13/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py"", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/runnables/config.py"", line 650, in _wrapped_fn
+    return contexts.pop().run(fn, *args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/prebuilt/tool_node.py"", line 1046, in _run_one
+    return self._execute_tool_sync(tool_request, input_type, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/prebuilt/tool_node.py"", line 1006, in _execute_tool_sync
+    content = _handle_tool_error(e, flag=self._handle_tool_errors)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/prebuilt/tool_node.py"", line 434, in _handle_tool_error
+    content = flag(e)  # type: ignore [assignment, call-arg]
+              ^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/prebuilt/tool_node.py"", line 391, in _default_handle_tool_errors
+    raise e
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langgraph/prebuilt/tool_node.py"", line 958, in _execute_tool_sync
+    response = tool.invoke(call_args, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/tools/base.py"", line 764, in invoke
+    return self.run(tool_input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/tools/base.py"", line 1132, in run
+    raise error_to_raise
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/tools/base.py"", line 1098, in run
+    response = context.run(self._run, *tool_args, **tool_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/tools/structured.py"", line 152, in _run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/agente/interfaz.py"", line 550, in search_filings
+    consulta = reescribir(query, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/agente/interfaz.py"", line 408, in reescribir
+    r = modelo(MODELO_AUXILIAR, MAX_TOKENS_AUX).invoke([
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 488, in invoke
+    self.generate_prompt(
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 1684, in generate
+    self._generate_with_cache(
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py"", line 2022, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/agente/interfaz.py"", line 168, in _generate
+    respuesta = super()._generate(messages, stop=stop, run_manager=run_manager, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/langchain_openrouter/chat_models.py"", line 572, in _generate
+    response = self.client.chat.send(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""/Users/emiliosanchez/TallerB5-T5/Taller-B5-T5-NPL/TallerB5T5_env/lib/python3.12/site-packages/openrouter/chat.py"", line 926, in send
+    raise errors.TooManyRequestsResponseError(
+openrouter.errors.toomanyrequestsresponse_error.TooManyRequestsResponseError: Provider returned error
+During task with name 'tools' and id 'e53bae52-2bfe-518f-61a8-70a349c70ce5'
+","{'codigo': 429, 'metadata': {'raw': 'google/gemini-3.8-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations', 'provider_name': 'Google', 'is_byok': False, 'provider_error_code': '429', 'limit_source': 'upstream_provider_shared_pool', 'remedy_hint': 'Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing', 'previous_errors': [{'code': 429, 'message': 'Provider returned error', 'provider_name': 'Google AI Studio', 'raw': 'google/gemini-3.8-flash is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations'}]}, 'retry_after': None}"
+ho-004,numerica,True,evaluado,0.004242,7.769624875043519,1,,True,True,,,,0.004242,0,,,
+ho-005,numerica,True,evaluado,0.005966249999999999,11.490241832914762,2,,True,True,,,,0.005966249999999999,0,,,
+ho-006,numerica,False,evaluado,0.004695,22.21268354204949,2,,True,False,,,,0.004695,0,,,
+ho-007,comparativa,False,evaluado,0.0209715,64.25935662502889,4,True,False,True,True,1.0,0.005048,0.0209715,0,,,
+ho-008,comparativa,False,evaluado,0.0408375,158.79894595802762,8,False,False,True,False,1.0,,0.0408375,0,,,
+ho-009,comparativa,False,evaluado,0.02783025,44.41614345810376,9,True,False,True,True,1.0,0.007964,0.02783025,0,,,
+ho-010,comparativa,False,evaluado,0.02421525,91.12829600006808,4,True,False,True,True,1.0,0.01624,0.02421525,0,,,
